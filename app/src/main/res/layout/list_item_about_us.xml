@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="websiteHighlight"
+            type="io.techministry.android.missionchurch.data.WebsiteHighlight"/>
+    </data>
+
+    <io.techministry.android.missionchurch.views.MaskedCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/card_side_margin"
+        android:layout_marginEnd="@dimen/card_side_margin"
+        android:layout_marginBottom="@dimen/card_bottom_margin"
+        android:onClick="@{clickListener}"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardPreventCornerOverlap="false"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.MissionChurch.Card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/plant_photo"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/plant_item_image_height"
+                android:contentDescription="@string/website_highlight"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--            app:imageFromUrl="@{photo.urls.small}"-->
+
+            <TextView
+                android:id="@+id/photographer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:gravity="center_horizontal"
+                android:textAppearance="?attr/textAppearanceListItem"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/plant_photo"
+                tools:text="Sunny F." />
+            <!--            android:text="@{photo.user.name}"-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </io.techministry.android.missionchurch.views.MaskedCardView>
+</layout>

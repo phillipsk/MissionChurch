@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Mission Church</string>
+    <string name="menu_home_home">Home</string>
+    <string name="menu_home_connect">Connect</string>
+    <string name="menu_home_listen">Listen</string>
+    <string name="menu_home_pray">Pray</string>
+    <string name="menu_home_info">Info</string>
+    <string name="string_blank">empty</string>
+    <string name="website_highlight">website_highlight</string>
+    <string name="about_us_title">Stay Connected Stay Protected</string>
+</resources>

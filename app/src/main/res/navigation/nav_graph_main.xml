@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@id/navigation_home"
+        android:name="io.techministry.android.missionchurch.ui.AboutUsFragment"
+        android:label="Home">
+        <action
+            android:id="@+id/navigation_home_to_navigation_connect"
+            app:destination="@id/navigation_connect" />
+    </fragment>
+
+    <fragment
+        android:id="@id/navigation_connect"
+        android:name="io.techministry.android.missionchurch.ui.ConnectFragment"
+        android:label="Connect">
+        <action
+            android:id="@+id/action_navigation_connect_to_navigation_listen"
+            app:destination="@id/navigation_listen" />
+    </fragment>
+
+    <fragment
+        android:id="@id/navigation_listen"
+        android:name="io.techministry.android.missionchurch.ui.ListenFragment"
+        android:label="Listen">
+        <action
+            android:id="@+id/action_navigation_listen_to_navigation_pray"
+            app:destination="@id/navigation_pray" />
+    </fragment>
+
+    <fragment
+        android:id="@id/navigation_pray"
+        android:name="io.techministry.android.missionchurch.ui.PrayFragment"
+        android:label="Pray">
+        <action
+            android:id="@+id/action_navigation_pray_to_navigation_info"
+            app:destination="@id/navigation_info" />
+    </fragment>
+
+    <fragment
+        android:id="@id/navigation_info"
+        android:name="io.techministry.android.missionchurch.ui.InfoFragment"
+        android:label="Info" />
+
+</navigation>
