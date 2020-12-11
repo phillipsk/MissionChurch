@@ -1,7 +1,12 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.google.gms.google-services'  // Google Services plugin
+import io.techministry.android.missionchurch.buildsrc.Libs
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+//    id 'kotlin-android-extensions'
+//    id 'kotlin-kapt'
+//    id 'com.google.gms.google-services'  // Google Services plugin
+}
 
 android {
     compileSdkVersion 30
@@ -26,25 +31,46 @@ android {
     buildFeatures {
         dataBinding true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 //    packagingOptions {
 ////        exclude 'META-INF/DEPENDENCIES'
 //    }
 }
 
 dependencies {
+//    implementation('com.getkeepsafe.dexcount:dexcount-gradle-plugin:2.0.0')
+//    classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:2.0.0'
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.fragment:fragment-ktx:1.2.5'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    implementation 'androidx.room:room-runtime:2.2.5'
-    testImplementation 'junit:junit:4.13.1'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+    implementation(Libs.AndroidX.appcompat)
+    implementation(Libs.AndroidX.constraintlayout)
+    implementation(Libs.AndroidX.Navigation.fragment)
+    implementation(Libs.AndroidX.Navigation.ui)
+    implementation(Libs.AndroidX.Fragment.fragmentKtx)
+    implementation(Libs.AndroidX.Room.runtime)
+//    implementation(Libs.AndroidX.Room.compiler)
+//    missing annotation processor implementation
+    implementation(Libs.AndroidX.Test.Ext.junit)
+    implementation(Libs.AndroidX.Test.espressoCore)
+
+    implementation(Libs.swiperefresh)
+    implementation(Libs.Google.material)
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'com.google.android.material:material:1.2.1'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+//    implementation 'androidx.fragment:fragment-ktx:1.2.5'
+//    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
+//    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
+//    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+//    implementation 'androidx.room:room-runtime:2.2.5'
+//    testImplementation 'junit:junit:4.13.1'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+//    annotationProcessor 'androidx.room:room-compiler:2.2.5'
 
 //    multiDexEnabled // Need to add this to import all these Firebase libraries
 //    Firebase
@@ -90,3 +116,5 @@ dependencies {
 //
 //    implementation Libs.Kotlin.stdlib
 }
+apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.getkeepsafe.dexcount'
