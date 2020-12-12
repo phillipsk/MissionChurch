@@ -1,21 +1,28 @@
+import io.techministry.android.missionchurch.buildsrc.AndroidSdk
 import io.techministry.android.missionchurch.buildsrc.Libs
 
 plugins {
+//    classpath(BuildPlugins.androidApplication)
+//    id BuildPlugins.androidApplication
+//    id BuildPlugins.kotlinAndroid
+
+//    id(BuildPlugins.kotlinAndroidExtensions)
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'  // Google Services plugin
+
 //    id 'kotlin-android-extensions'
 //    id 'kotlin-kapt'
-//    id 'com.google.gms.google-services'  // Google Services plugin
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion(AndroidSdk.compile)
     buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "io.techministry.android.missionchurch"
-        minSdkVersion 16
-        targetSdkVersion 30
+        minSdkVersion(AndroidSdk.min)
+        targetSdkVersion(AndroidSdk.target)
         versionCode 1
         versionName "1.0"
 

@@ -1,26 +1,52 @@
 package io.techministry.android.missionchurch.buildsrc
 
+const val kotlinVersion = "1.3.72"
+
+object PluginVersions {
+    const val kotlin = "1.3.72"
+}
+
+object BuildPlugins {
+
+    object Versions {
+        const val buildToolsVersion = "4.0.0"
+    }
+
+    const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
+    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    const val gmsGoogleServices = "com.google.gms:google-services:4.3.4"
+    const val androidApplication = "com.android.application"
+    const val kotlinAndroid = "kotlin-android"
+//    const val kotlinAndroidExtensions = "kotlin-android-extensions" // deprecated in KT v1.4
+
+}
+
+object AndroidSdk {
+    const val min = 16
+    const val compile = 30
+    const val target = compile
+}
+
 object Versions {
 //    const val ktlint = "0.39.0"
 }
 
 object Libs {
-    const val androidGradlePlugin = "com.android.tools.build:gradle:4.0.0"
+//    const val androidGradlePlugin = "com.android.tools.build:gradle:4.0.0" // replaced above
 
     //
     object Kotlin {
-        private const val version = "1.3.72"
+//        private const val version = "1.3.72"
+//        const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version" // replaced above
 
         //        private const val version = "1.4.10"
 //        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
-        const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
 //        const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
     }
 
     object Google {
 
         private const val version = "1.3.72"
-        const val gmsGoogleServices = "com.google.gms:google-services:4.3.4"
         const val material = "com.google.android.material:material:1.2.1"
     }
 
