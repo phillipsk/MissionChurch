@@ -9,7 +9,8 @@ plugins {
 //    id(BuildPlugins.kotlinAndroidExtensions)
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.google.gms.google-services'  // Google Services plugin
+//        temporarily remove for Github convenience, public allowed to clone and build app
+//    id 'com.google.gms.google-services'  // Google Services plugin
     id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
 //    id 'kotlin-android-extensions'

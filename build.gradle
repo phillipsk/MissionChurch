@@ -15,7 +15,9 @@ buildscript {
         classpath(BuildPlugins.androidGradlePlugin)
         classpath(BuildPlugins.androidGradlePlugin)
         classpath(BuildPlugins.kotlinGradlePlugin)
-        classpath(BuildPlugins.gmsGoogleServices)
+//        temporarily remove for Github convenience, public allowed to clone and build app
+//        classpath(BuildPlugins.gmsGoogleServices)
+
 //        classpath(BuildPlugins.hiltPlugin)
         classpath(Libs.AndroidX.Hilt.gradlePlugin)
         classpath(Libs.AndroidX.Navigation.safeArgs)
