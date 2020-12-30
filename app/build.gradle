@@ -1,16 +1,33 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.google.gms.google-services'  // Google Services plugin
+import io.techministry.android.missionchurch.buildsrc.AndroidSdk
+import io.techministry.android.missionchurch.buildsrc.Libs
 
+plugins {
+//    classpath(BuildPlugins.androidApplication)
+//    id BuildPlugins.androidApplication
+//    id BuildPlugins.kotlinAndroid
+
+//    id(BuildPlugins.kotlinAndroidExtensions)
+    id 'com.android.application'
+    id 'kotlin-android'
+//        temporarily remove for Github convenience, public allowed to clone and build app
+//    id 'com.google.gms.google-services'  // Google Services plugin
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+//    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+//apply plugin: 'androidx.navigation.safeargs.kotlin'
+//apply plugin: 'com.google.gms.google-services'
+//apply plugin: "androidx.navigation.safeargs.kotlin"
+//apply plugin: 'androidx.navigation.safeargs'
 android {
-    compileSdkVersion 30
+    compileSdkVersion(AndroidSdk.compile)
     buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "io.techministry.android.missionchurch"
-        minSdkVersion 16
-        targetSdkVersion 30
+        minSdkVersion(AndroidSdk.min)
+        targetSdkVersion(AndroidSdk.target)
         versionCode 1
         versionName "1.0"
 
@@ -26,25 +43,81 @@ android {
     buildFeatures {
         dataBinding true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+
+        // Enable Coroutines and Flow APIs
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+//        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+    }
 //    packagingOptions {
 ////        exclude 'META-INF/DEPENDENCIES'
 //    }
 }
 
 dependencies {
+//    implementation('com.getkeepsafe.dexcount:dexcount-gradle-plugin:2.0.0')
+//    classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:2.0.0'
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.fragment:fragment-ktx:1.2.5'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    implementation 'androidx.room:room-runtime:2.2.5'
-    testImplementation 'junit:junit:4.13.1'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+    implementation(Libs.AndroidX.appcompat)
+    implementation(Libs.AndroidX.constraintlayout)
+    implementation(Libs.AndroidX.Navigation.fragment)
+    implementation(Libs.AndroidX.Navigation.ui)
+
+    implementation(Libs.AndroidX.Fragment.fragmentKtx)
+    implementation(Libs.AndroidX.Room.runtime)
+    kapt(Libs.AndroidX.Room.compiler)
+    implementation(Libs.AndroidX.Room.ktx)
+
+    implementation(Libs.AndroidX.Lifecycle.livedata)
+    implementation(Libs.AndroidX.Lifecycle.viewmodel)
+    implementation(Libs.AndroidX.Lifecycle.savedState)
+//    implementation(Libs.AndroidX.Lifecycle.runtime)
+    kapt(Libs.AndroidX.Lifecycle.kaptCompiler)
+
+//    commented out dependencies to avoid MultiDex
+
+
+    androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
+    androidTestImplementation(Libs.AndroidX.Test.archCore)
+    androidTestImplementation(Libs.AndroidX.Test.espressoCore)
+    androidTestImplementation(Libs.AndroidX.Hilt.testing)
+
+//    implementation(Libs.swiperefresh)
+    implementation(Libs.Google.material)
+    implementation(Libs.AndroidX.work)
+    implementation(Libs.Google.gson)
+
+    implementation(Libs.AndroidX.Hilt.library)
+    kapt(Libs.AndroidX.Hilt.compiler)
+    implementation(Libs.AndroidX.Hilt.viewModel.viewModel)
+    kapt(Libs.AndroidX.Hilt.viewModel.kaptCompiler)
+
+    //Glide
+    implementation(Libs.Glide.glide)
+    kapt(Libs.Glide.glideKapt)
+
+
+//    kapt(Libs.AndroidX.Hilt.assistedInjectVersion)
+
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'com.google.android.material:material:1.2.1'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+//    implementation 'androidx.fragment:fragment-ktx:1.2.5'
+//    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
+//    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
+//    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+//    implementation 'androidx.room:room-runtime:2.2.5'
+//    testImplementation 'junit:junit:4.13.1'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+//    annotationProcessor 'androidx.room:room-compiler:2.2.5'
 
 //    multiDexEnabled // Need to add this to import all these Firebase libraries
 //    Firebase
@@ -90,3 +163,4 @@ dependencies {
 //
 //    implementation Libs.Kotlin.stdlib
 }
+//apply plugin: 'com.getkeepsafe.dexcount'

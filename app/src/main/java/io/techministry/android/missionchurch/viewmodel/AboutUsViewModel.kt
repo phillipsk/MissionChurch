@@ -1,5 +1,21 @@
 package io.techministry.android.missionchurch.viewmodel
 
-class AboutUsViewModel {
+import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import io.techministry.android.missionchurch.data.WebsiteHighlight
+import io.techministry.android.missionchurch.repository.WebsiteRepository
 
+class AboutUsViewModel @ViewModelInject internal constructor(
+    websiteRepository: WebsiteRepository
+//    @Assisted private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
+
+
+    val highlights: LiveData<List<WebsiteHighlight>> = websiteRepository.getHighlights()
+
+    init {
+        Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
+    }
 }

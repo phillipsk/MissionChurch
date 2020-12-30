@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@id/home_nav_graph"
+        android:id="@id/aboutus_menu"
         android:icon="@drawable/ic_nav_home"
         android:title="@string/menu_home_home" />
 
     <item
-        android:id="@id/home_nav_graph"
+        android:id="@id/connect_menu"
         android:icon="@drawable/ic_nav_connect"
         android:title="@string/menu_home_connect" />
 
     <item
-        android:id="@id/home_nav_graph"
+        android:id="@id/listen_menu"
         android:icon="@drawable/ic_nav_speaker"
         android:title="@string/menu_home_listen" />
 
     <item
-        android:id="@id/home_nav_graph"
+        android:id="@id/pray_menu"
         android:icon="@drawable/ic_nav_prayer"
         android:title="@string/menu_home_pray" />
 
     <item
-        android:id="@id/home_nav_graph"
+        android:id="@id/info_menu"
         android:icon="@drawable/ic_nav_info"
         android:title="@string/menu_home_info" />
 </menu>
