@@ -1,5 +1,6 @@
 package io.techministry.android.missionchurch.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,61 +10,53 @@ import androidx.recyclerview.widget.RecyclerView
 import io.techministry.android.missionchurch.data.WebsiteHighlight
 import io.techministry.android.missionchurch.databinding.ListItemAboutUsBinding
 
-class AboutUsAdapter : ListAdapter<WebsiteHighlight, RecyclerView.ViewHolder>(PlantDiffCallback()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return AboutUsViewHolder(
-            ListItemAboutUsBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+class AboutUsAdapter : ListAdapter<WebsiteHighlight, AboutUsAdapter.ViewHolder>(DiffCallback()) {
+//    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+//        implemented internal class ViewHolder vs. RecyclerView.ViewHolder
+//    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.bind(item)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val plant = getItem(position)
-        (holder as AboutUsViewHolder).bind(plant)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
     }
 
-    class AboutUsViewHolder(
-        private val binding: ListItemAboutUsBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            binding.setClickListener {
-                binding.websiteHighlight?.let { wbh ->
-                    navigateToHighlightDetails(wbh, it)
-                }
-            }
-        }
-
-        private fun navigateToHighlightDetails(
-            websiteHighlight: WebsiteHighlight,
-            view: View
-        ) {
-//            val direction =
-//                HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(
-//                    websiteHighlight.websiteHighlightId
-//                )
-//            view.findNavController().navigate(direction)
-        }
+    class ViewHolder private constructor(val binding: ListItemAboutUsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: WebsiteHighlight) {
-            binding.apply {
-                websiteHighlight = item
-                executePendingBindings()
+
+            if (item.title == null) binding.highlightTitle.visibility = View.GONE
+            binding.websiteHighlight = item
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ListItemAboutUsBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
             }
         }
     }
 }
 
-private class PlantDiffCallback : DiffUtil.ItemCallback<WebsiteHighlight>() {
+
+internal class DiffCallback : DiffUtil.ItemCallback<WebsiteHighlight>() {
 
     override fun areItemsTheSame(oldItem: WebsiteHighlight, newItem: WebsiteHighlight): Boolean {
-        return oldItem.websiteHighlightId == newItem.websiteHighlightId
+        return oldItem.highlightId == newItem.highlightId
     }
 
     override fun areContentsTheSame(oldItem: WebsiteHighlight, newItem: WebsiteHighlight): Boolean {
         return oldItem == newItem
+    }
+
+    init {
+        Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
     }
 
 }
