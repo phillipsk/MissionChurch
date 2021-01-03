@@ -9,12 +9,17 @@ plugins {
 //    id(BuildPlugins.kotlinAndroidExtensions)
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.google.gms.google-services'  // Google Services plugin
-
+//        temporarily remove for Github convenience, public allowed to clone and build app
+//    id 'com.google.gms.google-services'  // Google Services plugin
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
 //    id 'kotlin-android-extensions'
-//    id 'kotlin-kapt'
+    id 'kotlin-kapt'
 }
-
+//apply plugin: 'androidx.navigation.safeargs.kotlin'
+//apply plugin: 'com.google.gms.google-services'
+//apply plugin: "androidx.navigation.safeargs.kotlin"
+//apply plugin: 'androidx.navigation.safeargs'
 android {
     compileSdkVersion(AndroidSdk.compile)
     buildToolsVersion "30.0.2"
@@ -42,6 +47,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+
+        // Enable Coroutines and Flow APIs
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+//        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+    }
 //    packagingOptions {
 ////        exclude 'META-INF/DEPENDENCIES'
 //    }
@@ -56,15 +68,43 @@ dependencies {
     implementation(Libs.AndroidX.constraintlayout)
     implementation(Libs.AndroidX.Navigation.fragment)
     implementation(Libs.AndroidX.Navigation.ui)
+
     implementation(Libs.AndroidX.Fragment.fragmentKtx)
     implementation(Libs.AndroidX.Room.runtime)
-//    implementation(Libs.AndroidX.Room.compiler)
-//    missing annotation processor implementation
-    implementation(Libs.AndroidX.Test.Ext.junit)
-    implementation(Libs.AndroidX.Test.espressoCore)
+    kapt(Libs.AndroidX.Room.compiler)
+    implementation(Libs.AndroidX.Room.ktx)
 
-    implementation(Libs.swiperefresh)
+    implementation(Libs.AndroidX.Lifecycle.livedata)
+    implementation(Libs.AndroidX.Lifecycle.viewmodel)
+    implementation(Libs.AndroidX.Lifecycle.savedState)
+//    implementation(Libs.AndroidX.Lifecycle.runtime)
+    kapt(Libs.AndroidX.Lifecycle.kaptCompiler)
+
+//    commented out dependencies to avoid MultiDex
+
+
+    androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
+    androidTestImplementation(Libs.AndroidX.Test.archCore)
+    androidTestImplementation(Libs.AndroidX.Test.espressoCore)
+    androidTestImplementation(Libs.AndroidX.Hilt.testing)
+
+//    implementation(Libs.swiperefresh)
     implementation(Libs.Google.material)
+    implementation(Libs.AndroidX.work)
+    implementation(Libs.Google.gson)
+
+    implementation(Libs.AndroidX.Hilt.library)
+    kapt(Libs.AndroidX.Hilt.compiler)
+    implementation(Libs.AndroidX.Hilt.viewModel.viewModel)
+    kapt(Libs.AndroidX.Hilt.viewModel.kaptCompiler)
+
+    //Glide
+    implementation(Libs.Glide.glide)
+    kapt(Libs.Glide.glideKapt)
+
+
+//    kapt(Libs.AndroidX.Hilt.assistedInjectVersion)
+
 //    implementation 'androidx.appcompat:appcompat:1.2.0'
 //    implementation 'com.google.android.material:material:1.2.1'
 //    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -123,5 +163,4 @@ dependencies {
 //
 //    implementation Libs.Kotlin.stdlib
 }
-apply plugin: 'com.google.gms.google-services'
 //apply plugin: 'com.getkeepsafe.dexcount'

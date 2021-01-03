@@ -1,9 +1,9 @@
 package io.techministry.android.missionchurch.buildsrc
 
-const val kotlinVersion = "1.3.72"
+const val kotlinVersion = "1.4.10"
 
 object PluginVersions {
-    const val kotlin = "1.3.72"
+    const val kotlin = "1.4.10"
 }
 
 object BuildPlugins {
@@ -17,6 +17,7 @@ object BuildPlugins {
     const val gmsGoogleServices = "com.google.gms:google-services:4.3.4"
     const val androidApplication = "com.android.application"
     const val kotlinAndroid = "kotlin-android"
+//    const val hiltPlugin = "com.google.dagger:hilt-android-gradle-plugin:2.29.1-alpha"
 //    const val kotlinAndroidExtensions = "kotlin-android-extensions" // deprecated in KT v1.4
 
 }
@@ -48,6 +49,16 @@ object Libs {
 
         private const val version = "1.3.72"
         const val material = "com.google.android.material:material:1.2.1"
+        const val gson = "com.google.code.gson:gson:2.8.2"
+
+    }
+
+    object Glide {
+        private const val version = "4.10.0"
+        const val glideKapt = "com.github.bumptech.glide:compiler:$version"
+        const val glide = "com.github.bumptech.glide:glide:$version"
+
+
     }
 
     //
@@ -65,6 +76,8 @@ object Libs {
     object AndroidX {
         const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.4"
         const val appcompat = "androidx.appcompat:appcompat:1.2.0"
+        const val work = "androidx.work:work-runtime-ktx:2.4.0"
+
 
         object Fragment {
             private const val version = "1.2.5"
@@ -74,25 +87,63 @@ object Libs {
         }
 
         object Navigation {
-            private const val version = "2.3.1"
+            private const val version = "2.3.2"
             const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
             const val ui = "androidx.navigation:navigation-ui-ktx:$version"
-//            const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
+            const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
         }
 
         object Room {
             private const val version = "2.2.5"
             const val runtime = "androidx.room:room-runtime:$version"
             const val compiler = "androidx.room:room-compiler:$version"
-//            const val common = "androidx.room:room-common:$version"
-//            const val ktx = "androidx.room:room-ktx:$version"
-//            const val testing = "androidx.room:room-testing:$version"
+
+            // optional - Kotlin Extensions and Coroutines support for Room
+            const val ktx = "androidx.room:room-ktx:$version"
+        }
+
+        object Hilt {
+            private const val version = "2.29.1-alpha"
+            const val library = "com.google.dagger:hilt-android:$version"
+            const val compiler = "com.google.dagger:hilt-android-compiler:$version"
+            const val testing = "com.google.dagger:hilt-android-testing:$version"
+            const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
+
+            object viewModel {
+                private const val version = "1.0.0-alpha02"
+                const val viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:$version"
+                const val kaptCompiler = "androidx.hilt:hilt-compiler:$version"
+            }
+        }
+
+        object Lifecycle {
+            private const val version = "2.2.0"
+//            deprecated
+//            const val extensions = "androidx.lifecycle:lifecycle-extensions:$version"
+
+            // ViewModel
+            const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+
+            // LiveData
+            const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
+
+            // Lifecycles only (without ViewModel or LiveData)
+            const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
+
+            // Saved state module for ViewModel
+            const val savedState = "androidx.lifecycle:lifecycle-viewmodel-savedstate:$version"
+
+            // Annotation processor
+            const val kaptCompiler = "androidx.lifecycle:lifecycle-compiler:$version"
         }
 
         object Test {
-            private const val version = "1.3.0"
-//            const val core = "androidx.test:core:$version"
-//            const val rules = "androidx.test:rules:$version"
+            private const val version = "2.0.0"
+            const val archCore = "androidx.arch.core:core-testing:$version"
+            // TODO: how is hamcreset imiplemented if not directly implemented
+//            const val hamcrest = "org.hamcrest:hamcrest-library:1.3"
+            const val core = "androidx.test:core:$version"
+            const val rules = "androidx.test:rules:$version"
 
             object Ext {
                 private const val version = "1.1.2"
@@ -128,12 +179,7 @@ object Libs {
 //
 //        const val coreKtx = "androidx.core:core-ktx:1.5.0-alpha04"
 //
-//        object Lifecycle {
-//            private const val version = "2.3.0-beta01"
-//            const val extensions = "androidx.lifecycle:lifecycle-extensions:$version"
-//            const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
-//            const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
-//        }
+
 //
 
 //
@@ -181,13 +227,7 @@ object Libs {
 //        const val compiler = "com.google.dagger:dagger-compiler:$version"
 //    }
 //
-//    object Hilt {
-//        private const val version = "2.29.1-alpha"
-//        const val library = "com.google.dagger:hilt-android:$version"
-//        const val compiler = "com.google.dagger:hilt-android-compiler:$version"
-//        const val testing = "com.google.dagger:hilt-android-testing:$version"
-//        const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
-//    }
+
 //
 //    object Retrofit {
 //        private const val version = "2.9.0"

@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Path
 import android.graphics.RectF
 import android.util.AttributeSet
+import android.util.Log
 import com.google.android.material.R
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.shape.ShapeAppearanceModel
@@ -43,5 +44,9 @@ class MaskedCardView @JvmOverloads constructor(
         rectF.bottom = h.toFloat()
         pathProvider.calculatePath(shapeAppearance, 1f, rectF, path)
         super.onSizeChanged(w, h, oldw, oldh)
+    }
+
+    init {
+        Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
     }
 }

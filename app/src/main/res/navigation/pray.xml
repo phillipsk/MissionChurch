@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pray_menu"
+    app:startDestination="@+id/pray_nav">
+
+    <fragment
+        android:id="@id/pray_nav"
+        android:name="io.techministry.android.missionchurch.ui.PrayFragment"
+        android:label="Pray"
+        tools:layout="@layout/fragment_pray" />
+
+
+</navigation>
