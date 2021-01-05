@@ -1,4 +1,0 @@
-include ':app'
-rootProject.name = "Mission Church"
-
-//include ':common-ui-view'
