@@ -1,5 +1,7 @@
 package io.techministry.android.missionchurch.adapters
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +28,15 @@ class AboutUsAdapter : ListAdapter<WebsiteHighlight, AboutUsAdapter.ViewHolder>(
 
     class ViewHolder private constructor(val binding: ListItemAboutUsBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.setClickListener { view ->
+                binding.websiteHighlight?.let { wh ->
+                    val uri = Uri.parse(wh.followUrl)
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    view.context.startActivity(intent)
+                }
+            }
+        }
 
         fun bind(item: WebsiteHighlight) {
 
