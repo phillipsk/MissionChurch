@@ -1,6 +1,6 @@
+import com.missionchurchcooljc.mcc.buildsrc.AndroidSdk
+import com.missionchurchcooljc.mcc.buildsrc.Libs
 
-import io.techministry.android.missionchurch.buildsrc.Libs
-import io.techministry.android.missionchurch.buildsrc.AndroidSdk
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'

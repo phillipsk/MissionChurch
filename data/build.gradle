@@ -1,4 +1,4 @@
-import io.techministry.android.missionchurch.buildsrc.Libs
+import com.missionchurchcooljc.mcc.buildsrc.Libs
 
 apply plugin: 'kotlin'
 

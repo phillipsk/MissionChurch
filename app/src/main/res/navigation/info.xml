@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@id/info_nav"
-        android:name="io.techministry.android.missionchurch.ui.InfoFragment"
+        android:name="com.missionchurchcooljc.mcc.ui.InfoFragment"
         android:label="Info"
         tools:layout="@layout/fragment_info" />
 
