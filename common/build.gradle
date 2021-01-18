@@ -55,6 +55,8 @@ dependencies {
 
     implementation Libs.Hilt.library
     kapt Libs.Hilt.compiler
+    implementation(Libs.Google.material)
+
 
     testImplementation Libs.Test.junit
 

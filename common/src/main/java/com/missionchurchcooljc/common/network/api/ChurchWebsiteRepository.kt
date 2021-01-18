@@ -16,30 +16,34 @@
 
 package com.missionchurchcooljc.common.network.api
 
+import com.missionchurchcooljc.common.network.NetworkClient
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-class ChurchWebsiteRepository {
-    private val service: ChurchWebsiteService
+class ChurchWebsiteRepository @Inject constructor(
+    private val networkClient: NetworkClient<ChurchWebsiteService>) {
 
-    companion object {
-        private const val BASE_URL = "http://god.works/"
-    }
 
-    init {
-        val retrofit = Retrofit.Builder()
-            //1
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            //2
-            .build()
-        //3
-        service = retrofit.create(ChurchWebsiteService::class.java)
-    }
-
-    fun getRepositories(callback: Callback<ChurchWebsiteResponse>) {
-        //4
-        service.getHighlightsExternal().enqueue(callback)
-    }
+//    private val service: ChurchWebsiteService
+//    companion object {
+//        private const val BASE_URL = "http://god.works/"
+//    }
+//
+//    init {
+//        val retrofit = Retrofit.Builder()
+//            //1
+//            .baseUrl(BASE_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            //2
+//            .build()
+//        //3
+//        service = retrofit.create(ChurchWebsiteService::class.java)
+//    }
+//
+//    fun getRepositories(callback: Callback<ChurchWebsiteResponse>) {
+//        //4
+//        service.getHighlightsExternal().enqueue(callback)
+//    }
 }
