@@ -11,7 +11,7 @@
 
         <variable
             name="websiteHighlight"
-            type="io.techministry.android.missionchurch.data.WebsiteHighlight" />
+            type="com.missionchurchcooljc.data_android.WebsiteHighlight" />
     </data>
 
     <io.techministry.android.missionchurch.views.MaskedCardView

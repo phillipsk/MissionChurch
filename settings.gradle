@@ -1,4 +1,7 @@
 include ':app'
-rootProject.name = "Mission Church"
+//rootProject.name = "Mission Church"
 
 //include ':common-ui-view'
+include ':data'
+include ':data-android'
+include ':common'

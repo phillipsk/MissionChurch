@@ -1,4 +1,4 @@
-package io.techministry.android.missionchurch.data
+package com.missionchurchcooljc.data_android
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

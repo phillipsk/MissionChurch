@@ -1,0 +1,80 @@
+
+import io.techministry.android.missionchurch.buildsrc.Libs
+import io.techministry.android.missionchurch.buildsrc.AndroidSdk
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+kapt {
+    correctErrorTypes = true
+    useBuildCache = true
+}
+
+
+android {
+    compileSdkVersion AndroidSdk.compile
+
+    defaultConfig {
+        minSdkVersion AndroidSdk.min
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [
+//                        "room.schemaLocation": "$projectDir/schemas".toString(),
+//                        "room.incremental"   : "true"
+//                ]
+//            }
+//        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+//    testOptions {
+//        unitTests {
+//            includeAndroidResources = true
+//
+//            all {
+//                minHeapSize = "64m"
+//                maxHeapSize = "128m"
+//            }
+//        }
+//    }
+}
+
+dependencies {
+    api project(':data')
+    api project(':data-android')
+
+//    api Libs.AndroidX.Room.runtime
+//    implementation Libs.AndroidX.Room.ktx
+//    kapt Libs.AndroidX.Room.compiler
+
+    implementation Libs.Hilt.library
+    kapt Libs.Hilt.compiler
+
+    testImplementation Libs.Test.junit
+
+//    testImplementation Libs.AndroidX.archCoreTesting
+    testImplementation Libs.AndroidX.Test.archCore
+    testImplementation Libs.AndroidX.Test.core
+    testImplementation Libs.AndroidX.Test.Ext.junit
+//    testImplementation Libs.AndroidX.Room.testing
+    testImplementation Libs.Hilt.testing
+
+    kaptTest Libs.AndroidX.Room.compiler
+    kaptTest Libs.Hilt.compiler
+
+    api Libs.OkHttp.test
+    api Libs.OkHttp.loggingInterceptor
+    api Libs.Retrofit.retrofit
+    api Libs.Retrofit.gsonConverter
+
+    // Needed for Tzdb
+//    testImplementation Libs.threeTenBp
+    // Needed for Main dispatcher to work
+//    testImplementation Libs.Coroutines.android
+}

@@ -1,0 +1,92 @@
+/*
+ * Copyright 2017 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import io.techministry.android.missionchurch.buildsrc.Libs
+import io.techministry.android.missionchurch.buildsrc.AndroidSdk
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+kapt {
+    correctErrorTypes = true
+    useBuildCache = true
+}
+
+android {
+    compileSdkVersion AndroidSdk.compile
+
+    defaultConfig {
+        minSdkVersion AndroidSdk.min
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [
+//                        "room.schemaLocation": "$projectDir/schemas".toString(),
+//                        "room.incremental"   : "true"
+//                ]
+//            }
+//        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+//    testOptions {
+//        unitTests {
+//            includeAndroidResources = true
+//
+//            all {
+//                minHeapSize = "64m"
+//                maxHeapSize = "128m"
+//            }
+//        }
+//    }
+}
+
+dependencies {
+    api project(':data')
+
+//    Room
+    kapt Libs.AndroidX.Room.compiler
+    api Libs.AndroidX.Room.runtime
+    implementation Libs.AndroidX.Room.ktx
+    kaptTest Libs.AndroidX.Room.compiler
+
+//    Network
+
+//    Misc
+    implementation(Libs.Google.gson)
+    api Libs.AndroidX.Lifecycle.livedata
+
+//    Hitl
+    implementation Libs.Hilt.library
+    kapt Libs.Hilt.compiler
+
+//    Test
+    testImplementation Libs.Test.junit
+    testImplementation Libs.AndroidX.Test.core
+    testImplementation Libs.AndroidX.Test.Ext.junit
+    testImplementation Libs.Hilt.testing
+    kaptTest Libs.Hilt.compiler
+//    testImplementation Libs.AndroidX.Room.testing
+//    testImplementation Libs.Coroutines.test
+
+
+}

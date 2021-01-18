@@ -54,6 +54,7 @@ android {
         freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
 //        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
     }
+    dynamicFeatures = []
 //    packagingOptions {
 ////        exclude 'META-INF/DEPENDENCIES'
 //    }
@@ -62,6 +63,10 @@ android {
 dependencies {
 //    implementation('com.getkeepsafe.dexcount:dexcount-gradle-plugin:2.0.0')
 //    classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:2.0.0'
+
+    implementation project(':data')
+    implementation project(':data-android')
+    implementation project(':common')
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(Libs.AndroidX.appcompat)
@@ -86,24 +91,23 @@ dependencies {
     androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
     androidTestImplementation(Libs.AndroidX.Test.archCore)
     androidTestImplementation(Libs.AndroidX.Test.espressoCore)
-    androidTestImplementation(Libs.AndroidX.Hilt.testing)
+    androidTestImplementation(Libs.Hilt.testing)
 
 //    implementation(Libs.swiperefresh)
     implementation(Libs.Google.material)
     implementation(Libs.AndroidX.work)
-    implementation(Libs.Google.gson)
 
-    implementation(Libs.AndroidX.Hilt.library)
-    kapt(Libs.AndroidX.Hilt.compiler)
-    implementation(Libs.AndroidX.Hilt.viewModel.viewModel)
-    kapt(Libs.AndroidX.Hilt.viewModel.kaptCompiler)
+    implementation(Libs.Hilt.library)
+    kapt(Libs.Hilt.compiler)
+    implementation(Libs.Hilt.viewModel.viewModel)
+    kapt(Libs.Hilt.viewModel.kaptCompiler)
 
     //Glide
     implementation(Libs.Glide.glide)
     kapt(Libs.Glide.glideKapt)
 
 
-//    kapt(Libs.AndroidX.Hilt.assistedInjectVersion)
+//    kapt(Libs.Hilt.assistedInjectVersion)
 
 //    implementation 'androidx.appcompat:appcompat:1.2.0'
 //    implementation 'com.google.android.material:material:1.2.1'

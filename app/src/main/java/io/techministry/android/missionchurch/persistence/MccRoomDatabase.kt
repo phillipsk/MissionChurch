@@ -7,8 +7,8 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import io.techministry.android.missionchurch.data.WebsiteHighlight
-import io.techministry.android.missionchurch.data.WebsiteHighlightDAO
+import com.missionchurchcooljc.data_android.WebsiteHighlight
+import com.missionchurchcooljc.data_android.WebsiteHighlightDAO
 import io.techministry.android.missionchurch.persistence.workers.SeedDatabaseWorker
 import io.techministry.android.missionchurch.utilities.DATABASE_NAME
 

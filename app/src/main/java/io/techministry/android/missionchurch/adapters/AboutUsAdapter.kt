@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import io.techministry.android.missionchurch.data.WebsiteHighlight
+import com.missionchurchcooljc.data_android.WebsiteHighlight
 import io.techministry.android.missionchurch.databinding.ListItemAboutUsBinding
 
 class AboutUsAdapter : ListAdapter<WebsiteHighlight, AboutUsAdapter.ViewHolder>(DiffCallback()) {
