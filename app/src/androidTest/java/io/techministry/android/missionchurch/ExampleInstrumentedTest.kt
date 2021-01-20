@@ -5,7 +5,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
-import io.techministry.android.missionchurch.data.WebsiteHighlight
+import com.missionchurchcooljc.data_android.WebsiteHighlight
 import io.techministry.android.missionchurch.utilities.ABOUT_US_DATA_FILENAME
 import org.hamcrest.CoreMatchers.instanceOf
 import org.junit.Assert.*

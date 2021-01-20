@@ -8,17 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import androidx.navigation.fragment.navArgs
-import androidx.room.Room
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.qualifiers.ApplicationContext
 import io.techministry.android.missionchurch.adapters.AboutUsAdapter
-import io.techministry.android.missionchurch.data.WebsiteHighlight
+import com.missionchurchcooljc.data_android.WebsiteHighlight
 import io.techministry.android.missionchurch.databinding.FragmentAboutUsBinding
-import io.techministry.android.missionchurch.persistence.MccRoomDatabase
-import io.techministry.android.missionchurch.persistence.workers.SeedDatabaseWorker
 import io.techministry.android.missionchurch.viewmodel.AboutUsViewModel
-import kotlinx.coroutines.Job
 
 @AndroidEntryPoint
 class AboutUsFragment : Fragment() {

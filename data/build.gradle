@@ -1,0 +1,30 @@
+import io.techministry.android.missionchurch.buildsrc.Libs
+
+apply plugin: 'kotlin'
+
+dependencies {
+//    api project(':app')
+//    api project(':base')
+//    api project(':trakt')
+//    api project(':tmdb')
+
+    api Libs.AndroidX.Room.common
+    api Libs.Test.junit
+
+    implementation(Libs.Google.gson)
+    api Libs.AndroidX.Lifecycle.livedata
+
+
+//    api Libs.OkHttp.test
+//    api Libs.Retrofit.retrofit
+//    api Libs.Retrofit.gsonConverter
+
+//    api Libs.AndroidX.Room.common
+//    implementation Libs.AndroidX.collection
+//
+//    api Libs.store
+//
+//    api Libs.AndroidX.Paging.common
+//
+//    api Libs.threeTenBpNoTzdb
+}

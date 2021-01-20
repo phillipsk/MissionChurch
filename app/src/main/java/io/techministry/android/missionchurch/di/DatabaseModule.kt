@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
-import io.techministry.android.missionchurch.data.WebsiteHighlightDAO
+import com.missionchurchcooljc.data_android.WebsiteHighlightDAO
 import io.techministry.android.missionchurch.persistence.MccRoomDatabase
 import javax.inject.Singleton
 

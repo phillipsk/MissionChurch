@@ -33,7 +33,19 @@ object Versions {
 }
 
 object Libs {
-//    const val androidGradlePlugin = "com.android.tools.build:gradle:4.0.0" // replaced above
+    //    const val androidGradlePlugin = "com.android.tools.build:gradle:4.0.0" // replaced above
+    object Retrofit {
+        private const val version = "2.9.0"
+        const val retrofit = "com.squareup.retrofit2:retrofit:$version"
+        const val gsonConverter = "com.squareup.retrofit2:converter-gson:$version"
+    }
+
+    object OkHttp {
+        private const val version = "4.9.0"
+        const val okhttp = "com.squareup.okhttp3:okhttp:$version"
+        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
+        const val test = "com.squareup.okhttp3:mockwebserver:4.9.0"
+    }
 
     //
     object Kotlin {
@@ -43,6 +55,20 @@ object Libs {
         //        private const val version = "1.4.10"
 //        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
 //        const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
+    }
+
+    object Hilt {
+        private const val version = "2.29.1-alpha"
+        const val library = "com.google.dagger:hilt-android:$version"
+        const val compiler = "com.google.dagger:hilt-android-compiler:$version"
+        const val testing = "com.google.dagger:hilt-android-testing:$version"
+        const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
+
+        object viewModel {
+            private const val version = "1.0.0-alpha02"
+            const val viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:$version"
+            const val kaptCompiler = "androidx.hilt:hilt-compiler:$version"
+        }
     }
 
     object Google {
@@ -95,6 +121,7 @@ object Libs {
 
         object Room {
             private const val version = "2.2.5"
+            const val common = "androidx.room:room-common:$version"
             const val runtime = "androidx.room:room-runtime:$version"
             const val compiler = "androidx.room:room-compiler:$version"
 
@@ -102,19 +129,6 @@ object Libs {
             const val ktx = "androidx.room:room-ktx:$version"
         }
 
-        object Hilt {
-            private const val version = "2.29.1-alpha"
-            const val library = "com.google.dagger:hilt-android:$version"
-            const val compiler = "com.google.dagger:hilt-android-compiler:$version"
-            const val testing = "com.google.dagger:hilt-android-testing:$version"
-            const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
-
-            object viewModel {
-                private const val version = "1.0.0-alpha02"
-                const val viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:$version"
-                const val kaptCompiler = "androidx.hilt:hilt-compiler:$version"
-            }
-        }
 
         object Lifecycle {
             private const val version = "2.2.0"
@@ -140,9 +154,10 @@ object Libs {
         object Test {
             private const val version = "2.0.0"
             const val archCore = "androidx.arch.core:core-testing:$version"
+
             // TODO: how is hamcreset imiplemented if not directly implemented
 //            const val hamcrest = "org.hamcrest:hamcrest-library:1.3"
-            const val core = "androidx.test:core:$version"
+            const val core = "androidx.test:core:1.3.1-alpha02"
             const val rules = "androidx.test:rules:$version"
 
             object Ext {
@@ -229,15 +244,3 @@ object Libs {
 //
 
 //
-//    object Retrofit {
-//        private const val version = "2.9.0"
-//        const val retrofit = "com.squareup.retrofit2:retrofit:$version"
-//        const val gsonConverter = "com.squareup.retrofit2:converter-gson:$version"
-//    }
-//
-//    object OkHttp {
-//        private const val version = "4.9.0"
-//        const val okhttp = "com.squareup.okhttp3:okhttp:$version"
-//        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
-//    }
-//}
