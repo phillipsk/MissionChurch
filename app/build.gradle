@@ -67,6 +67,7 @@ dependencies {
     implementation project(':data')
     implementation project(':data-android')
     implementation project(':common')
+    implementation project(':feature-highlights')
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(Libs.AndroidX.appcompat)
@@ -94,7 +95,7 @@ dependencies {
     androidTestImplementation(Libs.Hilt.testing)
 
 //    implementation(Libs.swiperefresh)
-    implementation(Libs.Google.material)
+//    implementation(Libs.Google.material)
     implementation(Libs.AndroidX.work)
 
     implementation(Libs.Hilt.library)

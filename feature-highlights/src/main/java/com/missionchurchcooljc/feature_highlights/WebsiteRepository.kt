@@ -1,4 +1,4 @@
-package com.missionchurchcooljc.mcc.repository
+package com.missionchurchcooljc.feature_highlights
 
 import com.missionchurchcooljc.data_android.WebsiteHighlightDAO
 import javax.inject.Inject

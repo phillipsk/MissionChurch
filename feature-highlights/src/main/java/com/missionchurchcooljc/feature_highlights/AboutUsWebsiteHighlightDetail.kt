@@ -1,4 +1,4 @@
-package com.missionchurchcooljc.mcc.adapters
+package com.missionchurchcooljc.feature_highlights
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

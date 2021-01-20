@@ -1,4 +1,4 @@
-package com.missionchurchcooljc.mcc.views
+package views
 
 import android.annotation.SuppressLint
 import android.content.Context
