@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/connect_nav"
-        android:name="io.techministry.android.missionchurch.ui.ConnectFragment"
+        android:name="com.missionchurchcooljc.mcc.ui.ConnectFragment"
         android:label="Connect"
         tools:layout="@layout/fragment_connect" />
 

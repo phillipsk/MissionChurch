@@ -1,5 +1,5 @@
-import io.techministry.android.missionchurch.buildsrc.AndroidSdk
-import io.techministry.android.missionchurch.buildsrc.Libs
+import com.missionchurchcooljc.mcc.buildsrc.AndroidSdk
+import com.missionchurchcooljc.mcc.buildsrc.Libs
 
 plugins {
 //    classpath(BuildPlugins.androidApplication)

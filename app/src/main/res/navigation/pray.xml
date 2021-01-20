@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@id/pray_nav"
-        android:name="io.techministry.android.missionchurch.ui.PrayFragment"
+        android:name="com.missionchurchcooljc.mcc.ui.PrayFragment"
         android:label="Pray"
         tools:layout="@layout/fragment_pray" />
 

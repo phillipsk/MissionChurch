@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@id/aboutus_nav"
-        android:name="io.techministry.android.missionchurch.ui.AboutUsFragment"
+        android:name="com.missionchurchcooljc.mcc.ui.AboutUsFragment"
         android:label="@string/about_us_title"
         tools:layout="@layout/fragment_about_us" />
 
