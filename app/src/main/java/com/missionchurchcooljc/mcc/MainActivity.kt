@@ -12,17 +12,12 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-//    TODO: multi-module app
-//    Firebase integration & login
-//    User posts; saved to Firebase
-//    Fix launcher icon
-//    Hide top app bar toolbar and bottom navigation bar upon RV scrolling
-
     private var currentNavController: LiveData<NavController>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        val binding : ActivityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
         }
