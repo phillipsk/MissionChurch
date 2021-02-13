@@ -1,5 +1,6 @@
 import com.missionchurchcooljc.mcc.buildsrc.AndroidSdk
 import com.missionchurchcooljc.mcc.buildsrc.Libs
+import com.missionchurchcooljc.mcc.buildsrc.legacy.LegacyJava
 
 apply plugin: 'com.android.library'
 //apply plugin: 'com.google.gms.google-services'
@@ -94,32 +95,32 @@ android {
 //}
 
 
-ext {
-    supportLibraryVersion = '27.1.1'
-    retrofitVersion = '2.5.0'
-    converterGsonVersion = '2.1.0'
-    retrofitConvertersVersion = '2.1.0'
-    gsonVersion = '2.6.1'
-    picassoVersion = '2.5.2'
-    circleImageVersion = '2.2.0'
-    butterKnifeVersion = '10.2.3'
-    calligraphyVersion = '2.3.0'
-    sneakerVersion = '1.0.1'
-    daggerVersion = '2.15'
-    firebaseVersion = '16.0.1'
-    firebaseCoreVersion = '16.0.0'
-    fireStoreVersion = '17.0.1'
-    transitionEveryWhereVersion = '1.7.6'
-    rxJavaVersion = '2.3'
-    okhttpVersion = '3.9.1'
-    mockitoVersion = '2.7.22'
-    chipCloudVersion = '3.0.5'
-    flexboxVersion = '0.3.2'
-    timeAgoVersion = '3.0.2'
-    playServicesVersion = '16.0.0'
-    googleMapsVersion = '15.0.1'
-    fuelHTTPversion = '1.15.1'
-}
+//ext {
+//    supportLibraryVersion = '27.1.1'
+//    retrofitVersion = '2.5.0'
+//    converterGsonVersion = '2.1.0'
+//    retrofitConvertersVersion = '2.1.0'
+//    gsonVersion = '2.6.1'
+//    picassoVersion = '2.5.2'
+//    circleImageVersion = '2.2.0'
+//    butterKnifeVersion = '10.2.3'
+//    calligraphyVersion = '2.3.0'
+//    sneakerVersion = '1.0.1'
+//    daggerVersion = '2.15'
+//    firebaseVersion = '16.0.1'
+//    firebaseCoreVersion = '16.0.0'
+//    fireStoreVersion = '17.0.1'
+//    transitionEveryWhereVersion = '1.7.6'
+//    rxJavaVersion = '2.3'
+//    okhttpVersion = '3.9.1'
+//    mockitoVersion = '2.7.22'
+//    chipCloudVersion = '3.0.5'
+//    flexboxVersion = '0.3.2'
+//    timeAgoVersion = '3.0.2'
+//    playServicesVersion = '16.0.0'
+//    googleMapsVersion = '15.0.1'
+//    fuelHTTPversion = '1.15.1'
+//}
 
 repositories {
     mavenCentral()
@@ -131,99 +132,154 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.squareup.moshi:moshi:1.8.0"
-    implementation 'com.squareup.retrofit2:converter-moshi:2.5.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+//    implementation "com.squareup.moshi:moshi:1.8.0"
+//    implementation 'com.squareup.retrofit2:converter-moshi:2.5.0'
+//    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation(LegacyJava.moshi)
+    implementation(LegacyJava.Network.Retrofit.moshi)
+    implementation(LegacyJava.Network.Retrofit.rxjava2)
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.browser:browser:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation "com.google.android.gms:play-services-auth:$playServicesVersion"
-    implementation "com.google.android.gms:play-services-maps:$googleMapsVersion"
+
+//    implementation 'androidx.appcompat:appcompat:1.0.2'
+//    implementation 'androidx.cardview:cardview:1.0.0'
+//    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+//    implementation 'androidx.browser:browser:1.0.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation(LegacyJava.AndroidX.appcompat)
+    implementation(LegacyJava.AndroidX.cardview)
+    implementation(LegacyJava.AndroidX.recyclerview)
+    implementation(LegacyJava.AndroidX.legacysupport)
+    implementation(LegacyJava.AndroidX.browser)
+    implementation(LegacyJava.AndroidX.constraintlayout)
+
+//    implementation "com.google.android.gms:play-services-auth:$playServicesVersion"
+//    implementation "com.google.android.gms:play-services-maps:$googleMapsVersion"
+//    implementation 'com.google.android.material:material:1.0.0'
+    implementation(LegacyJava.Google.PlayServices.auth)
+    implementation(LegacyJava.Google.PlayServices.maps)
+    implementation(LegacyJava.Google.material)
+
+
 
     ///// Network Libraries ///////
-    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitConvertersVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitConvertersVersion"
+//    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+//    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+//    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+//    implementation "com.squareup.retrofit2:converter-gson:$retrofitConvertersVersion"
+//    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+//    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitConvertersVersion"
+    implementation(LegacyJava.Network.Okhttp.okhttp)
+    implementation(LegacyJava.Network.Okhttp.interceptor)
+    implementation(LegacyJava.Network.Retrofit.retrofit)
+    implementation(LegacyJava.Network.Retrofit.gson)
+    implementation(LegacyJava.Network.Retrofit.rxjava)
+    implementation(LegacyJava.Network.Retrofit.rxjava2)
 
-//    compile "com.google.firebase:firebase-database:$firebaseVersion"
-//    compile "com.google.firebase:firebase-auth:$firebaseVersion"
-//    compile "com.google.firebase:firebase-messaging:$firebaseVersion"
-//    compile "com.google.firebase:firebase-crash:$firebaseVersion"
-//    compile "com.google.firebase:firebase-analytics:$firebaseVersion"
-//    compile "com.google.firebase:firebase-storage:$firebaseVersion"
+
 
     ///// Firebase ///////
-    implementation "com.google.firebase:firebase-database:$firebaseVersion"
-    implementation "com.google.firebase:firebase-firestore:$fireStoreVersion"
-    implementation "com.google.firebase:firebase-auth:$firebaseVersion"
-    implementation "com.google.firebase:firebase-storage:$firebaseVersion"
-    implementation "com.google.firebase:firebase-core:$firebaseCoreVersion"
+//    implementation "com.google.firebase:firebase-database:$firebaseVersion"
+//    implementation "com.google.firebase:firebase-firestore:$fireStoreVersion"
+//    implementation "com.google.firebase:firebase-auth:$firebaseVersion"
+//    implementation "com.google.firebase:firebase-storage:$firebaseVersion"
+//    implementation "com.google.firebase:firebase-core:$firebaseCoreVersion"
+    implementation(LegacyJava.Google.Firebase.database)
+    implementation(LegacyJava.Google.Firebase.firestore)
+    implementation(LegacyJava.Google.Firebase.auth)
+    implementation(LegacyJava.Google.Firebase.storage)
+    implementation(LegacyJava.Google.Firebase.core)
+
 
     // FirebaseUI for Firebase Realtime Database
-    implementation 'com.firebaseui:firebase-ui-database:2.4.0'
+//    implementation 'com.firebaseui:firebase-ui-database:2.4.0'
+    implementation(LegacyJava.FirebaseUI.firebaseui)
 
 
-//    implementation 'com.github.kittinunf.fuel:fuel-android:1.16.0'
-//    implementation 'com.github.kittinunf.fuel:fuel-android:2.2.3'
-    implementation "com.github.kittinunf.fuel:fuel:$fuelHTTPversion" //for JVM
-    implementation "com.github.kittinunf.fuel:fuel-android:$fuelHTTPversion" //for Android
+//    implementation "com.github.kittinunf.fuel:fuel:$fuelHTTPversion" //for JVM
+//    implementation "com.github.kittinunf.fuel:fuel-android:$fuelHTTPversion" //for Android
+    implementation(LegacyJava.Network.Fuel.fuel)
+    implementation(LegacyJava.Network.Fuel.android)
 
-    implementation 'com.onesignal:OneSignal:3.5.4'
-    implementation 'com.facebook.stetho:stetho:1.4.1'
-    implementation 'com.facebook.stetho:stetho-okhttp3:1.4.1'
-    implementation 'com.twitter.sdk.android:twitter-core:3.1.1'
-//    implementation 'com.facebook.android:facebook-android-sdk:4.29.0'
-//    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
-    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
+//    implementation 'com.onesignal:OneSignal:3.5.4'
+//    implementation 'com.facebook.stetho:stetho:1.4.1'
+//    implementation 'com.facebook.stetho:stetho-okhttp3:1.4.1'
+//    implementation 'com.twitter.sdk.android:twitter-core:3.1.1'
+//    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
+    implementation(LegacyJava.Onesignal.onesignal)
+    implementation(LegacyJava.Network.Setho.setho)
+    implementation(LegacyJava.Network.Setho.okhttp)
+    implementation(LegacyJava.SDK.twitter)
+    implementation(LegacyJava.SDK.facebook)
+
+
 
     ///// Other Libraries ////
-    implementation "com.google.code.gson:gson:$gsonVersion"
-    implementation "com.squareup.picasso:picasso:$picassoVersion"
-    implementation "de.hdodenhof:circleimageview:$circleImageVersion"
-    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
-    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+//    implementation "com.google.code.gson:gson:$gsonVersion"
+//    implementation "com.squareup.picasso:picasso:$picassoVersion"
+//    implementation "de.hdodenhof:circleimageview:$circleImageVersion"
+//    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
+//    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+//    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+//    implementation "com.github.marlonlom:timeago:$timeAgoVersion"
+    implementation(LegacyJava.Google.gson)
+    implementation(LegacyJava.picasso)
+    implementation(LegacyJava.circleimageview)
+    implementation(LegacyJava.AndroidX.coordinatorlayout)
+    implementation(LegacyJava.butterknife)
+    implementation(LegacyJava.timeago)
+    annotationProcessor(LegacyJava.butterknifeAP)
 
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation "com.github.marlonlom:timeago:$timeAgoVersion"
 
     ////// Dagger II ////
-    implementation "com.google.dagger:dagger-android:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
-    implementation 'androidx.multidex:multidex:2.0.1'
+//    implementation "com.google.dagger:dagger-android:$daggerVersion"
+//    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+//    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+//    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    implementation(LegacyJava.Google.Dagger.android)
+    implementation(LegacyJava.Google.Dagger.support)
+    annotationProcessor(LegacyJava.Google.Dagger.processorAP)
+    annotationProcessor(LegacyJava.Google.Dagger.compilerAP)
 
 
-    implementation 'com.afollestad:easyvideoplayer:0.3.0'
-    implementation 'io.github.jeancsanchez.jcplayer:jcplayer:2.6.0-alpha'
+//    Why import this dep if not need w/ min sdk > 26 ?
+//    implementation 'androidx.multidex:multidex:2.0.1'
+//    annotationProcessor(LegacyJava.multidex)
 
-    implementation "org.greenrobot:greendao:3.2.0"
+
+//    implementation 'com.afollestad:easyvideoplayer:0.3.0'
+//    implementation 'io.github.jeancsanchez.jcplayer:jcplayer:2.6.0-alpha'
+//    implementation "org.greenrobot:greendao:3.2.0"
+    implementation(LegacyJava.easyvideoplayer)
+    implementation(LegacyJava.jcplayer)
+    implementation(LegacyJava.greendao)
 
     //RXJava
-    implementation "io.reactivex:rxandroid:1.2.1"
-    implementation "io.reactivex:rxjava:1.3.0"
+//    implementation "io.reactivex:rxandroid:1.2.1"
+//    implementation "io.reactivex:rxjava:1.3.0"
+    //    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation(LegacyJava.Reactivex.rxandroid)
+    implementation(LegacyJava.Reactivex.rxjava)
+    implementation(LegacyJava.Reactivex.rxjava2)
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
+
+
+//    // workaround from SO --> Duplicate class com.google.common.util.concurrent.ListenableFuture
+//    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+    implementation(LegacyJava.workaround)
+
+//    Non-Legacy Libs
     implementation(Libs.Glide.glide)
-
-    // workaround from SO --> Duplicate class com.google.common.util.concurrent.ListenableFuture
-    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
-
     implementation(Libs.Hilt.library)
 //    kapt(Libs.Hilt.compiler)
+
+    //    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation(Libs.Test.junit)
+    androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
+    androidTestImplementation(Libs.AndroidX.Test.espressoCore)
+
 }
 
