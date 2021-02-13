@@ -21,10 +21,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +43,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fmc.R;
+import io.fmc.R2;
 import io.techministry.android.fellowshipmissionchurch.FellowshipApplication;
 import io.techministry.android.fellowshipmissionchurch.db.AudioMessage;
 import io.techministry.android.fellowshipmissionchurch.db.DaoSession;
@@ -58,9 +60,10 @@ public class AudioMessagesFragment extends Fragment implements JcPlayerService.J
 
     SimpleStringRecyclerViewAdapter adapter;
 
-    //@BindView(R.id.btn_control) ImageButton btn_control;
-    @BindView(R.id.recyclerview) RecyclerView recyclerView;
-    @BindView(R.id.jcplayer) JcPlayerView jcPlayer;
+    //@BindView(R2.id.btn_control) ImageButton btn_control;
+    @BindView(R2.id.recyclerview)
+    RecyclerView recyclerView;
+    @BindView(R2.id.jcplayer) JcPlayerView jcPlayer;
 
     ArrayList<JcAudio> jcAudios = new ArrayList<>();
 

@@ -2,17 +2,20 @@ package io.techministry.android.fellowshipmissionchurch;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.afollestad.easyvideoplayer.EasyVideoCallback;
 import com.afollestad.easyvideoplayer.EasyVideoPlayer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.fmc.R;
+import io.fmc.R2;
 
 public class PlayerActivity extends AppCompatActivity implements EasyVideoCallback {
 
-    @BindView(R.id.player) EasyVideoPlayer player;
+    @BindView(R2.id.player) EasyVideoPlayer player;
 
 
     String videoUrl;

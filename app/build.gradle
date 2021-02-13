@@ -32,6 +32,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [onesignal_app_id : "9cde7f32-fc6b-4849-baaa-a770e9725791",
+                                // Project number pulled from dashboard, local value is ignored.
+                                onesignal_google_project_number: "REMOTE"]
     }
 
     buildTypes {
@@ -68,6 +72,7 @@ dependencies {
     implementation project(':data-android')
     implementation project(':common')
     implementation project(':feature-highlights')
+    implementation project(':legacy:app')
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(Libs.AndroidX.appcompat)

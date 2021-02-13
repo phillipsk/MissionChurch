@@ -3,11 +3,12 @@ package io.techministry.android.fellowshipmissionchurch.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import io.techministry.android.fellowshipmissionchurch.R;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import io.fmc.R;
 
 /**
  * Read from Bible_ALL.sql database

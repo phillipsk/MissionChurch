@@ -1,12 +1,13 @@
 package io.techministry.android.fellowshipmissionchurch;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -40,6 +41,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Objects;
 
+import io.fmc.R;
 import io.techministry.android.fellowshipmissionchurch.model.User;
 
 public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
@@ -221,10 +223,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.sign_in_button_google:
-                signIn();
-                break;
+        if (v.getId() == R.id.sign_in_button_google) {
+            signIn();
             // ...
         }
     }

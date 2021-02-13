@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.fmc.R;
+import io.fmc.R2;
 import io.fmc.data.models.User;
 import io.fmc.di.AppController;
 import io.fmc.ui.base.BaseActivity;
@@ -20,9 +21,9 @@ import io.fmc.utils.SessionManager;
 
 public class CreateAccountActivity extends BaseActivity implements CreateAccountMVP.View {
 
-    @BindView(R.id.email) EditText email;
-    @BindView(R.id.password) EditText password;
-    @BindView(R.id.re_password) EditText re_password;
+    @BindView(R2.id.email) EditText email;
+    @BindView(R2.id.password) EditText password;
+    @BindView(R2.id.re_password) EditText re_password;
 
     @Inject
     CreateAccountMVP.Presenter presenter;
@@ -47,12 +48,12 @@ public class CreateAccountActivity extends BaseActivity implements CreateAccount
         presenter.setView(this);
     }
 
-    @OnClick(R.id.btn_back)
+    @OnClick(R2.id.btn_back)
     public void goBack(){
         finish();
     }
 
-    @OnClick(R.id.btn_create_account)
+    @OnClick(R2.id.btn_create_account)
     public void createAccount(){
         presenter.signUpClicked();
     }

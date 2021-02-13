@@ -3,15 +3,17 @@ package io.fmc.ui.dashboard;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fmc.R;
+import io.fmc.R2;
 import io.fmc.ui.aboutus.AboutUsFragment;
 import io.fmc.ui.base.BaseActivity;
 import io.fmc.ui.connect.StayConnectedFragment;
@@ -24,8 +26,8 @@ import io.fmc.utils.BottomNavigationViewHelper;
 
 public class DashboardActivity extends BaseActivity implements StayConnectedFragment.OnFragmentInteractionListener {
 
-    @BindView(R.id.bottom_navigation) BottomNavigationView bottomNavigationView;
-    @BindView(R.id.toolbar) Toolbar toolBar;
+    @BindView(R2.id.bottom_navigation) BottomNavigationView bottomNavigationView;
+    @BindView(R2.id.toolbar) Toolbar toolBar;
 
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
@@ -69,6 +71,7 @@ public class DashboardActivity extends BaseActivity implements StayConnectedFrag
             switchFragments(item.getItemId());
             return true;
         });
+//        This is a custom helper class
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
 

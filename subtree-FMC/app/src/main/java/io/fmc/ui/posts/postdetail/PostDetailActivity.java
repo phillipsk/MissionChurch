@@ -1,7 +1,7 @@
 package io.fmc.ui.posts.postdetail;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -12,19 +12,20 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fmc.R;
+import io.fmc.R2;
 import io.fmc.data.models.AnnouncementPost;
 import io.fmc.ui.base.BaseActivity;
 
 public class PostDetailActivity extends BaseActivity {
 
     AnnouncementPost post;
-    @BindView(R.id.backdrop)
+    @BindView(R2.id.backdrop)
     ImageView backdrop;
-    @BindView(R.id.content)
+    @BindView(R2.id.content)
     TextView content;
-    @BindView(R.id.toolbar)
+    @BindView(R2.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.title)
+    @BindView(R2.id.title)
     TextView title;
 
     @Override

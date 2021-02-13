@@ -1,33 +1,16 @@
-/*
- * Copyright (C) 2015 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package io.techministry.android.fellowshipmissionchurch.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -37,12 +20,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.Arrays;
-import java.util.List;
-
-import io.techministry.android.fellowshipmissionchurch.DetailActivity;
-import io.techministry.android.fellowshipmissionchurch.R;
-import io.techministry.android.fellowshipmissionchurch.data.DummyData;
+import io.fmc.R;
+import io.fmc.R2;
 
 
 public class LocationFragment extends Fragment implements OnMapReadyCallback {
@@ -61,7 +40,7 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
             mapFragment.getMapAsync(this);
             getChildFragmentManager()
                     .beginTransaction()
-                    .add(R.id.flow_gard_map, mapFragment)
+                    .add(R.id.map_google_M, mapFragment)
                     .commit();
         }
 

@@ -3,10 +3,9 @@ package io.fmc.ui.posts;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dagger.hilt.android.AndroidEntryPoint;
 import io.fmc.R;
+import io.fmc.R2;
 import io.fmc.data.models.AnnouncementPost;
 import io.fmc.di.AppController;
 import io.fmc.ui.base.BaseFragment;
@@ -27,13 +28,12 @@ import io.fmc.ui.videoplayer.PlayerActivity;
 import io.fmc.utils.SimpleDividerItemDecoration;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+@AndroidEntryPoint
 public class PostsFragment extends BaseFragment implements PostMVP.View {
 
 
-    @BindView(R.id.recyclerView) RecyclerView recyclerView;
+    @BindView(R2.id.recyclerView)
+    RecyclerView recyclerView;
     PostAdapter postAdapter;
     List<AnnouncementPost> posts = new ArrayList<>();
 
@@ -46,7 +46,7 @@ public class PostsFragment extends BaseFragment implements PostMVP.View {
         super.onCreate(savedInstanceState);
 
 
-        ((AppController)getActivity().getApplication()).getComponent().inject(this);
+//        ((AppController)getActivity().getApplication()).getComponent().inject(this);
     }
 
     @Override
@@ -94,7 +94,7 @@ public class PostsFragment extends BaseFragment implements PostMVP.View {
     }
 
 //commented until post activity enabled
-//    @OnClick(R.id.btn_add_post)
+//    @OnClick(R2.id.btn_add_post)
 //    public void addPost(){
 //
 //    }

@@ -33,6 +33,9 @@ buildscript {
         classpath(Libs.AndroidX.Navigation.safeArgs)
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'
+
+
 //        classpath(Libs.hiltPlugin)
 
 
@@ -49,6 +52,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/drummer-aidan/maven' }
     }
 }
 

@@ -7,11 +7,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +29,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fmc.R;
+import io.fmc.R2;
 import io.fmc.db.AudioMessage;
 import io.fmc.db.DaoSession;
 import io.fmc.di.AppController;
@@ -57,10 +58,10 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
 
         SimpleStringRecyclerViewAdapter adapter;
 
-        //@BindView(R.id.btn_control) ImageButton btn_control;
-        @BindView(R.id.recyclerview)
+        //@BindView(R2.id.btn_control) ImageButton btn_control;
+        @BindView(R2.id.recyclerview)
         RecyclerView recyclerView;
-        @BindView(R.id.jcplayer)
+        @BindView(R2.id.jcplayer)
         JcPlayerView jcPlayer;
 
         ArrayList<JcAudio> jcAudios = new ArrayList<>();

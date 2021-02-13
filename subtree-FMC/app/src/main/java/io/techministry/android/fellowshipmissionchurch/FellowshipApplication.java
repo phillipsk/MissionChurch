@@ -4,8 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.multidex.MultiDex;
 import android.util.Log;
+
+import androidx.multidex.MultiDex;
 
 import com.facebook.stetho.Stetho;
 import com.github.kittinunf.fuel.Fuel;
@@ -32,7 +33,7 @@ import io.techministry.android.fellowshipmissionchurch.db.AudioMessageDao;
 import io.techministry.android.fellowshipmissionchurch.db.DaoMaster;
 import io.techministry.android.fellowshipmissionchurch.db.DaoSession;
 
-import static com.google.firebase.crash.FirebaseCrash.log;
+//import static com.google.firebase.crash.FirebaseCrash.log;
 
 public class FellowshipApplication extends Application {
 
@@ -87,7 +88,8 @@ public class FellowshipApplication extends Application {
                 .authority(DEFAULT_ADDRESS)
                 .appendEncodedPath(API_SERVICE)
                 .appendEncodedPath(endpoint);
-        log(builder.build().toString());
+//        see firebase crash log dep missing above
+//        log(builder.build().toString());
         return builder.build().toString();
     }
 

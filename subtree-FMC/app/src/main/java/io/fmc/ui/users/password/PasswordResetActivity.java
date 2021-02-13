@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.fmc.R;
+import io.fmc.R2;
 import io.fmc.data.models.User;
 import io.fmc.di.AppController;
 import io.fmc.ui.base.BaseActivity;
@@ -20,7 +21,7 @@ import io.fmc.ui.users.createaccount.CreateAccountMVP;
 
 public class PasswordResetActivity extends BaseActivity implements PasswordResetMVP.View {
 
-    @BindView(R.id.email) EditText email;
+    @BindView(R2.id.email) EditText email;
 
     @Inject
     PasswordResetMVP.Presenter presenter;
@@ -42,12 +43,12 @@ public class PasswordResetActivity extends BaseActivity implements PasswordReset
         presenter.setView(this);
     }
 
-    @OnClick(R.id.btn_back)
+    @OnClick(R2.id.btn_back)
     public void goBack(){
         finish();
     }
 
-    @OnClick(R.id.btn_reset_password)
+    @OnClick(R2.id.btn_reset_password)
     public void createAccount(){
         presenter.resetClicked();
     }

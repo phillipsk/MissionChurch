@@ -1,7 +1,7 @@
 package io.fmc.ui.posts;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +15,7 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fmc.R;
+import io.fmc.R2;
 import io.fmc.data.models.AnnouncementPost;
 
 /**
@@ -64,11 +65,11 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class PostAdapterViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.post_title) TextView post_title;
-        @BindView(R.id.post_date) TextView post_date;
-        @BindView(R.id.post_content) TextView post_content;
-        @BindView(R.id.favorite) TextView favorite;
-        @BindView(R.id.view) TextView view;
+        @BindView(R2.id.post_title) TextView post_title;
+        @BindView(R2.id.post_date) TextView post_date;
+        @BindView(R2.id.post_content) TextView post_content;
+        @BindView(R2.id.favorite) TextView favorite;
+        @BindView(R2.id.view) TextView view;
 
         public PostAdapterViewHolder(View itemView) {
             super(itemView);

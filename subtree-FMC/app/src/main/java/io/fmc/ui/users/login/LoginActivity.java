@@ -23,6 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.fmc.R;
+import io.fmc.R2;
 import io.fmc.data.models.User;
 import io.fmc.di.AppController;
 import io.fmc.ui.base.BaseActivity;
@@ -34,8 +35,8 @@ import io.fmc.utils.socialauth.SocialAuthentication;
 
 public class LoginActivity extends BaseActivity implements LoginMVP.View, SocialAuthentication.SocialAuthenticationListener{
 
-    @BindView(R.id.email) EditText email;
-    @BindView(R.id.password) EditText password;
+    @BindView(R2.id.email) EditText email;
+    @BindView(R2.id.password) EditText password;
 
     @Inject
     LoginMVP.Presenter presenter;
@@ -64,31 +65,31 @@ public class LoginActivity extends BaseActivity implements LoginMVP.View, Social
     }
 
 
-    @OnClick(R.id.btn_facebook_sign)
+    @OnClick(R2.id.btn_facebook_sign)
     public void facebookBtnClicked(){
         socialLoginType = SocialAuthentication.Type.FACEBOOK;
         mCallbackManager = socialAuthentication.initFacebookRegistration(this,this);
     }
 
-    @OnClick(R.id.btn_google)
+    @OnClick(R2.id.btn_google)
     public void googleBtnClicked(){
         socialLoginType = SocialAuthentication.Type.GOOGLE;
         socialAuthentication.initLoginWithGoogle(this);
     }
 
-    @OnClick(R.id.label_create_account)
+    @OnClick(R2.id.label_create_account)
     public void createAccount(){
         Intent intent = new Intent(this, CreateAccountActivity.class);
         startActivity(intent);
     }
 
-    @OnClick(R.id.label_forget_password)
+    @OnClick(R2.id.label_forget_password)
     public void resetPassword(){
         Intent intent = new Intent(this, PasswordResetActivity.class);
         startActivity(intent);
     }
 
-    @OnClick(R.id.btn_sign_in)
+    @OnClick(R2.id.btn_sign_in)
     public void loginClicked(){
         presenter.signInClicked();
     }
