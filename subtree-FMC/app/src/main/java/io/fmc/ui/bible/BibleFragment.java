@@ -36,7 +36,7 @@ public class BibleFragment extends Fragment implements BibleScreen {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 //        return super.onCreateView(inflater, container, savedInstanceState);
-        View rv = inflater.inflate(R.layout.fragment_about_us,container,false);
+        View rv = inflater.inflate(R.layout.fragment_about_us_legacy,container,false);
 
         TextView mTextView = (TextView) rv.findViewById(R.id.text); //findViewById(R.id.text);
 

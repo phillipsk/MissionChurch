@@ -38,7 +38,7 @@ public class AboutUsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
-        View rv = inflater.inflate(R.layout.fragment_about_us, container, false);
+        View rv = inflater.inflate(R.layout.fragment_about_us_legacy, container, false);
         return rv;
     }
 

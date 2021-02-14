@@ -21,7 +21,6 @@ import dagger.hilt.android.AndroidEntryPoint;
 import io.fmc.R;
 import io.fmc.R2;
 import io.fmc.data.models.AnnouncementPost;
-import io.fmc.di.AppController;
 import io.fmc.ui.base.BaseFragment;
 import io.fmc.ui.posts.postdetail.PostDetailActivity;
 import io.fmc.ui.videoplayer.PlayerActivity;
@@ -31,6 +30,12 @@ import io.fmc.utils.SimpleDividerItemDecoration;
 @AndroidEntryPoint
 public class PostsFragment extends BaseFragment implements PostMVP.View {
 
+//    public PostsFragment(RecyclerView recyclerView, PostAdapter postAdapter, List<AnnouncementPost> posts, PostMVP.Presenter presenter) {
+//        this.recyclerView = recyclerView;
+//        this.postAdapter = postAdapter;
+//        this.posts = posts;
+//        this.presenter = presenter;
+//    }
 
     @BindView(R2.id.recyclerView)
     RecyclerView recyclerView;

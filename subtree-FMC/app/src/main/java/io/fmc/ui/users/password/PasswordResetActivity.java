@@ -1,7 +1,6 @@
 package io.fmc.ui.users.password;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
@@ -16,8 +15,6 @@ import io.fmc.R2;
 import io.fmc.data.models.User;
 import io.fmc.di.AppController;
 import io.fmc.ui.base.BaseActivity;
-import io.fmc.ui.dashboard.DashboardActivity;
-import io.fmc.ui.users.createaccount.CreateAccountMVP;
 
 public class PasswordResetActivity extends BaseActivity implements PasswordResetMVP.View {
 

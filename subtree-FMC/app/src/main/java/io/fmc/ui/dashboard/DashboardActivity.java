@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fmc.R;
 import io.fmc.R2;
-import io.fmc.ui.aboutus.AboutUsFragment;
+import io.fmc.ui.aboutus.AboutUsFragmentLegacy;
 import io.fmc.ui.base.BaseActivity;
 import io.fmc.ui.connect.StayConnectedFragment;
 import io.fmc.ui.listen.AudiosFragment;
@@ -103,7 +103,7 @@ public class DashboardActivity extends BaseActivity implements StayConnectedFrag
         Fragment fragment = null;
 //        fragment = new BibleFragment();
         if (menu_id == R.id.bottom_nav_connected) {
-            fragment = new AboutUsFragment();
+            fragment = new AboutUsFragmentLegacy();
 //        }else if (menu_id == R.id.bottom_nav_connect){
 //            fragment = new StayConnectedFragment();
         }else if(menu_id == R.id.bottom_nav_the_word) {
@@ -111,7 +111,7 @@ public class DashboardActivity extends BaseActivity implements StayConnectedFrag
         }else if(menu_id == R.id.bottom_nav_listen) {
             fragment = new AudiosFragment();
         }else if (menu_id == R.id.bottom_nav_prayer){
-            fragment = new AboutUsFragment();
+            fragment = new AboutUsFragmentLegacy();
         }else if(menu_id == R.id.bottom_nav_info){
             fragment = new LocationFragment();
         }

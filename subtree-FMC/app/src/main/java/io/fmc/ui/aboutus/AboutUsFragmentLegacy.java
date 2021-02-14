@@ -2,10 +2,11 @@ package io.fmc.ui.aboutus;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,13 @@ import io.fmc.R;
 import io.fmc.adapters.CustomRecyclerAdapter;
 import io.fmc.data.models.AboutUsModel;
 
-public class AboutUsFragment extends Fragment {
+public class AboutUsFragmentLegacy extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rv = inflater.inflate(R.layout.fragment_about_us, container, false);
+        View rv = inflater.inflate(R.layout.fragment_about_us_legacy, container, false);
         return rv;
     }
 

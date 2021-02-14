@@ -1,12 +1,13 @@
 package io.fmc.di;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.multidex.MultiDex;
-import androidx.multidex.MultiDexApplication;
+//import androidx.multidex.MultiDex;
+
 import android.util.Log;
 
 import com.facebook.AccessToken;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import dagger.hilt.android.HiltAndroidApp;
 import io.fmc.db.AudioMessage;
 import io.fmc.db.AudioMessageDao;
 import io.fmc.db.DaoMaster;
@@ -52,8 +54,9 @@ import kotlin.Pair;
 /**
  * Created by  Kevin Phillips and Sunday Akinsete on 14/04/2018.
  */
-
-public class AppController extends MultiDexApplication {
+@HiltAndroidApp
+public class AppController extends Application {
+//public class AppController extends MultiDexApplication {
 
     private ApplicationComponent component;
     private static AppController sApp;
@@ -268,7 +271,7 @@ public class AppController extends MultiDexApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
 
-        MultiDex.install(this);
+//        MultiDex.install(this);
     }
 
     public void useGraphAPI() throws Exception {

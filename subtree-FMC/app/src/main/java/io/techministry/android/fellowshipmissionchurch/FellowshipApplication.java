@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
-import androidx.multidex.MultiDex;
 
 import com.facebook.stetho.Stetho;
 import com.github.kittinunf.fuel.Fuel;
@@ -169,7 +168,7 @@ public class FellowshipApplication extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
 
-        MultiDex.install(this);
+//        MultiDex.install(this);
     }
 
 }
