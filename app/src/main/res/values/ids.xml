@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item name="navigation_aboutus" type="id" />
     <item name="navigation_connect" type="id" />
     <item name="navigation_listen" type="id" />
     <item name="navigation_pray" type="id" />
     <item name="navigation_info" type="id" />
-    <item name="navigation_home" type="id" />
 </resources>
