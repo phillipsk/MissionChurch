@@ -31,10 +31,10 @@ interface ChurchWebsiteService {
 //    fun getHighlightsExternal(): Call<List<WebsiteHighlight>>
 
 
-//    Sunflower has retrofit service in here
 //    TODO: refactor repository, move retrofit into this class
-//    to do this, use the new dagger provides instance of Retrofit
-//    from the Network module
-//    With sunflower the API call is from the ViewModel and the
-//    coroutine scope is on the Fragment
+//      to do this, use the new dagger provides instance of Retrofit
+//      from the Network module
+//      With sunflower the API call is from the ViewModel and the
+//      coroutine scope is on the Fragment
+//      Sunflower has retrofit service in here
 }
