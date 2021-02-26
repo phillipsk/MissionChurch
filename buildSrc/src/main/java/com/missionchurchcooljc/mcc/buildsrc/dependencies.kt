@@ -71,6 +71,12 @@ object Libs {
         }
     }
 
+    object Dagger {
+        private const val version = "2.32"
+        const val dagger = "com.google.dagger:dagger:$version"
+        const val compiler = "com.google.dagger:dagger-compiler:$version"
+    }
+
     object Google {
 
         private const val version = "1.3.72"
@@ -235,12 +241,4 @@ object Libs {
 //            const val compiler = "androidx.hilt:hilt-compiler:$version"
 //        }
 //    }
-//
-//    object Dagger {
-//        private const val version = "2.29.1"
-//        const val dagger = "com.google.dagger:dagger:$version"
-//        const val compiler = "com.google.dagger:dagger-compiler:$version"
-//    }
-//
-
 //

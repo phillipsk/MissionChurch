@@ -6,15 +6,14 @@ plugins {
 //    id BuildPlugins.androidApplication
 //    id BuildPlugins.kotlinAndroid
 
-//    id(BuildPlugins.kotlinAndroidExtensions)
     id 'com.android.application'
     id 'kotlin-android'
 //        temporarily remove for Github convenience, public allowed to clone and build app
 //    id 'com.google.gms.google-services'  // Google Services plugin
     id 'androidx.navigation.safeargs.kotlin'
-    id 'dagger.hilt.android.plugin'
-//    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    //    switching to dagger
+//    id 'dagger.hilt.android.plugin'
 }
 //apply plugin: 'androidx.navigation.safeargs.kotlin'
 //apply plugin: 'com.google.gms.google-services'
@@ -92,16 +91,21 @@ dependencies {
     androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
     androidTestImplementation(Libs.AndroidX.Test.archCore)
     androidTestImplementation(Libs.AndroidX.Test.espressoCore)
-    androidTestImplementation(Libs.Hilt.testing)
 
 //    implementation(Libs.swiperefresh)
 //    implementation(Libs.Google.material)
     implementation(Libs.AndroidX.work)
 
-    implementation(Libs.Hilt.library)
-    kapt(Libs.Hilt.compiler)
-    implementation(Libs.Hilt.viewModel.viewModel)
-    kapt(Libs.Hilt.viewModel.kaptCompiler)
+    //    switching to dagger
+//    implementation(Libs.Hilt.library)
+//    kapt(Libs.Hilt.compiler)
+//    implementation(Libs.Hilt.viewModel.viewModel)
+//    kapt(Libs.Hilt.viewModel.kaptCompiler)
+//    androidTestImplementation(Libs.Hilt.testing)
+
+    implementation(Libs.Dagger.dagger)
+    kapt(Libs.Dagger.compiler)
+
 
     //Glide
     implementation(Libs.Glide.glide)

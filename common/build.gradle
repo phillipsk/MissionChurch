@@ -53,8 +53,15 @@ dependencies {
 //    implementation Libs.AndroidX.Room.ktx
 //    kapt Libs.AndroidX.Room.compiler
 
-    implementation Libs.Hilt.library
-    kapt Libs.Hilt.compiler
+//    switching to dagger
+//    implementation Libs.Hilt.library
+//    kapt Libs.Hilt.compiler
+//    testImplementation Libs.Hilt.testing
+//    kaptTest Libs.Hilt.compiler
+    implementation(Libs.Dagger.dagger)
+    kapt(Libs.Dagger.compiler)
+
+
     implementation(Libs.Google.material)
 
 
@@ -65,10 +72,8 @@ dependencies {
     testImplementation Libs.AndroidX.Test.core
     testImplementation Libs.AndroidX.Test.Ext.junit
 //    testImplementation Libs.AndroidX.Room.testing
-    testImplementation Libs.Hilt.testing
 
     kaptTest Libs.AndroidX.Room.compiler
-    kaptTest Libs.Hilt.compiler
 
     api Libs.OkHttp.test
     api Libs.OkHttp.loggingInterceptor

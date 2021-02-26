@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021  Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package com.missionchurchcooljc.common.network
+package com.missionchurchcooljc.mcc.di.modules
 
 import com.missionchurchcooljc.common.network.api.ChurchWebsiteService
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+//import dagger.hilt.InstallIn
+//import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-@InstallIn(ApplicationComponent::class)
+//@InstallIn(ApplicationComponent::class)
 @Module
 class NetworkModule {
 
