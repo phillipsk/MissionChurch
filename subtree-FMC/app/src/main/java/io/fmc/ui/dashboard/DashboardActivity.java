@@ -19,7 +19,6 @@ import io.fmc.ui.base.BaseActivity;
 import io.fmc.ui.connect.StayConnectedFragment;
 import io.fmc.ui.listen.AudiosFragment;
 import io.fmc.ui.location.LocationFragment;
-import io.fmc.ui.posts.PostsFragment;
 import io.fmc.utils.BottomNavigationViewHelper;
 
 //import io.fmc.ui.bible.BibleFragment;
@@ -107,7 +106,7 @@ public class DashboardActivity extends BaseActivity implements StayConnectedFrag
 //        }else if (menu_id == R.id.bottom_nav_connect){
 //            fragment = new StayConnectedFragment();
         }else if(menu_id == R.id.bottom_nav_the_word) {
-            fragment = new PostsFragment();
+//            fragment = new PostsFragment();  // to avoid Hilt dependency
         }else if(menu_id == R.id.bottom_nav_listen) {
             fragment = new AudiosFragment();
         }else if (menu_id == R.id.bottom_nav_prayer){

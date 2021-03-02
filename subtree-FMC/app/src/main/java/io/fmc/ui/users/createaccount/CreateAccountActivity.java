@@ -14,7 +14,6 @@ import butterknife.OnClick;
 import io.fmc.R;
 import io.fmc.R2;
 import io.fmc.data.models.User;
-import io.fmc.di.AppController;
 import io.fmc.ui.base.BaseActivity;
 import io.fmc.ui.dashboard.DashboardActivity;
 import io.fmc.utils.SessionManager;
@@ -38,7 +37,7 @@ public class CreateAccountActivity extends BaseActivity implements CreateAccount
 
         ButterKnife.bind(this);
 
-        ((AppController)getApplication()).getComponent().inject(this);
+//        ((AppController)getApplication()).getComponent().inject(this);
     }
 
     @Override

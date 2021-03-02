@@ -13,7 +13,6 @@ import butterknife.OnClick;
 import io.fmc.R;
 import io.fmc.R2;
 import io.fmc.data.models.User;
-import io.fmc.di.AppController;
 import io.fmc.ui.base.BaseActivity;
 
 public class PasswordResetActivity extends BaseActivity implements PasswordResetMVP.View {
@@ -30,7 +29,7 @@ public class PasswordResetActivity extends BaseActivity implements PasswordReset
 
         ButterKnife.bind(this);
 
-        ((AppController)getApplication()).getComponent().inject(this);
+//        ((AppController)getApplication()).getComponent().inject(this);
     }
 
     @Override

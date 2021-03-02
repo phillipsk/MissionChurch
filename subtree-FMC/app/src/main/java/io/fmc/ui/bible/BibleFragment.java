@@ -18,11 +18,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import dagger.hilt.android.AndroidEntryPoint;
 import io.fmc.R;
 import io.fmc.network.BibleBook;
 
 //import io.fmc2.FellowshipApplication;
 
+@AndroidEntryPoint
 public class BibleFragment extends Fragment implements BibleScreen {
 
     private String bibleId = "de4e12af7f28f599-02";

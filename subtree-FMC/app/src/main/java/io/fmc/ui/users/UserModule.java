@@ -4,6 +4,8 @@ import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
+import dagger.hilt.InstallIn;
+import dagger.hilt.android.components.ActivityComponent;
 import io.fmc.ui.users.createaccount.CreateAccountActivityPresenter;
 import io.fmc.ui.users.createaccount.CreateAccountMVP;
 import io.fmc.ui.users.login.LoginActivityPresenter;
@@ -16,6 +18,7 @@ import io.fmc.utils.socialauth.SocialAuthentication;
  * Created by  Kevin Phillips and Sunday Akinsete on 18/05/2018.
  */
 
+@InstallIn(ActivityComponent.class)
 @Module
 public class UserModule {
 

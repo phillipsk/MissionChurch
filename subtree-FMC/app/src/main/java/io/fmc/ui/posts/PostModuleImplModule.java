@@ -16,39 +16,20 @@
 //
 //package io.fmc.ui.posts;
 //
+//import dagger.Binds;
 //import dagger.Module;
-//import dagger.Provides;
 //import dagger.hilt.InstallIn;
 //import dagger.hilt.android.components.ActivityComponent;
 //
-///**
-// * Created by Kevin Phillips and Sunday Akinsete on 18/05/2018.
-// */
-//
+//// if changed to public class, extract to separate file
 //@InstallIn(ActivityComponent.class)
 //@Module
-//public class PostModule {
+//public abstract class PostModuleImplModule {
+//    @Binds
+//    public abstract PostMVP.Presenter bindPostMVP(
+//            PostFragmentPresenter postFragmentPresenter);
+////    public abstract PostMVP.Presenter bindPostMVP(PostMVPImpl postMVPImpl);
 //
 //
-//    @Provides
-//    public PostMVP.Presenter bindPostMVP(
-//            PostFragmentPresenter postFragmentPresenter){
-//        return new PostFragmentPresenter(new PostModel());
-//    }
-//
-////    @Provides
-////    public PostMVP.Presenter bindPostMVP(PostMVPImpl postMVPImpl){
-////        return new PostFragmentPresenter(new PostModel());
-////    }
-//
-//    @Provides
-//    public PostMVP.Presenter providePostFragmentPresenter(){
-//        return new PostFragmentPresenter(new PostModel());
-//    }
-//
-//    @Provides
-//    public PostMVP.Model providePostModel(){
-//        return new PostModel();
-//    }
 //
 //}

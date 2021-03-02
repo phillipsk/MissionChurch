@@ -14,33 +14,22 @@
  * limitations under the License.
  */
 
-package io.fmc.ui.posts;
+package com.missionchurchcooljc.mcc.ui
 
-import java.util.List;
-
-import io.fmc.data.FMCApi;
-import io.fmc.data.models.AnnouncementPost;
-
-/**
- * Created by  Kevin Phillips and Sunday Akinsete on 18/05/2018.
- */
-public class PostModel implements PostMVP.Model {
+import io.fmc.data.FMCApi
+import io.fmc.data.models.AnnouncementPost
+import io.fmc.ui.posts.PostModel
 
 
-    public interface OnPostsFetched {
-
-        void onPostItemsFetched(List<AnnouncementPost> posts);
-
-        void onPostItemFetched(AnnouncementPost post);
-
-        void onError(String message);
+class PostModelKt : PostMVPkt.Model {
+    interface OnPostsFetched {
+        fun onPostItemsFetched(posts: List<AnnouncementPost?>?)
+        fun onPostItemFetched(post: AnnouncementPost?)
+        fun onError(message: String?)
     }
 
-
-
-    @Override
-    public void fetchPosts(OnPostsFetched onPostsFetched) {
-        FMCApi.listenToPostChanges(onPostsFetched);
+    override fun fetchPosts(onPostsFetched: OnPostsFetched?) {
+        TODO("Not yet implemented")
+//        FMCApi.listenToPostChanges(onPostsFetched)
     }
-
 }

@@ -10,13 +10,16 @@ import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
+import dagger.hilt.android.AndroidEntryPoint;
 import io.fmc.R;
 
 /**
  * Created by  Kevin Phillips and Sunday Akinsete on 16/05/2018.
  */
 
+@AndroidEntryPoint
 public class BaseActivity extends AppCompatActivity {
+//public class BaseActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 

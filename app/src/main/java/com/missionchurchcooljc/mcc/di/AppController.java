@@ -1,20 +1,31 @@
-package io.fmc.di;
+/*
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.missionchurchcooljc.mcc.di;
 
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 //import androidx.multidex.MultiDex;
 
 import android.util.Log;
 
-import com.facebook.AccessToken;
-import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.LoggingBehavior;
 import com.facebook.stetho.Stetho;
 import com.github.kittinunf.fuel.Fuel;
 import com.github.kittinunf.fuel.core.FuelError;
@@ -22,6 +33,7 @@ import com.github.kittinunf.fuel.core.Handler;
 import com.github.kittinunf.fuel.core.Request;
 import com.github.kittinunf.fuel.core.Response;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -37,13 +49,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import dagger.hilt.android.HiltAndroidApp;
 import io.fmc.db.AudioMessage;
 import io.fmc.db.AudioMessageDao;
 import io.fmc.db.DaoMaster;
 import io.fmc.db.DaoSession;
-import io.fmc.ui.posts.PostModule;
-import io.fmc.ui.users.UserModule;
+
 import kotlin.Pair;
 
 //import com.github.kittinunf.fuel.Fuel;
@@ -54,11 +64,11 @@ import kotlin.Pair;
 /**
  * Created by  Kevin Phillips and Sunday Akinsete on 14/04/2018.
  */
-@HiltAndroidApp
+//@HiltAndroidApp
 public class AppController extends Application {
 //public class AppController extends MultiDexApplication {
 
-    private ApplicationComponent component;
+//    private ApplicationComponent component;
     private static AppController sApp;
 
     private static Context context;
@@ -98,15 +108,13 @@ public class AppController extends Application {
 
         AppController.context = getApplicationContext();
 
-        component = DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule(this))
-                .userModule(new UserModule())
-                .postModule(new PostModule())
-                .build();
+//        component = DaggerApplicationComponent.builder()
+//                .applicationModule(new ApplicationModule())
+//                .userModule(new UserModule())
+//                .postModule(new PostModule())
+//                .build();
 
-        //FirebaseApp.initializeApp(this);
-        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
+        FirebaseApp.initializeApp(this);
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         contextOld = this;
         Stetho.initializeWithDefaults(this);
@@ -123,16 +131,11 @@ public class AppController extends Application {
 
 
         initDatabase();
-        initMapFragment();
 
 
 //        JUL-20
         fetchAudioMessage();
-        try {
-            useGraphAPI();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
 
     }
 
@@ -145,14 +148,14 @@ public class AppController extends Application {
         return AppController.context;
     }
 
-    public static ApplicationComponent getAppComponent() {
-        return sApp.component;
-    }
-
-
-    public ApplicationComponent getComponent(){
-        return component;
-    }
+//    public static ApplicationComponent getAppComponent() {
+//        return sApp.component;
+//    }
+//
+//
+//    public ApplicationComponent getComponent(){
+//        return component;
+//    }
 
 //    new code above
 //    old code below
@@ -183,12 +186,6 @@ public class AppController extends Application {
         return daoSession;
     }
 
-    private void initMapFragment() {
-        mapFragment = SupportMapFragment.newInstance();
-    }
-    public SupportMapFragment getMapFragment(){
-        return mapFragment;
-    }
 
 
 
@@ -274,29 +271,6 @@ public class AppController extends Application {
 //        MultiDex.install(this);
     }
 
-    public void useGraphAPI() throws Exception {
-        FacebookSdk.addLoggingBehavior(LoggingBehavior.REQUESTS);
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
-//        accessToken = "EAAEamWgsjN4BALXr7dq1MDjywGvYYBhyKQ6qp1xiCy4XTmPoPXWuOuqIJmx05OJYeZCGjkJ2sACqNFJ3ZApwZATfzopowUIsOg6ulTFywxCnkDOX2UZCSLYfRZBKNzFOV8mcQKMZAtk8u91sfcQwBTNIh4fi6IHTsraVZADnBZB7gUf4LLxcxVZBnfdHZAPeVzZCJgwxZCBS04dkvQZDZD"
-        GraphRequest request = GraphRequest.newGraphPathRequest(
-                accessToken,
-                "/120085814675079/published_posts",
-                new GraphRequest.Callback() {
-                    @Override
-                    public void onCompleted(GraphResponse response) {
-                        // Insert your code here
-                        Log.d("GraphAPI FB debug", String.valueOf(response));
-                        Log.d("GraphAPI FB debug", response.toString());
-                    }
-                });
-
-        Bundle parameters = new Bundle();
-        parameters.putString("fields", "picture,created_time,story,id,icon,full_picture,attachments{media,media_type},call_to_action,message");
-        parameters.putString("limit", "10");
-        request.setParameters(parameters);
-        request.executeAsync();
-
-    }
 
 
 

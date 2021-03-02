@@ -11,7 +11,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 //        temporarily remove for Github convenience, public allowed to clone and build app
-//    id 'com.google.gms.google-services'  // Google Services plugin
+    id 'com.google.gms.google-services'  // Google Services plugin
     id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
 //    id 'kotlin-android-extensions'
@@ -83,6 +83,7 @@ dependencies {
 
     implementation(Libs.AndroidX.Fragment.fragmentKtx)
     implementation(Libs.AndroidX.Room.runtime)
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt(Libs.AndroidX.Room.compiler)
     implementation(Libs.AndroidX.Room.ktx)
 
@@ -112,98 +113,98 @@ dependencies {
     //Glide
     implementation(Libs.Glide.glide)
     kapt(Libs.Glide.glideKapt)
-// //---------------------------------
-//    api(LegacyJava.moshi)
-//    implementation(LegacyJava.Network.Retrofit.moshi)
-//    implementation(LegacyJava.Network.Retrofit.rxjava2)
-//
-//
-//    implementation(LegacyJava.AndroidX.appcompat)
-//    implementation(LegacyJava.AndroidX.cardview)
-//    implementation(LegacyJava.AndroidX.recyclerview)
-//    implementation(LegacyJava.AndroidX.legacysupport)
-//    implementation(LegacyJava.AndroidX.browser)
-//    implementation(LegacyJava.AndroidX.constraintlayout)
-//
-//    implementation(LegacyJava.Google.PlayServices.auth)
-//    implementation(LegacyJava.Google.PlayServices.maps)
-//    implementation(LegacyJava.Google.material)
-//
-//
-//
-//    ///// Network Libraries ///////
-//    implementation(LegacyJava.Network.Okhttp.okhttp)
-//    implementation(LegacyJava.Network.Okhttp.interceptor)
-//    implementation(LegacyJava.Network.Retrofit.retrofit)
-//    implementation(LegacyJava.Network.Retrofit.gson)
-//    implementation(LegacyJava.Network.Retrofit.rxjava)
-//    implementation(LegacyJava.Network.Retrofit.rxjava2)
-//
-//
-//
-//    ///// Firebase ///////
-//    implementation(LegacyJava.Google.Firebase.database)
-//    implementation(LegacyJava.Google.Firebase.firestore)
-//    implementation(LegacyJava.Google.Firebase.auth)
-//    implementation(LegacyJava.Google.Firebase.storage)
-//    implementation(LegacyJava.Google.Firebase.core)
-//
-//
-//    // FirebaseUI for Firebase Realtime Database
-////    implementation 'com.firebaseui:firebase-ui-database:2.4.0'
-//    implementation(LegacyJava.FirebaseUI.firebaseui)
-//
-//    implementation(LegacyJava.Network.Fuel.fuel)
-//    implementation(LegacyJava.Network.Fuel.android)
-//    implementation(LegacyJava.Onesignal.onesignal)
-//    implementation(LegacyJava.Network.Setho.setho)
-//    implementation(LegacyJava.Network.Setho.okhttp)
-//    implementation(LegacyJava.SDK.twitter)
-//    implementation(LegacyJava.SDK.facebook)
-//
-//    ///// Other Libraries ////
-//    implementation(LegacyJava.Google.gson)
-//    implementation(LegacyJava.picasso)
-//    implementation(LegacyJava.circleimageview)
-//    implementation(LegacyJava.AndroidX.coordinatorlayout)
-//    implementation(LegacyJava.butterknife)
-//    implementation(LegacyJava.timeago)
-//    annotationProcessor(LegacyJava.butterknifeAP)
-//
-//
-//    ////// Dagger II ////
-//    implementation(LegacyJava.Google.Dagger.android)
-//    implementation(LegacyJava.Google.Dagger.support)
-//    annotationProcessor(LegacyJava.Google.Dagger.processorAP)
-//    annotationProcessor(LegacyJava.Google.Dagger.compilerAP)
-//
-//
-////    Why import this dep if not need w/ min sdk > 26 ?
-////    implementation 'androidx.multidex:multidex:2.0.1'
-////    annotationProcessor(LegacyJava.multidex)
-//
-//    implementation(LegacyJava.easyvideoplayer)
-//    implementation(LegacyJava.jcplayer)
-//    implementation(LegacyJava.greendao)
-//
-//    //RXJava
-//    implementation(LegacyJava.Reactivex.rxandroid)
-//    implementation(LegacyJava.Reactivex.rxjava)
-//    implementation(LegacyJava.Reactivex.rxjava2)
-//
-//
-//
-//
-////    // workaround from SO --> Duplicate class com.google.common.util.concurrent.ListenableFuture
-////    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
-//    implementation(LegacyJava.workaround)
-//
-////    Non-Legacy Libs
-//    implementation(Libs.Glide.glide)
-//    implementation(Libs.Hilt.library)
-//
-//    androidTestImplementation(Libs.Test.junit)
-//    androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
-//    androidTestImplementation(Libs.AndroidX.Test.espressoCore)
+ //---------------------------------
+    api(LegacyJava.moshi)
+    implementation(LegacyJava.Network.Retrofit.moshi)
+    implementation(LegacyJava.Network.Retrofit.rxjava2)
+
+
+    implementation(LegacyJava.AndroidX.appcompat)
+    implementation(LegacyJava.AndroidX.cardview)
+    implementation(LegacyJava.AndroidX.recyclerview)
+    implementation(LegacyJava.AndroidX.legacysupport)
+    implementation(LegacyJava.AndroidX.browser)
+    implementation(LegacyJava.AndroidX.constraintlayout)
+
+    implementation(LegacyJava.Google.PlayServices.auth)
+    implementation(LegacyJava.Google.PlayServices.maps)
+    implementation(LegacyJava.Google.material)
+
+
+
+    ///// Network Libraries ///////
+    implementation(LegacyJava.Network.Okhttp.okhttp)
+    implementation(LegacyJava.Network.Okhttp.interceptor)
+    implementation(LegacyJava.Network.Retrofit.retrofit)
+    implementation(LegacyJava.Network.Retrofit.gson)
+    implementation(LegacyJava.Network.Retrofit.rxjava)
+    implementation(LegacyJava.Network.Retrofit.rxjava2)
+
+
+
+    ///// Firebase ///////
+    implementation(LegacyJava.Google.Firebase.database)
+    implementation(LegacyJava.Google.Firebase.firestore)
+    implementation(LegacyJava.Google.Firebase.auth)
+    implementation(LegacyJava.Google.Firebase.storage)
+    implementation(LegacyJava.Google.Firebase.core)
+
+
+    // FirebaseUI for Firebase Realtime Database
+//    implementation 'com.firebaseui:firebase-ui-database:2.4.0'
+    implementation(LegacyJava.FirebaseUI.firebaseui)
+
+    implementation(LegacyJava.Network.Fuel.fuel)
+    implementation(LegacyJava.Network.Fuel.android)
+    implementation(LegacyJava.Onesignal.onesignal)
+    implementation(LegacyJava.Network.Setho.setho)
+    implementation(LegacyJava.Network.Setho.okhttp)
+    implementation(LegacyJava.SDK.twitter)
+    implementation(LegacyJava.SDK.facebook)
+
+    ///// Other Libraries ////
+    implementation(LegacyJava.Google.gson)
+    implementation(LegacyJava.picasso)
+    implementation(LegacyJava.circleimageview)
+    implementation(LegacyJava.AndroidX.coordinatorlayout)
+    implementation(LegacyJava.butterknife)
+    implementation(LegacyJava.timeago)
+    annotationProcessor(LegacyJava.butterknifeAP)
+
+
+    ////// Dagger II ////
+    implementation(LegacyJava.Google.Dagger.android)
+    implementation(LegacyJava.Google.Dagger.support)
+    annotationProcessor(LegacyJava.Google.Dagger.processorAP)
+    annotationProcessor(LegacyJava.Google.Dagger.compilerAP)
+
+
+//    Why import this dep if not need w/ min sdk > 26 ?
+//    implementation 'androidx.multidex:multidex:2.0.1'
+//    annotationProcessor(LegacyJava.multidex)
+
+    implementation(LegacyJava.easyvideoplayer)
+    implementation(LegacyJava.jcplayer)
+    implementation(LegacyJava.greendao)
+
+    //RXJava
+    implementation(LegacyJava.Reactivex.rxandroid)
+    implementation(LegacyJava.Reactivex.rxjava)
+    implementation(LegacyJava.Reactivex.rxjava2)
+
+
+
+
+//    // workaround from SO --> Duplicate class com.google.common.util.concurrent.ListenableFuture
+//    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+    implementation(LegacyJava.workaround)
+
+//    Non-Legacy Libs
+    implementation(Libs.Glide.glide)
+    implementation(Libs.Hilt.library)
+
+    androidTestImplementation(Libs.Test.junit)
+    androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
+    androidTestImplementation(Libs.AndroidX.Test.espressoCore)
 
 }

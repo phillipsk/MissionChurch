@@ -22,10 +22,10 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dagger.hilt.android.AndroidEntryPoint;
 import io.fmc.R;
 import io.fmc.R2;
 import io.fmc.data.models.User;
-import io.fmc.di.AppController;
 import io.fmc.ui.base.BaseActivity;
 import io.fmc.ui.dashboard.DashboardActivity;
 import io.fmc.ui.users.createaccount.CreateAccountActivity;
@@ -33,6 +33,7 @@ import io.fmc.ui.users.password.PasswordResetActivity;
 import io.fmc.utils.SessionManager;
 import io.fmc.utils.socialauth.SocialAuthentication;
 
+@AndroidEntryPoint
 public class LoginActivity extends BaseActivity implements LoginMVP.View, SocialAuthentication.SocialAuthenticationListener{
 
     @BindView(R2.id.email) EditText email;
@@ -57,7 +58,7 @@ public class LoginActivity extends BaseActivity implements LoginMVP.View, Social
 
         ButterKnife.bind(this);
 
-        ((AppController)getApplication()).getComponent().inject(this);
+//        ((AppController)getApplication()).getComponent().inject(this);
 
         presenter.setView(this);
 

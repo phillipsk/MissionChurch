@@ -39,7 +39,6 @@ import java.util.Arrays;
 import io.fmc.BuildConfig;
 import io.fmc.R;
 import io.fmc.data.models.User;
-import io.fmc.di.AppController;
 import io.fmc.utils.LogHelper;
 
 
@@ -81,7 +80,7 @@ public class SocialAuthentication {
      * Start facebook login
      */
     public CallbackManager initFacebookRegistration(Activity context, final SocialAuthenticationListener socialAuthenticationListener) {
-        FacebookSdk.sdkInitialize(AppController.getAppContext());
+//        FacebookSdk.sdkInitialize(AppController.getAppContext());
         if (BuildConfig.DEBUG) {
             FacebookSdk.setIsDebugEnabled(true);
             FacebookSdk.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);

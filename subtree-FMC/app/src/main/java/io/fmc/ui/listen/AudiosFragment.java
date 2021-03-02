@@ -26,13 +26,14 @@ import com.example.jean.jcplayer.JcPlayerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fmc.R;
 import io.fmc.R2;
 import io.fmc.db.AudioMessage;
 import io.fmc.db.DaoSession;
-import io.fmc.di.AppController;
 import io.fmc.utils.Utilities;
 
 import static com.example.jean.jcplayer.JcAudio.createFromURL;
@@ -42,13 +43,12 @@ import static com.example.jean.jcplayer.JcAudio.createFromURL;
  * A simple {@link Fragment} subclass.
  */
 public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayerServiceListener {
-
-
 //    public AudiosFragment() {
 //        // Required empty public constructor
 //    }
 
         // static MediaPlayer mediaPlayer;
+        @Inject
         DaoSession daoSession;
 //        DaoSession daoSessionII;
 //        AppController AppController;
@@ -75,7 +75,8 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
             context = getActivity();
 
             initBroadcastReceiver();
-            daoSession = AppController.getInstance().getDaoSession();
+//            daoSession = AppController.getInstance().getDaoSession();
+
 //            daoSession = AppController.getInstance().getDaoSession();
 
 //            daoSession = AppController.getDaoSession();
@@ -110,30 +111,30 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
                 public void onReceive(Context context, Intent intent) {
                     String broadcast_type = intent.getExtras().getString("broadcast_type");
 
-                    if (broadcast_type.toString().equals(AppController.BROADCAST_DOWNLOAD_AUDIO_FAILED)) {
-                        Utilities.showToast(context,"Update failed");
-                    }
+//                    if (broadcast_type.toString().equals(AppController.BROADCAST_DOWNLOAD_AUDIO_FAILED)) {
+//                        Utilities.showToast(context,"Update failed");
+//                    }
 
-                    if (broadcast_type.equals(AppController.BROADCAST_PLAY_MEDIA_AT_POSITION)) {
-                        int position = intent.getExtras().getInt("position");
-                        Log.e("position",position+"-");
-                        playAudioFileFromServer(position);
+//                    if (broadcast_type.equals(AppController.BROADCAST_PLAY_MEDIA_AT_POSITION)) {
+//                        int position = intent.getExtras().getInt("position");
+//                        Log.e("position",position+"-");
+//                        playAudioFileFromServer(position);
+//
+//                    }
 
-                    }
+//                    if (broadcast_type.equals(AppController.BROADCAST_PAUSE_MEDIA_AT_POSITION)) {
+//                        int position = intent.getExtras().getInt("position");
+//                        audioMessages.get(position).setIs_playing(false);
+//                        updateList();
+//                    }
 
-                    if (broadcast_type.equals(AppController.BROADCAST_PAUSE_MEDIA_AT_POSITION)) {
-                        int position = intent.getExtras().getInt("position");
-                        audioMessages.get(position).setIs_playing(false);
-                        updateList();
-                    }
-
-                    if (broadcast_type.toString().equals(AppController.BROADCAST_DOWNLOAD_AUDIO_SUCCESSFUL)) {
-                        audioMessages.clear();
-
-                        audioMessages.addAll(AppController.getInstance().audioMessages);
-                        initJCPlayer();
-                        updateList();
-                    }
+//                    if (broadcast_type.toString().equals(AppController.BROADCAST_DOWNLOAD_AUDIO_SUCCESSFUL)) {
+//                        audioMessages.clear();
+//
+////                        audioMessages.addAll(AppController.getInstance().audioMessages);
+//                        initJCPlayer();
+//                        updateList();
+//                    }
 
                 }
             };
@@ -159,7 +160,7 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
         @Override
         public void onResume() {
             super.onResume();
-            getActivity().registerReceiver(broadcastReceiver,new IntentFilter(AppController.backendBroadCast));
+//            getActivity().registerReceiver(broadcastReceiver,new IntentFilter(AppController.backendBroadCast));
         }
 
         @Override
@@ -308,14 +309,14 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
                 holder.btnPlay.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AppController.getInstance().sendLocalBroadcast(AppController.BROADCAST_PLAY_MEDIA_AT_POSITION,null,position);
+//                        AppController.getInstance().sendLocalBroadcast(AppController.BROADCAST_PLAY_MEDIA_AT_POSITION,null,position);
                     }
                 });
 
                 holder.btnPause.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AppController.getInstance().sendLocalBroadcast(AppController.BROADCAST_PAUSE_MEDIA_AT_POSITION,null,position);
+//                        AppController.getInstance().sendLocalBroadcast(AppController.BROADCAST_PAUSE_MEDIA_AT_POSITION,null,position);
                     }
                 });
 
