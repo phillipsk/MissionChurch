@@ -7,7 +7,7 @@ import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
-import com.missionchurchcooljc.data_android.WebsiteHighlight
+import com.missionchurchcooljc.data_android.WebsiteHighlightResponse
 import com.missionchurchcooljc.mcc.persistence.MccRoomDatabase
 import com.missionchurchcooljc.mcc.utilities.ABOUT_US_DATA_FILENAME
 import kotlinx.coroutines.coroutineScope
@@ -31,11 +31,10 @@ class SeedDatabaseWorker(
         try {
             applicationContext.assets.open(ABOUT_US_DATA_FILENAME).use { inputStream ->
                 JsonReader(inputStream.reader()).use { jsonReader ->
-                    val whType = object : TypeToken<List<WebsiteHighlight>>() {}.type
-                    val whList: List<WebsiteHighlight> = Gson().fromJson(jsonReader,whType)
+                    val whType = object : TypeToken<WebsiteHighlightResponse>() {}.type
+                    val whList: WebsiteHighlightResponse = Gson().fromJson(jsonReader,whType)
                     val database = MccRoomDatabase.getInstance(applicationContext)
-                    database.websiteHighlightDao().insertAll(whList)
-//
+                    database.websiteHighlightDao().insertAll(whList.data)
                     Result.success()
                 }
             }

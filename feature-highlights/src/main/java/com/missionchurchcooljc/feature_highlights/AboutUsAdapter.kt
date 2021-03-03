@@ -47,9 +47,11 @@ class AboutUsAdapter : ListAdapter<WebsiteHighlight, AboutUsAdapter.ViewHolder>(
         init {
             binding.setClickListener { view ->
                 binding.websiteHighlight?.let { wh ->
-                    val uri = Uri.parse(wh.followUrl)
-                    val intent = Intent(Intent.ACTION_VIEW, uri)
-                    view.context.startActivity(intent)
+                    if (wh.followUrl != null) {
+                        val uri = Uri.parse(wh.followUrl)
+                        val intent = Intent(Intent.ACTION_VIEW, uri)
+                        view.context.startActivity(intent)
+                    }
                 }
             }
         }
