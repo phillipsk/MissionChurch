@@ -1,21 +1,24 @@
 package io.fmc.ui.posts.postdetail;
 
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dagger.hilt.android.AndroidEntryPoint;
 import io.fmc.R;
 import io.fmc.R2;
 import io.fmc.data.models.AnnouncementPost;
 import io.fmc.ui.base.BaseActivity;
 
+@AndroidEntryPoint
 public class PostDetailActivity extends BaseActivity {
 
     AnnouncementPost post;
@@ -36,7 +39,8 @@ public class PostDetailActivity extends BaseActivity {
 
         post = (AnnouncementPost) getIntent().getExtras().getSerializable("post");
 
-        setupBaseActionbar(toolbar, post.getTitle(), true);
+//        not needed for Kotlin refactor
+//        setupBaseActionbar(toolbar, post.getTitle(), true);
 
         displayData();
     }

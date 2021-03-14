@@ -73,7 +73,7 @@ dependencies {
     implementation project(':data-android')
     implementation project(':common')
     implementation project(':feature-highlights')
-    implementation project(':legacy:app')
+    implementation project(':legacy-app')
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(Libs.AndroidX.appcompat)

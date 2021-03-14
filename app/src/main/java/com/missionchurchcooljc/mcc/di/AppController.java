@@ -20,11 +20,9 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
-//import androidx.multidex.MultiDex;
-
-import android.util.Log;
 
 import com.facebook.stetho.Stetho;
 import com.github.kittinunf.fuel.Fuel;
@@ -49,11 +47,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import dagger.hilt.android.HiltAndroidApp;
 import io.fmc.db.AudioMessage;
 import io.fmc.db.AudioMessageDao;
 import io.fmc.db.DaoMaster;
 import io.fmc.db.DaoSession;
-
 import kotlin.Pair;
 
 //import com.github.kittinunf.fuel.Fuel;
@@ -64,7 +62,7 @@ import kotlin.Pair;
 /**
  * Created by  Kevin Phillips and Sunday Akinsete on 14/04/2018.
  */
-//@HiltAndroidApp
+@HiltAndroidApp
 public class AppController extends Application {
 //public class AppController extends MultiDexApplication {
 
@@ -109,7 +107,7 @@ public class AppController extends Application {
         AppController.context = getApplicationContext();
 
 //        component = DaggerApplicationComponent.builder()
-//                .applicationModule(new ApplicationModule())
+//                .applicationModule(new ApplicationModule(this))
 //                .userModule(new UserModule())
 //                .postModule(new PostModule())
 //                .build();
@@ -131,6 +129,7 @@ public class AppController extends Application {
 
 
         initDatabase();
+        initMapFragment();
 
 
 //        JUL-20
@@ -186,6 +185,12 @@ public class AppController extends Application {
         return daoSession;
     }
 
+    private void initMapFragment() {
+        mapFragment = SupportMapFragment.newInstance();
+    }
+    public SupportMapFragment getMapFragment(){
+        return mapFragment;
+    }
 
 
 

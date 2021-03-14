@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/listen_menu"
     app:startDestination="@+id/listen_nav">
 
     <fragment
         android:id="@id/listen_nav"
-        android:name="com.missionchurchcooljc.mcc.ui.ListenFragment"
-        android:label="Listen"
-        tools:layout="@layout/fragment_listen" />
+        android:name="io.fmc.ui.listen.AudiosFragment"
+        android:label="Listen" />
 
 
 </navigation>

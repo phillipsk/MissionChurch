@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/connect_menu"
     app:startDestination="@+id/connect_nav">
 
     <fragment
         android:id="@+id/connect_nav"
-        android:name="com.missionchurchcooljc.mcc.ui.ConnectFragment"
-        android:label="Connect"
-        tools:layout="@layout/fragment_connect" />
+        android:name="io.fmc.ui.posts.PostsFragment"
+        android:label="Connect"/>
 
 
 </navigation>

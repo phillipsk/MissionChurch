@@ -19,12 +19,13 @@ package io.fmc.ui.posts;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,8 @@ public class PostsFragment extends BaseFragment implements PostMVP.View {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        PostModel postModel = new PostModel();
+        this.presenter = new PostFragmentPresenter(postModel);
 //        ((AppController)getActivity().getApplication()).getComponent().inject(this);
     }
 

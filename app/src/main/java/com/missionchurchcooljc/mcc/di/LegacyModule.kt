@@ -17,7 +17,6 @@
 package com.missionchurchcooljc.mcc.di
 
 import androidx.fragment.app.Fragment
-import com.missionchurchcooljc.mcc.MainActivity
 import com.missionchurchcooljc.mcc.ui.ConnectFragment
 import com.missionchurchcooljc.mcc.ui.PostMVPkt
 import com.missionchurchcooljc.mcc.ui.PostModelKt
@@ -35,8 +34,8 @@ abstract class LegacyModule {
 //    @Binds
 //    abstract fun bindActivity(activity: MainActivity): PostMVPkt.View
 //
-    @Binds
-    abstract fun bindFragment(fragment: ConnectFragment): PostMVPkt.View
+//    @Binds
+//    abstract fun bindFragment(fragment: ConnectFragment): PostMVPkt.View
 
     @Binds
     abstract fun bindPresenter(impl: PostMVPktImpl): PostMVPkt.Presenter

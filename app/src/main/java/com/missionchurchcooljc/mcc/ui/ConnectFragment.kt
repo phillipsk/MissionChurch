@@ -14,11 +14,13 @@ import io.fmc.R
 import io.fmc.R2
 import io.fmc.data.models.AnnouncementPost
 import io.fmc.ui.posts.PostAdapter
+import io.fmc.ui.posts.PostFragmentPresenter
 import io.fmc.ui.posts.PostMVP
-import javax.inject.Inject
+import io.fmc.ui.posts.PostModel
 
 @AndroidEntryPoint
-class ConnectFragment : Fragment(), PostMVPkt.View {
+class ConnectFragment : Fragment(), PostMVP.View {
+//class ConnectFragment : Fragment(), PostMVPkt.View {
 
     //    public PostsFragment(RecyclerView recyclerView, PostAdapter postAdapter, List<AnnouncementPost> posts, PostMVP.Presenter presenter) {
     //        this.recyclerView = recyclerView;
@@ -31,9 +33,16 @@ class ConnectFragment : Fragment(), PostMVPkt.View {
     var postAdapter: PostAdapter? = null
     var posts: List<AnnouncementPost> = ArrayList()
 
-    @Inject
-    lateinit var presenter: PostMVPkt.Presenter
+    //    @Inject
+//    lateinit var presenter: PostMVPkt.Presenter
+    lateinit var presenter: PostMVP.Presenter
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val postModel = PostModel()
+        presenter = PostFragmentPresenter(postModel)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,7 +73,7 @@ class ConnectFragment : Fragment(), PostMVPkt.View {
     }
 
     override fun displayPosts(posts: List<AnnouncementPost?>?) {
-        postAdapter!!.setData(posts)
+        postAdapter?.setData(posts)
     }
 
     //    TODO: you cannot bind the MVP interface and inject with

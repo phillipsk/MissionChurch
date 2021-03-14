@@ -4,17 +4,16 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import dagger.hilt.android.AndroidEntryPoint;
 import io.fmc.R;
 
 /**
  * Created by  Kevin Phillips and Sunday Akinsete on 16/05/2018.
  */
 
-@AndroidEntryPoint
 public class BaseFragment extends Fragment {
 
     ProgressDialog progressDialog;

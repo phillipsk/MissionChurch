@@ -4,20 +4,19 @@ package io.fmc.ui.listen;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jean.jcplayer.JcAudio;
 import com.example.jean.jcplayer.JcPlayerService;
@@ -34,7 +33,6 @@ import io.fmc.R;
 import io.fmc.R2;
 import io.fmc.db.AudioMessage;
 import io.fmc.db.DaoSession;
-import io.fmc.utils.Utilities;
 
 import static com.example.jean.jcplayer.JcAudio.createFromURL;
 
@@ -71,7 +69,7 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
             super.onCreate(savedInstanceState);
 
 //            AppController AppController = new AppController();
-
+            initDatabase();
             context = getActivity();
 
             initBroadcastReceiver();
@@ -90,6 +88,12 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
 //        mediaPlayer = new MediaPlayer();
 //        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         }
+
+    private void initDatabase() {
+//        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this,"fmcdb"); //The users-db here is the name of our database.
+//        Database db = helper.getWritableDb();
+//        daoSession = new DaoMaster(db).newSession();
+    }
 
         private void fetchLocalData() {
             audioMessages = daoSession.getAudioMessageDao().loadAll();
