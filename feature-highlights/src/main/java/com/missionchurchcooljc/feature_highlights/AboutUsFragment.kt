@@ -24,16 +24,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import dagger.hilt.android.AndroidEntryPoint
+import com.missionchurchcooljc.common.ui.BaseFragment
+//import dagger.hilt.android.AndroidEntryPoint
 import com.missionchurchcooljc.data_android.WebsiteHighlight
 import com.missionchurchcooljc.feature_highlights.databinding.FragmentAboutUsBinding
 
-@AndroidEntryPoint
-class AboutUsFragment : Fragment() {
+//@AndroidEntryPoint
+class AboutUsFragment : BaseFragment() {
 
     //    private val args: GalleryFragmentArgs by navArgs()
 //    private var searchJob: Job? = null
     private val viewModel: AboutUsViewModel by viewModels()
+
+    override fun onInitDependencyInjection() {
+        TODO("Not yet implemented")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,5 +78,6 @@ class AboutUsFragment : Fragment() {
         Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
     }
 }
+
 
 

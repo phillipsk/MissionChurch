@@ -17,12 +17,13 @@
 package com.missionchurchcooljc.feature_highlights
 
 import android.util.Log
-import androidx.hilt.lifecycle.ViewModelInject
+//import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.missionchurchcooljc.data_android.WebsiteHighlight
+import javax.inject.Inject
 
-class AboutUsViewModel @ViewModelInject internal constructor(
+class AboutUsViewModel @Inject internal constructor(
     websiteRepository: WebsiteRepository
 //    @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {

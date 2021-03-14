@@ -58,7 +58,6 @@ dependencies {
 
     implementation project(':data-android')
     implementation project(':common')
-    implementation project(':core')
 
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.constraintlayout)

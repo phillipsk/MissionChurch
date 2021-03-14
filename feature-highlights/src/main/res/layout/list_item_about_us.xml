@@ -30,7 +30,7 @@
             type="com.missionchurchcooljc.data_android.WebsiteHighlight" />
     </data>
 
-    <views.MaskedCardView
+    <com.missionchurchcooljc.common.views.MaskedCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/card_side_margin"
@@ -74,5 +74,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </views.MaskedCardView>
+    </com.missionchurchcooljc.common.views.MaskedCardView>
 </layout>

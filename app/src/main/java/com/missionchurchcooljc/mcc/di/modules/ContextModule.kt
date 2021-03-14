@@ -1,11 +1,11 @@
 /*
- * Copyright 2020 Google LLC
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     https://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,16 +14,17 @@
  * limitations under the License.
  */
 
+package com.missionchurchcooljc.mcc.di.modules
 
 import android.app.Application
 import android.content.Context
-import androidx.test.runner.AndroidJUnitRunner
-//import dagger.hilt.android.testing.HiltTestApplication
+import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
 
-// A custom runner to set up the instrumented application class for tests.
-class MainTestRunner : AndroidJUnitRunner() {
-
-//    override fun newApplication(cl: ClassLoader?, name: String?, context: Context?): Application {
-//        return super.newApplication(cl, HiltTestApplication::class.java.name, context)
-//    }
+@Module
+class ContextModule(private val application: Application) {
+    @Singleton
+    @Provides
+    fun provideContext(): Context = application
 }

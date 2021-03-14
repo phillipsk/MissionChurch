@@ -28,15 +28,14 @@ buildscript {
 //        temporarily remove for Github convenience, public allowed to clone and build app
 //        classpath(BuildPlugins.gmsGoogleServices)
 
-//        classpath(BuildPlugins.hiltPlugin)
-        classpath(Libs.Hilt.gradlePlugin)
         classpath(Libs.AndroidX.Navigation.safeArgs)
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21"
 
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'
 
 
-//        classpath(Libs.hiltPlugin)
+        //    switching to dagger
+//        classpath(Libs.Hilt.gradlePlugin)
 
 
 //        classpath Libs.Kotlin.androidGradlePlugin
