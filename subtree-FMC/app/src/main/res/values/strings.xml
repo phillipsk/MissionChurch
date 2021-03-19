@@ -77,5 +77,6 @@
     <string name="action_new">Settings</string>
     <string name="logo_desc">App logo</string>
     <string name="country_name">LongLongLong LongLongLong</string>
+    <string name="default_web_client_id">NULL</string>
 
 </resources>

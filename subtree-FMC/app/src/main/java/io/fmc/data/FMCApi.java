@@ -1,8 +1,8 @@
 package io.fmc.data;
 
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,7 +20,6 @@ import java.util.Objects;
 
 import io.fmc.data.models.AnnouncementPost;
 import io.fmc.data.models.User;
-import io.fmc.di.AppController;
 import io.fmc.ui.posts.PostModel;
 import io.fmc.ui.users.UserModel;
 
@@ -31,9 +30,9 @@ import io.fmc.ui.users.UserModel;
 public class FMCApi {
 
 
-    public FMCApi() {
-        AppController.getAppComponent().inject(this);
-    }
+//    public FMCApi() {
+//        AppController.getAppComponent().inject(this);
+//    }
 
 
     public static void authenticateUserWithEmailAndPassword(final User user, final UserModel.OnLoginListener onLoginListener) {
@@ -101,6 +100,7 @@ public class FMCApi {
             }
         });
     }
+
 }
 
 //gcloud ai-platform local predict --model-dir output/export/census/1576341050 --json-instances ../test.json

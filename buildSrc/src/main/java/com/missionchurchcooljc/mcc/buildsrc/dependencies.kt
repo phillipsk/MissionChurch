@@ -23,7 +23,7 @@ object BuildPlugins {
 }
 
 object AndroidSdk {
-    const val min = 16
+    const val min = 21
     const val compile = 30
     const val target = compile
 }
@@ -69,6 +69,12 @@ object Libs {
             const val viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:$version"
             const val kaptCompiler = "androidx.hilt:hilt-compiler:$version"
         }
+    }
+
+    object Dagger {
+        private const val version = "2.32"
+        const val dagger = "com.google.dagger:dagger:$version"
+        const val compiler = "com.google.dagger:dagger-compiler:$version"
     }
 
     object Google {
@@ -235,12 +241,4 @@ object Libs {
 //            const val compiler = "androidx.hilt:hilt-compiler:$version"
 //        }
 //    }
-//
-//    object Dagger {
-//        private const val version = "2.29.1"
-//        const val dagger = "com.google.dagger:dagger:$version"
-//        const val compiler = "com.google.dagger:dagger-compiler:$version"
-//    }
-//
-
 //

@@ -4,8 +4,8 @@ package io.fmc.ui.location;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +18,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import javax.inject.Inject;
+
 import io.fmc.R;
-import io.fmc.di.AppController;
 
 
 /**
@@ -28,6 +29,7 @@ import io.fmc.di.AppController;
 public class LocationFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    @Inject
     SupportMapFragment mapFragment;
 
 
@@ -39,7 +41,7 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.fragment_location);
-        mapFragment = AppController.getInstance().getMapFragment();
+//        mapFragment = AppController.getInstance().getMapFragment();
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
             getChildFragmentManager()

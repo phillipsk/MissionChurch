@@ -3,7 +3,6 @@ package io.fmc.ui.users.login;
 import javax.inject.Inject;
 
 import io.fmc.data.models.User;
-import io.fmc.di.AppController;
 import io.fmc.ui.users.UserModel;
 import io.fmc.utils.SessionManager;
 

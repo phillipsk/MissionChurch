@@ -1,3 +1,19 @@
+/*
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.fmc.ui.users.login;
 
 import android.content.DialogInterface;
@@ -23,8 +39,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.fmc.R;
+import io.fmc.R2;
 import io.fmc.data.models.User;
-import io.fmc.di.AppController;
 import io.fmc.ui.base.BaseActivity;
 import io.fmc.ui.dashboard.DashboardActivity;
 import io.fmc.ui.users.createaccount.CreateAccountActivity;
@@ -32,10 +48,11 @@ import io.fmc.ui.users.password.PasswordResetActivity;
 import io.fmc.utils.SessionManager;
 import io.fmc.utils.socialauth.SocialAuthentication;
 
+//@AndroidEntryPoint
 public class LoginActivity extends BaseActivity implements LoginMVP.View, SocialAuthentication.SocialAuthenticationListener{
 
-    @BindView(R.id.email) EditText email;
-    @BindView(R.id.password) EditText password;
+    @BindView(R2.id.email) EditText email;
+    @BindView(R2.id.password) EditText password;
 
     @Inject
     LoginMVP.Presenter presenter;
@@ -56,7 +73,7 @@ public class LoginActivity extends BaseActivity implements LoginMVP.View, Social
 
         ButterKnife.bind(this);
 
-        ((AppController)getApplication()).getComponent().inject(this);
+//        ((AppController)getApplication()).getComponent().inject(this);
 
         presenter.setView(this);
 
@@ -64,31 +81,31 @@ public class LoginActivity extends BaseActivity implements LoginMVP.View, Social
     }
 
 
-    @OnClick(R.id.btn_facebook_sign)
+    @OnClick(R2.id.btn_facebook_sign)
     public void facebookBtnClicked(){
         socialLoginType = SocialAuthentication.Type.FACEBOOK;
         mCallbackManager = socialAuthentication.initFacebookRegistration(this,this);
     }
 
-    @OnClick(R.id.btn_google)
+    @OnClick(R2.id.btn_google)
     public void googleBtnClicked(){
         socialLoginType = SocialAuthentication.Type.GOOGLE;
         socialAuthentication.initLoginWithGoogle(this);
     }
 
-    @OnClick(R.id.label_create_account)
+    @OnClick(R2.id.label_create_account)
     public void createAccount(){
         Intent intent = new Intent(this, CreateAccountActivity.class);
         startActivity(intent);
     }
 
-    @OnClick(R.id.label_forget_password)
+    @OnClick(R2.id.label_forget_password)
     public void resetPassword(){
         Intent intent = new Intent(this, PasswordResetActivity.class);
         startActivity(intent);
     }
 
-    @OnClick(R.id.btn_sign_in)
+    @OnClick(R2.id.btn_sign_in)
     public void loginClicked(){
         presenter.signInClicked();
     }

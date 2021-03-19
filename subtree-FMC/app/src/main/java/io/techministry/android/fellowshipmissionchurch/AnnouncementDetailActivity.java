@@ -2,9 +2,9 @@ package io.techministry.android.fellowshipmissionchurch;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,9 +14,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 //import butterknife.BindView;
 //import butterknife.ButterKnife;
+import io.fmc.R;
 import io.techministry.android.fellowshipmissionchurch.models.Announcement;
 
 public class AnnouncementDetailActivity extends AppCompatActivity {
@@ -26,10 +28,10 @@ public class AnnouncementDetailActivity extends AppCompatActivity {
     TextView content;
     Toolbar toolbar;
     FloatingActionButton back_btn;
-//    @BindView(R.id.backdrop) ImageView backdrop;
-//    @BindView(R.id.content) TextView content;
-//    @BindView(R.id.toolbar) Toolbar toolbar;
-//    @BindView(R.id.back_btn) FloatingActionButton back_btn;
+//    @BindView(R2.id.backdrop) ImageView backdrop;
+//    @BindView(R2.id.content) TextView content;
+//    @BindView(R2.id.toolbar) Toolbar toolbar;
+//    @BindView(R2.id.back_btn) FloatingActionButton back_btn;
     Context mContext;
 
     @Override

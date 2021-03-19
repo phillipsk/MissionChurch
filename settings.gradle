@@ -6,3 +6,7 @@ include ':data'
 include ':data-android'
 include ':common'
 include ':feature-highlights'
+include ':legacy-greenDaoGenerator'
+project(':legacy-greenDaoGenerator').projectDir = new File(rootDir, 'subtree-FMC/greenDaoGenerator/')
+include ':legacy-app'
+project(':legacy-app').projectDir = new File(rootDir, 'subtree-FMC/app/')

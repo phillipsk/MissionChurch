@@ -1,7 +1,23 @@
+/*
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.fmc.ui.posts;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +31,7 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fmc.R;
+import io.fmc.R2;
 import io.fmc.data.models.AnnouncementPost;
 
 /**
@@ -64,11 +81,11 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class PostAdapterViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.post_title) TextView post_title;
-        @BindView(R.id.post_date) TextView post_date;
-        @BindView(R.id.post_content) TextView post_content;
-        @BindView(R.id.favorite) TextView favorite;
-        @BindView(R.id.view) TextView view;
+        @BindView(R2.id.post_title) TextView post_title;
+        @BindView(R2.id.post_date) TextView post_date;
+        @BindView(R2.id.post_content) TextView post_content;
+        @BindView(R2.id.favorite) TextView favorite;
+        @BindView(R2.id.view) TextView view;
 
         public PostAdapterViewHolder(View itemView) {
             super(itemView);

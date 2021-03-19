@@ -1,8 +1,5 @@
-import com.missionchurchcooljc.mcc.buildsrc.AndroidSdk
-import com.missionchurchcooljc.mcc.buildsrc.Libs
-
 /*
- * Copyright (c) 2021  Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +14,15 @@ import com.missionchurchcooljc.mcc.buildsrc.Libs
  * limitations under the License.
  */
 
+import com.missionchurchcooljc.mcc.buildsrc.AndroidSdk
+import com.missionchurchcooljc.mcc.buildsrc.Libs
+
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    //    switching to dagger
+//    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -57,6 +58,7 @@ dependencies {
 
     implementation project(':data-android')
     implementation project(':common')
+//    implementation project(':core')
 
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.constraintlayout)
@@ -77,16 +79,20 @@ dependencies {
     androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
     androidTestImplementation(Libs.AndroidX.Test.archCore)
     androidTestImplementation(Libs.AndroidX.Test.espressoCore)
-    androidTestImplementation(Libs.Hilt.testing)
 
 //    implementation(Libs.swiperefresh)
     implementation(Libs.Google.material)
     implementation(Libs.AndroidX.work)
 
-    implementation(Libs.Hilt.library)
-    kapt(Libs.Hilt.compiler)
-    implementation(Libs.Hilt.viewModel.viewModel)
-    kapt(Libs.Hilt.viewModel.kaptCompiler)
+    //    switching to dagger
+//    implementation(Libs.Hilt.library)
+//    kapt(Libs.Hilt.compiler)
+//    implementation(Libs.Hilt.viewModel.viewModel)
+//    kapt(Libs.Hilt.viewModel.kaptCompiler)
+//    androidTestImplementation(Libs.Hilt.testing)
+    implementation(Libs.Dagger.dagger)
+    kapt(Libs.Dagger.compiler)
+
 
     //Glide
     implementation(Libs.Glide.glide)

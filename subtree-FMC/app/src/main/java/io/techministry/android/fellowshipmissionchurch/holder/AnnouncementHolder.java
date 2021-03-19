@@ -1,12 +1,12 @@
 package io.techministry.android.fellowshipmissionchurch.holder;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import io.techministry.android.fellowshipmissionchurch.R;
+import io.fmc.R;
 import io.techministry.android.fellowshipmissionchurch.models.Announcement;
 import io.techministry.android.fellowshipmissionchurch.utils.FirebaseUtilities;
 import io.techministry.android.fellowshipmissionchurch.utils.Utilities;

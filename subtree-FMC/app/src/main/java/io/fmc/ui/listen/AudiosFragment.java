@@ -1,23 +1,37 @@
+/*
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.fmc.ui.listen;
 
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jean.jcplayer.JcAudio;
 import com.example.jean.jcplayer.JcPlayerService;
@@ -26,13 +40,14 @@ import com.example.jean.jcplayer.JcPlayerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fmc.R;
+import io.fmc.R2;
 import io.fmc.db.AudioMessage;
 import io.fmc.db.DaoSession;
-import io.fmc.di.AppController;
-import io.fmc.utils.Utilities;
 
 import static com.example.jean.jcplayer.JcAudio.createFromURL;
 
@@ -42,52 +57,45 @@ import static com.example.jean.jcplayer.JcAudio.createFromURL;
  */
 public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayerServiceListener {
 
+//    TODO: DaoSession DI provided by dagger - complete
+//      Next up: research Broadcast Services/Intents and refactor them
+//      from main app module to legacy-app module
 
 //    public AudiosFragment() {
 //        // Required empty public constructor
 //    }
 
-        // static MediaPlayer mediaPlayer;
-        DaoSession daoSession;
-//        DaoSession daoSessionII;
+    // static MediaPlayer mediaPlayer;
+    @Inject
+    DaoSession daoSession;
+    //        DaoSession daoSessionII;
 //        AppController AppController;
-        Context context;
-        BroadcastReceiver broadcastReceiver;
-        List<AudioMessage> audioMessages = new ArrayList<>();
+    Context context;
+    BroadcastReceiver broadcastReceiver;
+    List<AudioMessage> audioMessages = new ArrayList<>();
 
-        SimpleStringRecyclerViewAdapter adapter;
+    SimpleStringRecyclerViewAdapter adapter;
 
-        //@BindView(R.id.btn_control) ImageButton btn_control;
-        @BindView(R.id.recyclerview)
-        RecyclerView recyclerView;
-        @BindView(R.id.jcplayer)
-        JcPlayerView jcPlayer;
+    //@BindView(R2.id.btn_control) ImageButton btn_control;
+    @BindView(R2.id.recyclerview)
+    RecyclerView recyclerView;
+    @BindView(R2.id.jcplayer)
+    JcPlayerView jcPlayer;
 
-        ArrayList<JcAudio> jcAudios = new ArrayList<>();
+    ArrayList<JcAudio> jcAudios = new ArrayList<>();
 
-        @Override
-        public void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-//            AppController AppController = new AppController();
-
-            context = getActivity();
-
-            initBroadcastReceiver();
-            daoSession = AppController.getInstance().getDaoSession();
+        context = getActivity();
+//            initBroadcastReceiver();
+        // 3/15/21 refactored to Dagger provides
 //            daoSession = AppController.getInstance().getDaoSession();
-
-//            daoSession = AppController.getDaoSession();
-
-
-//            DaoSession daoSession = ((AppController) getApplication()).getDaoSession();
-
-/*            AppController = AppController.getInstance();
-            daoSession = AppController.getInstance().getDaoSession();*/
 
 //        mediaPlayer = new MediaPlayer();
 //        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        }
+    }
 
         private void fetchLocalData() {
             audioMessages = daoSession.getAudioMessageDao().loadAll();
@@ -97,74 +105,73 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
 
             updateList();
 
- /*JUL-20 refactored and replaced fetch call to AppController activity class onCreate method
-  * in an effort to download-async audioMessages in the background, no performance improvement yet
- */
+            /*JUL-20 refactored and replaced fetch call to AppController activity class onCreate method
+             * in an effort to download-async audioMessages in the background, no performance improvement yet
+             */
 //            AppController.getInstance().fetchAudioMessage();
         }
 
-        private void initBroadcastReceiver() {
-            broadcastReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    String broadcast_type = intent.getExtras().getString("broadcast_type");
+//        private void initBroadcastReceiver() {
+//            broadcastReceiver = new BroadcastReceiver() {
+//                @Override
+//                public void onReceive(Context context, Intent intent) {
+//                    String broadcast_type = intent.getExtras().getString("broadcast_type");
+//
+//                    if (broadcast_type.toString().equals(AppController.BROADCAST_DOWNLOAD_AUDIO_FAILED)) {
+//                        Utilities.showToast(context,"Update failed");
+//                    }
+//
+//                    if (broadcast_type.equals(AppController.BROADCAST_PLAY_MEDIA_AT_POSITION)) {
+//                        int position = intent.getExtras().getInt("position");
+//                        Log.e("position",position+"-");
+//                        playAudioFileFromServer(position);
+//
+//                    }
+//
+//                    if (broadcast_type.equals(AppController.BROADCAST_PAUSE_MEDIA_AT_POSITION)) {
+//                        int position = intent.getExtras().getInt("position");
+//                        audioMessages.get(position).setIs_playing(false);
+//                        updateList();
+//                    }
+//
+//                    if (broadcast_type.toString().equals(AppController.BROADCAST_DOWNLOAD_AUDIO_SUCCESSFUL)) {
+//                        audioMessages.clear();
+//
+//                        audioMessages.addAll(AppController.getInstance().audioMessages);
+//                        initJCPlayer();
+//                        updateList();
+//                    }
+//
+//                }
+//            };
+//        }
 
-                    if (broadcast_type.toString().equals(AppController.BROADCAST_DOWNLOAD_AUDIO_FAILED)) {
-                        Utilities.showToast(context,"Update failed");
-                    }
-
-                    if (broadcast_type.equals(AppController.BROADCAST_PLAY_MEDIA_AT_POSITION)) {
-                        int position = intent.getExtras().getInt("position");
-                        Log.e("position",position+"-");
-                        playAudioFileFromServer(position);
-
-                    }
-
-                    if (broadcast_type.equals(AppController.BROADCAST_PAUSE_MEDIA_AT_POSITION)) {
-                        int position = intent.getExtras().getInt("position");
-                        audioMessages.get(position).setIs_playing(false);
-                        updateList();
-                    }
-
-                    if (broadcast_type.toString().equals(AppController.BROADCAST_DOWNLOAD_AUDIO_SUCCESSFUL)) {
-                        audioMessages.clear();
-
-                        audioMessages.addAll(AppController.getInstance().audioMessages);
-                        initJCPlayer();
-                        updateList();
-                    }
-
-                }
-            };
+    private void initJCPlayer() {
+        jcAudios.clear();
+        for (AudioMessage audioMessage : audioMessages) {
+            jcAudios.add(createFromURL(audioMessage.getName(), audioMessage.getPath()));
         }
 
-        private void initJCPlayer(){
-            jcAudios.clear();
-            for(AudioMessage audioMessage:audioMessages){
-                jcAudios.add(createFromURL(audioMessage.getName(),audioMessage.getPath()));
-            }
 
+        jcPlayer.initPlaylist(jcAudios);
+        jcPlayer.createNotification();
+    }
 
+    private void updateList() {
+        adapter.setItems(audioMessages);
+        adapter.notifyDataSetChanged();
+    }
 
-            jcPlayer.initPlaylist(jcAudios);
-            jcPlayer.createNotification();
-        }
+    @Override
+    public void onResume() {
+        super.onResume();
+//            getActivity().registerReceiver(broadcastReceiver,new IntentFilter(AppController.backendBroadCast));
+    }
 
-        private void updateList() {
-            adapter.setItems(audioMessages);
-            adapter.notifyDataSetChanged();
-        }
-
-        @Override
-        public void onResume() {
-            super.onResume();
-            getActivity().registerReceiver(broadcastReceiver,new IntentFilter(AppController.backendBroadCast));
-        }
-
-        @Override
-        public void onDestroy() {
-            super.onDestroy();
-            getActivity().unregisterReceiver(broadcastReceiver);
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+//            getActivity().unregisterReceiver(broadcastReceiver);
 
             try {
                 jcPlayer.kill();
@@ -307,14 +314,14 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
                 holder.btnPlay.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AppController.getInstance().sendLocalBroadcast(AppController.BROADCAST_PLAY_MEDIA_AT_POSITION,null,position);
+//                        AppController.getInstance().sendLocalBroadcast(AppController.BROADCAST_PLAY_MEDIA_AT_POSITION,null,position);
                     }
                 });
 
                 holder.btnPause.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AppController.getInstance().sendLocalBroadcast(AppController.BROADCAST_PAUSE_MEDIA_AT_POSITION,null,position);
+//                        AppController.getInstance().sendLocalBroadcast(AppController.BROADCAST_PAUSE_MEDIA_AT_POSITION,null,position);
                     }
                 });
 

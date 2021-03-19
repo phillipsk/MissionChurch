@@ -76,16 +76,19 @@ dependencies {
     implementation(Libs.Google.gson)
     api Libs.AndroidX.Lifecycle.livedata
 
-//    Hitl
-    implementation Libs.Hilt.library
-    kapt Libs.Hilt.compiler
+//    Hilt
+    //    switching to dagger
+//    implementation Libs.Hilt.library
+//    kapt Libs.Hilt.compiler
+//    testImplementation Libs.Hilt.testing
+//    kaptTest Libs.Hilt.compiler
+    implementation(Libs.Dagger.dagger)
+    kapt(Libs.Dagger.compiler)
 
 //    Test
     testImplementation Libs.Test.junit
     testImplementation Libs.AndroidX.Test.core
     testImplementation Libs.AndroidX.Test.Ext.junit
-    testImplementation Libs.Hilt.testing
-    kaptTest Libs.Hilt.compiler
 //    testImplementation Libs.AndroidX.Room.testing
 //    testImplementation Libs.Coroutines.test
 

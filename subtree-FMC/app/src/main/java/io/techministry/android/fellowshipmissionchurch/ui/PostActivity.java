@@ -1,18 +1,18 @@
 package io.techministry.android.fellowshipmissionchurch.ui;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -30,16 +30,16 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.techministry.android.fellowshipmissionchurch.R;
-import io.techministry.android.fellowshipmissionchurch.utils.ImageFilePath;
+import io.fmc.R;
+import io.fmc.R2;
 import io.techministry.android.fellowshipmissionchurch.utils.Utilities;
 
 public class PostActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar_post) Toolbar toolbar;
-    @BindView(R.id.content) EditText content;
-    @BindView(R.id.title) EditText title;
-    //@BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R2.id.toolbar_post) Toolbar toolbar;
+    @BindView(R2.id.content) EditText content;
+    @BindView(R2.id.title) EditText title;
+    //@BindView(R2.id.toolbar) Toolbar toolbar;
     boolean isFileSelected = false;
     Context context;
     final int PICK_PHOTO = 100;
@@ -129,7 +129,7 @@ public class PostActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if(task.isSuccessful()){
-                        String url = task.getResult().getDownloadUrl().toString();
+                        String url = photoRef.getDownloadUrl().toString();
                         if(content_type == "image"){
                             mDatabase.getReference("announcements").child(newKey).child("photo").setValue(url);
                         }else{

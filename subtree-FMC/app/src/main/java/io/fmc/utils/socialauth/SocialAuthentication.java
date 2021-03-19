@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+//import androidx.core.app.FragmentActivity;
 import android.util.Log;
 
 import com.facebook.AccessToken;
@@ -38,7 +39,6 @@ import java.util.Arrays;
 import io.fmc.BuildConfig;
 import io.fmc.R;
 import io.fmc.data.models.User;
-import io.fmc.di.AppController;
 import io.fmc.utils.LogHelper;
 
 
@@ -80,7 +80,7 @@ public class SocialAuthentication {
      * Start facebook login
      */
     public CallbackManager initFacebookRegistration(Activity context, final SocialAuthenticationListener socialAuthenticationListener) {
-        FacebookSdk.sdkInitialize(AppController.getAppContext());
+//        FacebookSdk.sdkInitialize(AppController.getAppContext());
         if (BuildConfig.DEBUG) {
             FacebookSdk.setIsDebugEnabled(true);
             FacebookSdk.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);

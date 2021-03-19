@@ -20,20 +20,22 @@ buildscript {
     dependencies {
 //        classpath "com.android.tools.build:gradle:4.0.0"
 //        classpath  "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-//        classpath 'com.google.gms:google-services:4.3.4'  // Google Services plugin
-//
+        classpath(BuildPlugins.gmsGoogleServices) // Google Services plugin
+
         classpath(BuildPlugins.androidGradlePlugin)
         classpath(BuildPlugins.androidGradlePlugin)
         classpath(BuildPlugins.kotlinGradlePlugin)
 //        temporarily remove for Github convenience, public allowed to clone and build app
 //        classpath(BuildPlugins.gmsGoogleServices)
 
-//        classpath(BuildPlugins.hiltPlugin)
-        classpath(Libs.Hilt.gradlePlugin)
         classpath(Libs.AndroidX.Navigation.safeArgs)
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21"
 
-//        classpath(Libs.hiltPlugin)
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'
+
+
+        //    switching to dagger
+//        classpath(Libs.Hilt.gradlePlugin)
 
 
 //        classpath Libs.Kotlin.androidGradlePlugin
@@ -49,6 +51,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/drummer-aidan/maven' }
     }
 }
 

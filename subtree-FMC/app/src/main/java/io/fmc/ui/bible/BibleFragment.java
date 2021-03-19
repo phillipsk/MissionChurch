@@ -1,17 +1,34 @@
+/*
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.fmc.ui.bible;
 
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -22,9 +39,10 @@ import io.fmc.network.BibleBook;
 
 //import io.fmc2.FellowshipApplication;
 
+//@AndroidEntryPoint
 public class BibleFragment extends Fragment implements BibleScreen {
 
-    private String bibleId = "de4e12af7f28f599-02";
+    private final String bibleId = "de4e12af7f28f599-02";
     private RecyclerView recyclerView;
     private BooksAdapter booksAdapter;
 
@@ -35,7 +53,7 @@ public class BibleFragment extends Fragment implements BibleScreen {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 //        return super.onCreateView(inflater, container, savedInstanceState);
-        View rv = inflater.inflate(R.layout.fragment_about_us,container,false);
+        View rv = inflater.inflate(R.layout.fragment_about_us_legacy,container,false);
 
         TextView mTextView = (TextView) rv.findViewById(R.id.text); //findViewById(R.id.text);
 
