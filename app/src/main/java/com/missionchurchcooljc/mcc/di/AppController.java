@@ -35,6 +35,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.missionchurchcooljc.mcc.feature_highlights.AboutUsModule;
 import com.onesignal.OneSignal;
 
 import org.greenrobot.greendao.database.Database;
@@ -47,7 +48,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import dagger.hilt.android.HiltAndroidApp;
 import io.fmc.db.AudioMessage;
 import io.fmc.db.AudioMessageDao;
 import io.fmc.db.DaoMaster;
@@ -62,11 +62,11 @@ import kotlin.Pair;
 /**
  * Created by  Kevin Phillips and Sunday Akinsete on 14/04/2018.
  */
-@HiltAndroidApp
+//@HiltAndroidApp
 public class AppController extends Application {
 //public class AppController extends MultiDexApplication {
 
-//    private ApplicationComponent component;
+    private ApplicationComponent component;
     private static AppController sApp;
 
     private static Context context;
@@ -91,6 +91,7 @@ public class AppController extends Application {
 
         return sharedInstance;
     }
+
     Context contextOld;
 
     public static final String BROADCAST_DOWNLOAD_AUDIO_FAILED = "download_audio_failed";
@@ -100,6 +101,18 @@ public class AppController extends Application {
 
     public List<AudioMessage> audioMessages = new ArrayList<>();
 
+    public static ApplicationComponent getAppComponent() {
+        return sApp.component;
+    }
+
+
+//      old code above
+//    new code below
+
+    public static Context getAppContext() {
+        return AppController.context;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -107,10 +120,15 @@ public class AppController extends Application {
         AppController.context = getApplicationContext();
 
 //        component = DaggerApplicationComponent.builder()
-//                .applicationModule(new ApplicationModule(this))
+//                .applicationModule(this).build();
+
+        component = DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
 //                .userModule(new UserModule())
 //                .postModule(new PostModule())
-//                .build();
+                .aboutUsModule(new AboutUsModule())
+                .build();
+
 
         FirebaseApp.initializeApp(this);
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
@@ -138,32 +156,18 @@ public class AppController extends Application {
 
     }
 
-
-
-//      old code above
-//    new code below
-
-    public static Context getAppContext() {
-        return AppController.context;
+    public ApplicationComponent getComponent() {
+        return component;
     }
 
-//    public static ApplicationComponent getAppComponent() {
-//        return sApp.component;
-//    }
-//
-//
-//    public ApplicationComponent getComponent(){
-//        return component;
-//    }
-
-//    new code above
+    //    new code above
 //    old code below
     private void initBackend(Context contextOld) {
         this.contextOld = this;
     }
 
 
-    private String getFullEndpoint(String endpoint){
+    private String getFullEndpoint(String endpoint) {
 
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("http")
@@ -277,7 +281,8 @@ public class AppController extends Application {
     }
 
 
-
-
-
+//    @Override
+//    public AndroidInjector<Activity> activityInjector() {
+//        AppInjector appInjector = new AppInjector(this);
+//    }
 }

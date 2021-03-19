@@ -18,9 +18,6 @@ package com.missionchurchcooljc.mcc.di
 
 import com.missionchurchcooljc.mcc.MainActivity
 import com.missionchurchcooljc.mcc.di.modules.AppModule
-import com.missionchurchcooljc.mcc.di.modules.ContextModule
-import com.missionchurchcooljc.mcc.di.modules.NetworkModule
-import com.missionchurchcooljc.mcc.di.modules.DatabaseModule
 import dagger.Component
 import javax.inject.Singleton
 

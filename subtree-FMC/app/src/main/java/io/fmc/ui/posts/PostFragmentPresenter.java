@@ -21,8 +21,6 @@ import android.util.Log;
 import java.util.Collections;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import io.fmc.data.models.AnnouncementPost;
 
 /**
@@ -35,7 +33,7 @@ public class PostFragmentPresenter implements PostMVP.Presenter {
     PostMVP.View view;
     PostMVP.Model postModel;
 
-    @Inject
+//    @Inject
     public PostFragmentPresenter(PostModel postModel) {
         this.postModel = postModel;
     }

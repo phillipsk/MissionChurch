@@ -34,17 +34,19 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import dagger.hilt.android.AndroidEntryPoint;
 import io.fmc.R;
 import io.fmc.R2;
 import io.fmc.data.models.AnnouncementPost;
+import io.fmc.di.DaggerLegacyAppComponent;
+import io.fmc.di.LegacyAppComponent;
+import io.fmc.di.PostModule;
 import io.fmc.ui.base.BaseFragment;
 import io.fmc.ui.posts.postdetail.PostDetailActivity;
 import io.fmc.ui.videoplayer.PlayerActivity;
 import io.fmc.utils.SimpleDividerItemDecoration;
 
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 public class PostsFragment extends BaseFragment implements PostMVP.View {
 
 //    public PostsFragment(RecyclerView recyclerView, PostAdapter postAdapter, List<AnnouncementPost> posts, PostMVP.Presenter presenter) {
@@ -62,14 +64,31 @@ public class PostsFragment extends BaseFragment implements PostMVP.View {
     @Inject
     PostMVP.Presenter presenter;
 
+    LegacyAppComponent component;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        PostModel postModel = new PostModel();
-        this.presenter = new PostFragmentPresenter(postModel);
-//        ((AppController)getActivity().getApplication()).getComponent().inject(this);
+//        PostModel postModel = new PostModel();
+//        this.presenter = new PostFragmentPresenter(postModel);
+//        MainActivity activity = (MainActivity) getActivity();
+
+//        component =
+//                ((DashboardActivity)getActivity()).getLegacyAppComponent();
+//        component.inject(this);
+
+//        ((DashboardActivity)getActivity()).
+//                getLegacyAppComponent().inject(this);
+
+//        component = activity.getLegacyAppComponent();
+//        (mainActivity as MainActivity) .getLegacyAppComponent
+
+        DaggerLegacyAppComponent.builder()
+                .postModule(new PostModule())
+                .build()
+                .inject(this);
+
     }
 
     @Override

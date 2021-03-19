@@ -1,8 +1,5 @@
-import com.missionchurchcooljc.mcc.buildsrc.AndroidSdk
-import com.missionchurchcooljc.mcc.buildsrc.Libs
-
 /*
- * Copyright (c) 2021  Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +13,9 @@ import com.missionchurchcooljc.mcc.buildsrc.Libs
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import com.missionchurchcooljc.mcc.buildsrc.AndroidSdk
+import com.missionchurchcooljc.mcc.buildsrc.Libs
 
 plugins {
     id 'com.android.library'
@@ -58,7 +58,7 @@ dependencies {
 
     implementation project(':data-android')
     implementation project(':common')
-    implementation project(':core')
+//    implementation project(':core')
 
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.constraintlayout)

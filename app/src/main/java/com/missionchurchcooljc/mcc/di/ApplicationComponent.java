@@ -16,11 +16,20 @@
 
 package com.missionchurchcooljc.mcc.di;
 
-import dagger.Module;
-import dagger.hilt.InstallIn;
-import dagger.hilt.components.SingletonComponent;
-import io.fmc.ui.posts.PostModule;
-import io.fmc.ui.users.UserModule;
+import android.content.Context;
+
+import com.missionchurchcooljc.mcc.di.modules.CoroutineContextModule;
+import com.missionchurchcooljc.mcc.di.modules.NetworkModule;
+import com.missionchurchcooljc.mcc.feature_highlights.AboutUsFragment;
+import com.missionchurchcooljc.mcc.feature_highlights.AboutUsModule;
+import com.missionchurchcooljc.mcc.feature_highlights.mvvm.HighlightsFragment;
+import com.missionchurchcooljc.mcc.feature_highlights.mvvm.di.ViewModelModule;
+import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteRepository;
+import com.missionchurchcooljc.mcc.persistence.DataBaseModule;
+
+import javax.inject.Singleton;
+
+import dagger.Component;
 
 
 /**
@@ -28,32 +37,39 @@ import io.fmc.ui.users.UserModule;
  */
 
 
-@InstallIn(SingletonComponent.class)
-@Module(includes = {ApplicationModule.class, UserModule.class, PostModule.class,
-                        LegacyModule.class})
-public interface ApplicationComponent{
+//@InstallIn(SingletonComponent.class)
+//@Module(includes = {ApplicationModule.class, UserModule.class, PostModule.class,
+//                        LegacyModule.class})
+//public interface ApplicationComponent{
 
-}
-//{
+@Singleton
+@Component(modules = {ApplicationModule.class, AboutUsModule.class,
+        NetworkModule.class, ViewModelModule.class, DataBaseModule.class, CoroutineContextModule.class})
+public interface ApplicationComponent {
 
-//    void inject(LoginActivity target);
+//    @Component.Builder
+//    interface Builder {
 //
-//    void inject(LoginActivityPresenter target);
+//        @BindsInstance
+//        Builder application(Application application);
 //
-//    void inject(CreateAccountActivity target);
-//
-//    void inject (PasswordResetActivity target);
-//
-//    void inject (PostsFragment target);
-//
-//    void inject (FMCApi fmcApi);
-//
-//    Context context();
+//        AppComponent build();
+//    }
+
+    void inject(AboutUsFragment aboutUsFragment);
+
+    void inject(HighlightsFragment highlightsFragment);
+
+    void inject(ChurchWebsiteRepository churchWebsiteRepository);
+
+    Context context();
 
 //    void inject(UserRepoListActivity target);
 //
 //    void inject(RepoDetailActivity target);
 
-//}
+//    void DummyDependencySubComponent.Builderr dummyDependencyBuilder
+
+}
 
 

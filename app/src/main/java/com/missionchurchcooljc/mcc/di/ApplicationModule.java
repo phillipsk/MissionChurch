@@ -23,28 +23,27 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import dagger.hilt.InstallIn;
-import dagger.hilt.components.SingletonComponent;
 import io.fmc.utils.SessionManager;
 
 /**
  * Created by  Kevin Phillips and Sunday Akinsete on 21/02/2018.
  */
 
-@InstallIn(SingletonComponent.class)
+//@InstallIn(SingletonComponent.class)
 @Module
 public class ApplicationModule {
 
-    private Application application;
+    private final Application application;
 
 
-//    public ApplicationModule(Application application) {
-//        this.application = application;
-//    }
+    public ApplicationModule(Application application) {
+        this.application = application;
+    }
+
 
     @Provides
     @Singleton
-    public Context provideContext(){
+    public Context provideContext() {
         return application;
     }
 
@@ -54,4 +53,5 @@ public class ApplicationModule {
         return new SessionManager(context);
     }
 
+//    public WebsiteRepository provideWebsiteRepository
 }

@@ -16,19 +16,29 @@
 
 package com.missionchurchcooljc.mcc.di.modules
 
-import com.missionchurchcooljc.common.network.api.ChurchWebsiteService
-import dagger.Module
-import dagger.Provides
 //import dagger.hilt.InstallIn
 //import dagger.hilt.android.components.ApplicationComponent
+import com.google.gson.Gson
+import com.missionchurchcooljc.data_android.WebsiteHighlightDAO
+import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteRepository
+import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteService
+import com.raywenderlich.kotlin.coroutines.contextProvider.CoroutineContextProviderImpl
+import dagger.Module
+import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
+import kotlin.coroutines.CoroutineContext
+
+private const val BASE_URL_GW = "http://god.works"
 
 //@InstallIn(ApplicationComponent::class)
 @Module
 class NetworkModule {
+
 
     val httpLoggingInterceptor: HttpLoggingInterceptor
         @Provides
@@ -39,25 +49,49 @@ class NetworkModule {
         }
 
     @Provides
-    fun getApiInterface(retroFit: Retrofit): ChurchWebsiteService {
-        return retroFit.create(ChurchWebsiteService::class.java)
+    fun provideHighlightsRepository(
+        churchWebsiteService: ChurchWebsiteService,
+//                                    coroutineContextProviderImpl: CoroutineContextProviderImpl,
+        websiteHighlightDAO: WebsiteHighlightDAO
+    ): ChurchWebsiteRepository {
+        return ChurchWebsiteRepository(churchWebsiteService, websiteHighlightDAO)
+//        return ChurchWebsiteRepository(churchWebsiteService, coroutineContextProviderImpl, websiteHighlightDAO)
+    }
+
+    @Provides
+    fun provideCoroutineContextProviderImpl(context: CoroutineContext): CoroutineContextProviderImpl {
+        return CoroutineContextProviderImpl(context)
     }
 
 
     @Provides
-    fun getRetrofit(okHttpClient: OkHttpClient, baseUrl: String): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
+    fun provideHighlightsApiService(retrofit: Retrofit): ChurchWebsiteService {
+        return retrofit.create(ChurchWebsiteService::class.java)
+    }
+
+
+    @Provides
+    @Singleton
+    fun providesRetrofit(
+        gsonConverterFactory: GsonConverterFactory,
+        okHttpClient: OkHttpClient
+    ): Retrofit {
+        return Retrofit.Builder().baseUrl(BASE_URL_GW)
+            .addConverterFactory(gsonConverterFactory)
+//            .addCallAdapterFactory(CoroutineCallAdapterFactory()) // for Deferred return type
             .client(okHttpClient)
             .build()
     }
 
 
     @Provides
-    fun getOkHttpCleint(httpLoggingInterceptor: HttpLoggingInterceptor):
-            OkHttpClient {
+    @Singleton
+    fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
+            //  .cache(cache)
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
             .addInterceptor(httpLoggingInterceptor)
             .build()
     }
@@ -68,5 +102,16 @@ class NetworkModule {
 //        return networkInfo != null && networkInfo.isConnected //3
 //    }
 
+    @Provides
+    @Singleton
+    fun providesGson(): Gson {
+        return Gson()
+    }
+
+    @Provides
+    @Singleton
+    fun providesGsonConverterFactory(): GsonConverterFactory {
+        return GsonConverterFactory.create()
+    }
 
 }
