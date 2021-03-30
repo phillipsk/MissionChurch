@@ -48,6 +48,7 @@ import io.fmc.R;
 import io.fmc.R2;
 import io.fmc.db.AudioMessage;
 import io.fmc.db.DaoSession;
+import io.fmc.di.DaggerLegacyAppComponent;
 
 import static com.example.jean.jcplayer.JcAudio.createFromURL;
 
@@ -70,6 +71,7 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
     DaoSession daoSession;
     //        DaoSession daoSessionII;
 //        AppController AppController;
+    @Inject
     Context context;
     BroadcastReceiver broadcastReceiver;
     List<AudioMessage> audioMessages = new ArrayList<>();
@@ -87,6 +89,11 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        DaggerLegacyAppComponent.builder()
+//                .postModule(new AudiosModule())
+                .build()
+                .inject(this);
 
         context = getActivity();
 //            initBroadcastReceiver();

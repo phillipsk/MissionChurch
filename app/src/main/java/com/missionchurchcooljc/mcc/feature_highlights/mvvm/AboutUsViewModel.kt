@@ -38,8 +38,21 @@ class AboutUsViewModel @Inject internal constructor(
     private val job: Job = Job()
     private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
 
-    //    lateinit var highlights: LiveData<List<WebsiteHighlight>>
+//    lateinit var highlights: LiveData<List<WebsiteHighlight>>
     var highlights: LiveData<List<WebsiteHighlight>> = websiteRepository.getHighlights()
+
+// TODO: an attempt to replace constant highlights above with function call
+//    fun fetchHighlights(): LiveData<List<WebsiteHighlight>>{
+//       return websiteRepository.getHighlights()
+//    }
+
+
+//    fun purgeHighlights(){
+//        coroutineScope.launch(Dispatchers.IO) {
+//
+//            return@launch websiteRepository.purgeHighlights()
+//        }
+//    }
 
     fun retrieveHighlights() {
 //        retrieve seeded highlights, then retrieve remote, compare - DONE

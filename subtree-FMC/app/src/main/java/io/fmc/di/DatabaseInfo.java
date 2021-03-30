@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package com.missionchurchcooljc.mcc.utilities
+package io.fmc.di;
 
-@kotlin.jvm.JvmField
-var DB_NAME: String = "fmcdb"
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
-/**
- * Constants used throughout the app.
- */
-const val DATABASE_NAME = "mcc-room-db"
-const val ABOUT_US_DATA_FILENAME = "highlights.json"
+import javax.inject.Qualifier;
+
+@Qualifier
+@Retention(RetentionPolicy.RUNTIME)
+public @interface DatabaseInfo {
+}

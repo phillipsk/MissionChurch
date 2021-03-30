@@ -100,6 +100,7 @@ dependencies {
     implementation(Libs.AndroidX.Fragment.fragmentKtx)
     implementation(Libs.AndroidX.Room.runtime)
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.sqlite:sqlite-ktx:2.1.0'
     kapt(Libs.AndroidX.Room.compiler)
     implementation(Libs.AndroidX.Room.ktx)
 

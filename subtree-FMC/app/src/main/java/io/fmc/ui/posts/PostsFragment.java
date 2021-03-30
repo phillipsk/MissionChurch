@@ -39,7 +39,6 @@ import io.fmc.R2;
 import io.fmc.data.models.AnnouncementPost;
 import io.fmc.di.DaggerLegacyAppComponent;
 import io.fmc.di.LegacyAppComponent;
-import io.fmc.di.PostModule;
 import io.fmc.ui.base.BaseFragment;
 import io.fmc.ui.posts.postdetail.PostDetailActivity;
 import io.fmc.ui.videoplayer.PlayerActivity;
@@ -85,7 +84,6 @@ public class PostsFragment extends BaseFragment implements PostMVP.View {
 //        (mainActivity as MainActivity) .getLegacyAppComponent
 
         DaggerLegacyAppComponent.builder()
-                .postModule(new PostModule())
                 .build()
                 .inject(this);
 
