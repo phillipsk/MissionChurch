@@ -14,13 +14,19 @@
  * limitations under the License.
  */
 
-package com.missionchurchcooljc.mcc.utilities
+package io.fmc.db;
 
-@kotlin.jvm.JvmField
-var DB_NAME: String = "fmcdb"
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
-/**
- * Constants used throughout the app.
- */
-const val DATABASE_NAME = "mcc-room-db"
-const val ABOUT_US_DATA_FILENAME = "highlights.json"
+@Singleton
+public class DaoAppDbHelper implements DbHelper {
+
+        private final DaoSession mDaoSession;
+
+        @Inject
+        public DaoAppDbHelper(DaoMaster.DevOpenHelper devOpenHelper) {
+            mDaoSession = new DaoMaster(devOpenHelper.getWritableDb()).newSession();
+        }
+
+    }

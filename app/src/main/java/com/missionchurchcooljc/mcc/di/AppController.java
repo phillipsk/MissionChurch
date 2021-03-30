@@ -35,7 +35,6 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.missionchurchcooljc.mcc.feature_highlights.AboutUsModule;
 import com.onesignal.OneSignal;
 
 import org.greenrobot.greendao.database.Database;
@@ -58,13 +57,16 @@ import kotlin.Pair;
 //import com.github.kittinunf.fuel.android.*;
 
 
-
 /**
  * Created by  Kevin Phillips and Sunday Akinsete on 14/04/2018.
  */
 //@HiltAndroidApp
+//public class AppController extends DaggerApplication {
 public class AppController extends Application {
 //public class AppController extends MultiDexApplication {
+
+//    @Inject
+//    MccRoomDatabase mccRoomDatabase;
 
     private ApplicationComponent component;
     private static AppController sApp;
@@ -82,7 +84,7 @@ public class AppController extends Application {
     public static final String DEFAULT_ADDRESS = "god.works";
     public static final String API_SERVICE = "mp3";
 
-//    private static FellowshipApplication sharedInstance;
+    //    private static FellowshipApplication sharedInstance;
     private static AppController sharedInstance;
     private List<? extends Pair<String, ? extends Object>> params;
 
@@ -119,16 +121,24 @@ public class AppController extends Application {
 
         AppController.context = getApplicationContext();
 
+
 //        component = DaggerApplicationComponent.builder()
 //                .applicationModule(this).build();
 
-        component = DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule(this))
-//                .userModule(new UserModule())
-//                .postModule(new PostModule())
-                .aboutUsModule(new AboutUsModule())
-                .build();
+        // factory
+        component = DaggerApplicationComponent.factory().create(this,this.getApplicationContext());
 
+//        component = DaggerApplicationComponent.builder()
+//                .applicationModule(new ApplicationModule(this))
+////                .userModule(new UserModule())
+////                .postModule(new PostModule())
+//                .aboutUsModule(new AboutUsModule())
+//                .build();
+
+//        WebsiteHighlightDAO websiteHighlightDAO = mccRoomDatabase.websiteHighlightDao();
+//        websiteHighlightDAO.clearHighlights();
+
+//        Log.d("hashcode", String.valueOf(mccRoomDatabase.hashCode()));
 
         FirebaseApp.initializeApp(this);
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
@@ -153,8 +163,17 @@ public class AppController extends Application {
 //        JUL-20
         fetchAudioMessage();
 
+//        Log.d("hashcodeapp", String.valueOf(mccRoomDatabase.hashCode()));
 
     }
+
+//    @Override
+//    protected AndroidInjector<AppController> applicationInjector() {
+//        ApplicationComponent appComponent = DaggerApplicationComponent
+//                .builder().application(this).build();
+//        appComponent.inject(this);
+//        return appComponent;
+//    }
 
     public ApplicationComponent getComponent() {
         return component;
@@ -180,7 +199,7 @@ public class AppController extends Application {
 
 
     private void initDatabase() {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this,"fmcdb"); //The users-db here is the name of our database.
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "fmcdb"); //The users-db here is the name of our database.
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
     }
@@ -192,14 +211,13 @@ public class AppController extends Application {
     private void initMapFragment() {
         mapFragment = SupportMapFragment.newInstance();
     }
-    public SupportMapFragment getMapFragment(){
+
+    public SupportMapFragment getMapFragment() {
         return mapFragment;
     }
 
 
-
-
-    public void fetchAudioMessage(){
+    public void fetchAudioMessage() {
 
         Fuel.get(getFullEndpoint("api.php"), params).responseString(new Handler<String>() {
 
@@ -209,7 +227,7 @@ public class AppController extends Application {
 
             @Override
             public void failure(@NotNull Request request, @NotNull Response response, @NotNull FuelError fuelError) {
-                Log.e("files_audio",fuelError.toString());
+                Log.e("files_audio", fuelError.toString());
                 Gson gson = new Gson();
 
             }
@@ -229,7 +247,8 @@ public class AppController extends Application {
                         JSONArray audioFIleArray = jsonObject.getJSONArray("audio_files");
 //                        This type literal is create simply to create the correct parameter for the
 //                        gson object mapper method below
-                        Type audioType = new TypeToken<List<AudioMessage>>() {}.getType();
+                        Type audioType = new TypeToken<List<AudioMessage>>() {
+                        }.getType();
                         audioMessages = gson.fromJson(audioFIleArray.toString(), audioType);
                         updateAudioMessages(audioMessages);
                     } else {
@@ -248,15 +267,15 @@ public class AppController extends Application {
         AudioMessageDao audioMessageDao = daoSession.getAudioMessageDao();
         audioMessageDao.deleteAll();
         audioMessageDao.saveInTx(audioMessages);
-        sendLocalBroadcast(BROADCAST_DOWNLOAD_AUDIO_SUCCESSFUL,null,0);
+        sendLocalBroadcast(BROADCAST_DOWNLOAD_AUDIO_SUCCESSFUL, null, 0);
     }
 
 
-    private JSONObject convertStringToObject(String data){
+    private JSONObject convertStringToObject(String data) {
         JSONObject jsonObject = new JSONObject();
-        try{
+        try {
             jsonObject = new JSONObject(data);
-        }catch (Exception s){
+        } catch (Exception s) {
 
         }
 
@@ -264,11 +283,11 @@ public class AppController extends Application {
     }
 
 
-    public void sendLocalBroadcast(String type, HashMap<String,Object> object, int position){
+    public void sendLocalBroadcast(String type, HashMap<String, Object> object, int position) {
         Intent intent = new Intent(backendBroadCast);
-        intent.putExtra("broadcast_type",type);
-        intent.putExtra("object",object);
-        intent.putExtra("position",position);
+        intent.putExtra("broadcast_type", type);
+        intent.putExtra("object", object);
+        intent.putExtra("position", position);
         context.sendBroadcast(intent);
     }
 

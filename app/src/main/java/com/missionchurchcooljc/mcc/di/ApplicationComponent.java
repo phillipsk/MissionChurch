@@ -16,20 +16,19 @@
 
 package com.missionchurchcooljc.mcc.di;
 
+import android.app.Application;
 import android.content.Context;
 
-import com.missionchurchcooljc.mcc.di.modules.CoroutineContextModule;
-import com.missionchurchcooljc.mcc.di.modules.NetworkModule;
+import com.missionchurchcooljc.mcc.di.modules.AppModule;
 import com.missionchurchcooljc.mcc.feature_highlights.AboutUsFragment;
-import com.missionchurchcooljc.mcc.feature_highlights.AboutUsModule;
 import com.missionchurchcooljc.mcc.feature_highlights.mvvm.HighlightsFragment;
-import com.missionchurchcooljc.mcc.feature_highlights.mvvm.di.ViewModelModule;
 import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteRepository;
-import com.missionchurchcooljc.mcc.persistence.DataBaseModule;
 
 import javax.inject.Singleton;
 
+import dagger.BindsInstance;
 import dagger.Component;
+import io.fmc.di.ApplicationContext;
 
 
 /**
@@ -43,17 +42,25 @@ import dagger.Component;
 //public interface ApplicationComponent{
 
 @Singleton
-@Component(modules = {ApplicationModule.class, AboutUsModule.class,
-        NetworkModule.class, ViewModelModule.class, DataBaseModule.class, CoroutineContextModule.class})
-public interface ApplicationComponent {
+@Component(modules = {AppModule.class, DaoModule.class})
+public interface ApplicationComponent  {
+//public interface ApplicationComponent extends AndroidInjector<AppController> {
+//    void inject(AppController appController);
+
+    @Component.Factory
+    interface Factory {
+        ApplicationComponent create(@BindsInstance Application application,
+                                    @BindsInstance @ApplicationContext Context context);
+
+    }
 
 //    @Component.Builder
 //    interface Builder {
 //
 //        @BindsInstance
 //        Builder application(Application application);
+//        ApplicationComponent build();
 //
-//        AppComponent build();
 //    }
 
     void inject(AboutUsFragment aboutUsFragment);
@@ -62,7 +69,14 @@ public interface ApplicationComponent {
 
     void inject(ChurchWebsiteRepository churchWebsiteRepository);
 
-    Context context();
+//    void inject(MainActivity mainActivity);
+
+//    DaoSession daoSession();
+
+//    @ApplicationContext
+//    Context context();
+
+//    Context context();
 
 //    void inject(UserRepoListActivity target);
 //

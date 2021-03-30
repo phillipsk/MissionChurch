@@ -18,14 +18,13 @@ package io.fmc.di;
 
 import android.app.Application;
 
-import org.greenrobot.greendao.database.Database;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import io.fmc.db.DaoMaster;
 import io.fmc.db.DaoSession;
+import io.fmc.db.DbOpenHelper;
 
 @Module
 public class AudiosModule extends Application {
@@ -35,12 +34,18 @@ public class AudiosModule extends Application {
 //    Database db = helper.getWritableDb();
 //    daoSession = new DaoMaster(db).newSession();
 
+//    @Provides
+//    @Singleton
+//    public DaoSession providesDaoSession(DaoMaster.DevOpenHelper helper,
+//                                         Database db) {
+//        helper = new DaoMaster.DevOpenHelper(this, "fmcdb");
+//        db = helper.getWritableDb();
+//        return new DaoMaster(db).newSession();
+//    }
+
     @Provides
     @Singleton
-    public DaoSession providesDaoSession(DaoMaster.DevOpenHelper helper,
-                                         Database db) {
-        helper = new DaoMaster.DevOpenHelper(this, "fmcdb");
-        db = helper.getWritableDb();
-        return new DaoMaster(db).newSession();
+    DaoSession provideDaoSession(DbOpenHelper dbOpenHelper) {
+        return new DaoMaster(dbOpenHelper.getWritableDb()).newSession();
     }
 }

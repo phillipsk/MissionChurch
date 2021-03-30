@@ -13,20 +13,3 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.missionchurchcooljc.mcc.di
-
-import com.missionchurchcooljc.mcc.MainActivity
-import com.missionchurchcooljc.mcc.di.modules.AppModule
-import dagger.Component
-import javax.inject.Singleton
-
-@Singleton
-@Component(
-    modules = [AppModule::class]
-)
-interface AppComponent {
-
-    fun inject(mainActivity: MainActivity)
-
-}

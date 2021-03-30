@@ -27,7 +27,6 @@ import androidx.fragment.app.FragmentTransaction;
 import io.fmc.R;
 import io.fmc.di.DaggerLegacyAppComponent;
 import io.fmc.di.LegacyAppComponent;
-import io.fmc.di.PostModule;
 import io.fmc.ui.aboutus.AboutUsFragmentLegacy;
 import io.fmc.ui.base.BaseActivity;
 import io.fmc.ui.connect.StayConnectedFragment;
@@ -55,7 +54,7 @@ public class DashboardActivity extends BaseActivity implements StayConnectedFrag
 //        ButterKnife.bind(this);
 
         legacyAppComponent = DaggerLegacyAppComponent.builder()
-                .postModule(new PostModule())
+//                .postModule(new PostModule())
                 .build();
 
         fragmentManager = getSupportFragmentManager();
@@ -64,7 +63,7 @@ public class DashboardActivity extends BaseActivity implements StayConnectedFrag
 //        setupBaseActionbar(toolBar,getString(R.string.app_name_long),false);
 
 
-//        setTupBottomNavigation();
+        setTupBottomNavigation();
 
 //        bottomNavigationView.setSelectedItemId(R.id.bottom_nav_the_word);
     }

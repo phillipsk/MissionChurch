@@ -21,6 +21,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import io.fmc.di.DaggerLegacyAppComponent;
 import io.fmc.ui.dashboard.DashboardActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,9 +32,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        legacyAppComponent = DaggerLegacyAppComponent.builder()
+//        legacyAppComponent =
+                DaggerLegacyAppComponent.builder()
 //                .postModule(new PostModule())
-//                .build();
+                .application(getApplication())
+                .build();
 
         //SessionManager sessionManager = new SessionManager(this);
 

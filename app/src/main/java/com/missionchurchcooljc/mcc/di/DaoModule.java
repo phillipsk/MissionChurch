@@ -14,13 +14,25 @@
  * limitations under the License.
  */
 
-package com.missionchurchcooljc.mcc.utilities
+package com.missionchurchcooljc.mcc.di;
 
-@kotlin.jvm.JvmField
-var DB_NAME: String = "fmcdb"
+import com.missionchurchcooljc.mcc.utilities.ConstantsKt;
 
-/**
- * Constants used throughout the app.
- */
-const val DATABASE_NAME = "mcc-room-db"
-const val ABOUT_US_DATA_FILENAME = "highlights.json"
+import dagger.Module;
+import dagger.Provides;
+import io.fmc.di.DatabaseInfo;
+
+@Module
+public class DaoModule {
+//    @Provides
+//    @Singleton
+//    DaoSession provideDaoSession(DbOpenHelper dbOpenHelper) {
+//        return new DaoMaster(dbOpenHelper.getWritableDb()).newSession();
+//    }
+
+    @Provides
+    @DatabaseInfo
+    String provideDatabaseName() {
+        return ConstantsKt.DB_NAME;
+    }
+}

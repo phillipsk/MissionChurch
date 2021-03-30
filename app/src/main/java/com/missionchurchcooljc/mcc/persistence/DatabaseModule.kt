@@ -17,14 +17,7 @@
 package com.missionchurchcooljc.mcc.persistence
 
 import android.content.Context
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import com.missionchurchcooljc.data_android.WebsiteHighlightDAO
-import com.missionchurchcooljc.mcc.persistence.workers.SeedDatabaseWorker
-import com.missionchurchcooljc.mcc.utilities.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -35,21 +28,24 @@ class DataBaseModule {
     @Provides
     @Singleton
     fun provideRoomDatabase(context: Context): MccRoomDatabase {
-        return Room
-//            .databaseBuilder(application, AppDatabase::class.java, AppDatabase.DB_NAME)
-//            .fallbackToDestructiveMigration()
-//            .build()
-            .databaseBuilder(context, MccRoomDatabase::class.java, DATABASE_NAME)
-            .addCallback(
-                object : RoomDatabase.Callback() {
-                    override fun onCreate(db: SupportSQLiteDatabase) {
-                        super.onCreate(db)
-                        val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>().build()
-                        WorkManager.getInstance(context).enqueue(request)
-                    }
-                }
-            ).build()
+        return MccRoomDatabase.getInstance(context)
     }
+//        return Room
+////            .build()
+//            .databaseBuilder(context, MccRoomDatabase::class.java, DATABASE_NAME)
+//            // TODO: remove in production
+//            // https://stackoverflow.com/questions/46516830/room-persistent-library-reset-version-to-1
+//            .fallbackToDestructiveMigration()
+//            .addCallback(
+//                object : RoomDatabase.Callback() {
+//                    override fun onCreate(db: SupportSQLiteDatabase) {
+//                        super.onCreate(db)
+//                        val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>().build()
+//                        WorkManager.getInstance(context).enqueue(request)
+//                    }
+//                }
+//            ).build()
+//    }
 
     @Provides
     fun provideWebsiteHighlightDAO(mccRoomDatabase: MccRoomDatabase): WebsiteHighlightDAO {

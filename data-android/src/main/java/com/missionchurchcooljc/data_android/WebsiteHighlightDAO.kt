@@ -39,4 +39,6 @@ interface WebsiteHighlightDAO {
     @Query("SELECT * FROM highlights")
     fun listHighlights(): List<WebsiteHighlight>
 
+    @Query("DELETE FROM highlights")
+    fun clearHighlights()
 }

@@ -24,18 +24,18 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.missionchurchcooljc.data_android.WebsiteHighlight
+import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteResponse
 import com.missionchurchcooljc.mcc.persistence.MccRoomDatabase
 import com.missionchurchcooljc.mcc.utilities.ABOUT_US_DATA_FILENAME
 import kotlinx.coroutines.coroutineScope
-import javax.inject.Inject
 
 class SeedDatabaseWorker(
     appContext: Context,
     workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
 
-    @Inject
-    lateinit var mccRoomDatabase: MccRoomDatabase
+//    @Inject
+//    lateinit var mccRoomDatabase: MccRoomDatabase
 
 //    override suspend fun doWork(): Result {
 //        var f = applicationContext.assets.open(ABOUT_US_DATA_FILENAME)
@@ -52,11 +52,13 @@ class SeedDatabaseWorker(
         try {
             applicationContext.assets.open(ABOUT_US_DATA_FILENAME).use { inputStream ->
                 JsonReader(inputStream.reader()).use { jsonReader ->
-                    val whType = object : TypeToken<List<WebsiteHighlight>>() {}.type
-                    val whList: List<WebsiteHighlight> = Gson().fromJson(jsonReader, whType)
-//                    val database = MccRoomDatabase.getInstance(applicationContext)
+                    val whType = object : TypeToken<ChurchWebsiteResponse>() {}.type
+                    val highlights: ChurchWebsiteResponse = Gson().fromJson(jsonReader, whType)
+                    val whList: List<WebsiteHighlight> = highlights.items
+                    val mccRoomDatabase = MccRoomDatabase.getInstance(applicationContext)
+
                     mccRoomDatabase.websiteHighlightDao().insertAll(whList)
-//
+                    Log.d("highlights","database seeded successfully")
                     Result.success()
                 }
             }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.missionchurchcooljc.mcc.di;
+package com.missionchurchcooljc.mcc.di.modules;
 
 import android.app.Application;
 import android.content.Context;
@@ -49,9 +49,9 @@ public class ApplicationModule {
 
 
     @Provides
-    public SessionManager provideSessionManager(Context context){
+    public SessionManager provideSessionManager(Context context) {
         return new SessionManager(context);
     }
 
-//    public WebsiteRepository provideWebsiteRepository
+    //    public WebsiteRepository provideWebsiteRepository
 }
