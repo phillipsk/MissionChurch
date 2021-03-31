@@ -22,8 +22,8 @@ apply plugin: 'com.android.library'
 //apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.jakewharton.butterknife'
 
-//def localProperties = new Properties()
-//localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
     compileSdkVersion AndroidSdk.compile
@@ -54,8 +54,8 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "API_KEY", "\"" + "null" + "\"")
-//            buildConfigField("String", "API_KEY", "\"" + localProperties['apiKey'] + "\"")
+//            buildConfigField("String", "API_KEY", "\"" + "null" + "\"")
+            buildConfigField("String", "API_KEY", "\"" + localProperties['apiKey'] + "\"")
         }
         release {
             minifyEnabled false
