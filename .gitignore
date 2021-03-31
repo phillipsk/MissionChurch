@@ -90,7 +90,7 @@ lint/tmp/
 ### non-standard .gitignore
 # macOS
 .DS_Store
-/app/google-services.json
+#/app/google-services.json
 /common-ui-view/
 /.idea/
 /app/src/main/assets/about_us.html
