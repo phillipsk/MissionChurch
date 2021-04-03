@@ -35,6 +35,10 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.missionchurchcooljc.mcc.db.AudioMessage;
+import com.missionchurchcooljc.mcc.db.AudioMessageDao;
+import com.missionchurchcooljc.mcc.db.DaoMaster;
+import com.missionchurchcooljc.mcc.db.DaoSession;
 import com.onesignal.OneSignal;
 
 import org.greenrobot.greendao.database.Database;
@@ -47,10 +51,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import io.fmc.db.AudioMessage;
-import io.fmc.db.AudioMessageDao;
-import io.fmc.db.DaoMaster;
-import io.fmc.db.DaoSession;
 import kotlin.Pair;
 
 //import com.github.kittinunf.fuel.Fuel;
@@ -63,6 +63,7 @@ import kotlin.Pair;
 //@HiltAndroidApp
 //public class AppController extends DaggerApplication {
 public class AppController extends Application {
+//    private static ApplicationComponent componentStatic;
 //public class AppController extends MultiDexApplication {
 
 //    @Inject
@@ -178,6 +179,10 @@ public class AppController extends Application {
     public ApplicationComponent getComponent() {
         return component;
     }
+
+//    public static ApplicationComponent getComponent() {
+//        return componentStatic;
+//    }
 
     //    new code above
 //    old code below

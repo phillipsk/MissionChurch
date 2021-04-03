@@ -29,6 +29,8 @@ plugins {
     id 'com.google.gms.google-services'  // Google Services plugin
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
+    id 'com.jakewharton.butterknife'
+
     //    switching to dagger
 //    id 'dagger.
 //    .android.plugin'
@@ -192,8 +194,8 @@ dependencies {
     implementation(LegacyJava.circleimageview)
     implementation(LegacyJava.AndroidX.coordinatorlayout)
     implementation(LegacyJava.butterknife)
-    implementation(LegacyJava.timeago)
     annotationProcessor(LegacyJava.butterknifeAP)
+    implementation(LegacyJava.timeago)
 
 
     ////// Dagger II ////

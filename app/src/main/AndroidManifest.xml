@@ -39,26 +39,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--        <activity-->
+        <!--            android:name="io.fmc.MainActivity"-->
+        <!--            android:screenOrientation="portrait" />-->
+        <!--        <activity-->
+        <!--            android:name=".users.login.LoginActivity"-->
+        <!--            android:screenOrientation="portrait" />-->
+        <!--        <activity-->
+        <!--            android:name="io.fmc.ui.dashboard.DashboardActivity"-->
+        <!--            android:screenOrientation="portrait" />-->
+        <!--        <activity-->
+        <!--            android:name=".users.createaccount.CreateAccountActivity"-->
+        <!--            android:screenOrientation="portrait" />-->
+        <!--        <activity-->
+        <!--            android:name=".users.password.PasswordResetActivity"-->
+        <!--            android:screenOrientation="portrait" />-->
+        <!--        <activity-->
+        <!--            android:name="io.fmc.ui.videoplayer.PlayerActivity"-->
+        <!--            android:screenOrientation="portrait" />-->
         <activity
-            android:name="io.fmc.MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="io.fmc.ui.users.login.LoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="io.fmc.ui.dashboard.DashboardActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="io.fmc.ui.users.createaccount.CreateAccountActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="io.fmc.ui.users.password.PasswordResetActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="io.fmc.ui.videoplayer.PlayerActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="io.fmc.ui.posts.postdetail.PostDetailActivity"
+            android:name=".postdetail.PostDetailActivity"
             android:screenOrientation="portrait" />
     </application>
 

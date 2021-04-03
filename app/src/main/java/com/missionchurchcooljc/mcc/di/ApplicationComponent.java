@@ -19,10 +19,13 @@ package com.missionchurchcooljc.mcc.di;
 import android.app.Application;
 import android.content.Context;
 
+import com.missionchurchcooljc.mcc.data.FMCApi;
 import com.missionchurchcooljc.mcc.di.modules.AppModule;
 import com.missionchurchcooljc.mcc.feature_highlights.AboutUsFragment;
 import com.missionchurchcooljc.mcc.feature_highlights.mvvm.HighlightsFragment;
+import com.missionchurchcooljc.mcc.listen.AudiosFragment;
 import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteRepository;
+import com.missionchurchcooljc.mcc.posts.PostsFragment;
 
 import javax.inject.Singleton;
 
@@ -42,7 +45,8 @@ import io.fmc.di.ApplicationContext;
 //public interface ApplicationComponent{
 
 @Singleton
-@Component(modules = {AppModule.class, DaoModule.class})
+@Component(modules = {AppModule.class, DaoModule.class, PostModule.class,
+        AudiosModule.class, UserModule.class})
 public interface ApplicationComponent  {
 //public interface ApplicationComponent extends AndroidInjector<AppController> {
 //    void inject(AppController appController);
@@ -68,6 +72,12 @@ public interface ApplicationComponent  {
     void inject(HighlightsFragment highlightsFragment);
 
     void inject(ChurchWebsiteRepository churchWebsiteRepository);
+
+    void inject(PostsFragment target);
+
+    void inject(FMCApi fmcApi);
+
+    void inject(AudiosFragment audiosFragment);
 
 //    void inject(MainActivity mainActivity);
 

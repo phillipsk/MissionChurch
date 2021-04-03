@@ -24,14 +24,10 @@ import javax.inject.Singleton;
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.Module;
-import io.fmc.data.FMCApi;
-import io.fmc.ui.listen.AudiosFragment;
-import io.fmc.ui.posts.PostsFragment;
 
 @Singleton
 //@Component(modules = {UserModule.class, PostModule.class})
-@Component(modules = {UserModule.class, PostModule.class, AudiosModule.class,
-        LegacyAppModule.class})
+@Component(modules = {LegacyAppModule.class})
 public interface LegacyAppComponent {
 
     @Component.Builder
@@ -57,11 +53,11 @@ public interface LegacyAppComponent {
 //
 //    void inject(PasswordResetActivity target);
 
-    void inject(PostsFragment target);
-
-    void inject(FMCApi fmcApi);
-
-    void inject(AudiosFragment audiosFragment);
+//    void inject(PostsFragment target);
+//
+//    void inject(FMCApi fmcApi);
+//
+//    void inject(AudiosFragment audiosFragment);
 }
 
 @Module

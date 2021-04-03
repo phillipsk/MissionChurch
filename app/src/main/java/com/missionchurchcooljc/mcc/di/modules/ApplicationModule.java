@@ -19,11 +19,12 @@ package com.missionchurchcooljc.mcc.di.modules;
 import android.app.Application;
 import android.content.Context;
 
+import com.missionchurchcooljc.mcc.users.SessionManager;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import io.fmc.utils.SessionManager;
 
 /**
  * Created by  Kevin Phillips and Sunday Akinsete on 21/02/2018.

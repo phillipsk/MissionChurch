@@ -16,12 +16,7 @@
 
 package com.missionchurchcooljc.mcc.di
 
-import android.util.Log
 import com.missionchurchcooljc.mcc.ui.PostMVPkt
-import io.fmc.data.models.AnnouncementPost
-import io.fmc.ui.posts.PostModel
-import io.fmc.ui.posts.PostModel.OnPostsFetched
-import java.util.*
 import javax.inject.Inject
 
 class PostMVPktImpl @Inject constructor(

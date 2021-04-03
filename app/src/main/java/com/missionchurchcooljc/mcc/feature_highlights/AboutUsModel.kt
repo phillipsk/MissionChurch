@@ -23,8 +23,6 @@ import androidx.room.Query
 
 import com.missionchurchcooljc.data_android.WebsiteHighlight
 
-import java.util.List
-
 class AboutUsModel : AboutUsMVP.Model {
 
 
