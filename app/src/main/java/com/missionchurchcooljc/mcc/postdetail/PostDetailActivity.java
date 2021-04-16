@@ -30,7 +30,7 @@ import io.fmc.ui.base.BaseActivity;
 
 //@AndroidEntryPoint
 public class PostDetailActivity extends BaseActivity {
-
+// TODO: refactor to a Fragment, why switch from MainActivity > Navigation > PostsFragment > PostDetailActivity
     private ActivityPostDetailBinding binding;
     AnnouncementPost post;
 //    @BindView(R2.id.backdrop)
@@ -55,6 +55,7 @@ public class PostDetailActivity extends BaseActivity {
 
 //        not needed for Kotlin refactor
 //        setupBaseActionbar(toolbar, post.getTitle(), true);
+//        TODO: No need to inject activities into Dagger?, nothing @Injected
 
         displayData();
     }

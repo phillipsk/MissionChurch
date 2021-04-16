@@ -128,6 +128,7 @@ public class AppController extends Application {
 
         // factory
         component = DaggerApplicationComponent.factory().create(this,this.getApplicationContext());
+//        component = DaggerApplicationComponent.builder().build(); //.factory().create(this,this.getApplicationContext());
 
 //        component = DaggerApplicationComponent.builder()
 //                .applicationModule(new ApplicationModule(this))

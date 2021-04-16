@@ -16,7 +16,6 @@
 
 package com.missionchurchcooljc.mcc.network.api
 
-import android.util.Log
 import com.missionchurchcooljc.data_android.WebsiteHighlight
 import com.missionchurchcooljc.data_android.WebsiteHighlightDAO
 import javax.inject.Inject
@@ -30,13 +29,20 @@ class ChurchWebsiteRepository @Inject constructor(
 //    TODO: rename to REMOTE repository
 //    database has not been initialized - don't need direcr DB instance
 //    DAO interface connects with DB
+lateinit var whList: List<WebsiteHighlight>
 
 
     suspend fun updateHighlightsRemote() {
+        whList = websiteHighlightDAO.getHighlightsAsList()
+//            Log.d("KP041521", "count :: " + whList.size.toString())
+
         val highlights = churchWebsiteService.getHighlightsExternal()
-        val whList: List<WebsiteHighlight> = highlights.items
-//                    val database = MccRoomDatabase.getInstance(applicationContext)
-        Log.d("highlights", whList.joinToString())
+        whList = highlights.items
+//            Log.d("KP041521", "count :: " + whList.size.toString())
+
+        websiteHighlightDAO.clearHighlights();
+//            Log.d("KP041521", "count :: " + whList.size.toString())
+//            Log.d("KP041521", whList.joinToString())
         websiteHighlightDAO.insertAll(whList)
     }
 

@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 
 import com.facebook.AccessToken;
@@ -31,7 +32,10 @@ import com.facebook.GraphResponse;
 import com.facebook.LoggingBehavior;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.missionchurchcooljc.mcc.MainActivity;
 import com.missionchurchcooljc.mcc.data.models.User;
+import com.missionchurchcooljc.mcc.databinding.ActivityLoginBinding;
+import com.missionchurchcooljc.mcc.di.AppController;
 import com.missionchurchcooljc.mcc.users.SessionManager;
 import com.missionchurchcooljc.mcc.users.SocialAuthentication;
 import com.missionchurchcooljc.mcc.users.createaccount.CreateAccountActivity;
@@ -40,19 +44,17 @@ import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import io.fmc.R;
-import io.fmc.R2;
 import io.fmc.ui.base.BaseActivity;
 import io.fmc.ui.dashboard.DashboardActivity;
 
 //@AndroidEntryPoint
-public class LoginActivity extends BaseActivity implements LoginMVP.View, SocialAuthentication.SocialAuthenticationListener{
+public class LoginActivity extends BaseActivity implements LoginMVP.View, SocialAuthentication.SocialAuthenticationListener {
 
-    @BindView(R2.id.email) EditText email;
-    @BindView(R2.id.password) EditText password;
+    private ActivityLoginBinding binding;
+    //    @BindView(R2.id.email) EditText email;
+    EditText email;
+    //    @BindView(R2.id.password) EditText password;
+    EditText password;
 
     @Inject
     LoginMVP.Presenter presenter;
@@ -66,46 +68,69 @@ public class LoginActivity extends BaseActivity implements LoginMVP.View, Social
     public SocialAuthentication.Type socialLoginType;
 
 
+//    TODO: use sessionManager? to skip LoginActivity screen each session load?
+//      insert, fetch, clear WebsiteHighlightDAO while app loads here
+//      mindful of point #1, where else to load data if this screen is skipped
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+//        email = binding.email;
+//        password = binding.password;
+        setContentView(view);
+//        setContentView(R.layout.activity_login);
 
-        ButterKnife.bind(this);
+//        ButterKnife.bind(this);
 
-//        ((AppController)getApplication()).getComponent().inject(this);
+        ((AppController) getApplication()).getComponent().inject(this);
+//        ((AppController) getApplication()).getComponent();
 
         presenter.setView(this);
 
         socialAuthentication.init(this);
+
+        binding.btnFacebookSign.setOnClickListener(v -> facebookBtnClicked());
+        binding.btnGoogle.setOnClickListener(v -> googleBtnClicked());
+//        binding.labelCreateAccount.setOnClickListener(v -> createAccount());
+//        binding.labelForgetPassword.setOnClickListener(v -> resetPassword());
+//        binding.btnSignIn.setOnClickListener(v -> loginClicked());
+        binding.skipLogin.setOnClickListener(v -> skipLogin());
+
+    }
+
+    private void skipLogin() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 
-    @OnClick(R2.id.btn_facebook_sign)
-    public void facebookBtnClicked(){
+    //    @OnClick(R2.id.btn_facebook_sign)
+    public void facebookBtnClicked() {
         socialLoginType = SocialAuthentication.Type.FACEBOOK;
-        mCallbackManager = socialAuthentication.initFacebookRegistration(this,this);
+        mCallbackManager = socialAuthentication.initFacebookRegistration(this, this);
     }
 
-    @OnClick(R2.id.btn_google)
+    //    @OnClick(R2.id.btn_google)
     public void googleBtnClicked(){
         socialLoginType = SocialAuthentication.Type.GOOGLE;
         socialAuthentication.initLoginWithGoogle(this);
     }
 
-    @OnClick(R2.id.label_create_account)
+    //    @OnClick(R2.id.label_create_account)
     public void createAccount(){
         Intent intent = new Intent(this, CreateAccountActivity.class);
         startActivity(intent);
     }
 
-    @OnClick(R2.id.label_forget_password)
+    //    @OnClick(R2.id.label_forget_password)
     public void resetPassword(){
         Intent intent = new Intent(this, PasswordResetActivity.class);
         startActivity(intent);
     }
 
-    @OnClick(R2.id.btn_sign_in)
+    //    @OnClick(R2.id.btn_sign_in)
     public void loginClicked(){
         presenter.signInClicked();
     }
@@ -121,10 +146,27 @@ public class LoginActivity extends BaseActivity implements LoginMVP.View, Social
         });
     }
 
+//    @Nullable
+//    @org.jetbrains.annotations.Nullable
+//    @Override
+//    public View onCreateView(@NonNull @NotNull String name, @NonNull @NotNull Context context,
+//                             @NonNull @NotNull AttributeSet attrs) {
+//        return super.onCreateView(name, context, attrs);
+//    }
+//
+//    @Nullable
+//    @org.jetbrains.annotations.Nullable
+//    @Override
+//    public View onCreateView(@Nullable @org.jetbrains.annotations.Nullable View parent,
+//                             @NonNull @NotNull String name, @NonNull @NotNull Context context,
+//                             @NonNull @NotNull AttributeSet attrs) {
+//        return super.onCreateView(parent, name, context, attrs);
+//    }
+
     @Override
     public void gotoMainView(User user) {
-        sessionManager.setLoginUser(user);
-        sessionManager.setUserLogin();
+//        sessionManager.setLoginUser(user);
+//        sessionManager.setUserLogin();
         Intent intent = new Intent(this, DashboardActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

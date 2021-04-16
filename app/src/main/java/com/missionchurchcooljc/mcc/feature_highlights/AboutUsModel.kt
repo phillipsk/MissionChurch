@@ -16,13 +16,6 @@
 
 package com.missionchurchcooljc.mcc.feature_highlights
 
-import androidx.lifecycle.LiveData
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-
-import com.missionchurchcooljc.data_android.WebsiteHighlight
-
 class AboutUsModel : AboutUsMVP.Model {
 
 
@@ -34,25 +27,25 @@ class AboutUsModel : AboutUsMVP.Model {
 //
 //        void onError(String message);
 
-        @Query("SELECT * FROM highlights")
-        fun getHighlights(): LiveData<List<WebsiteHighlight>>
-
-        @Query("SELECT * FROM highlights")
-        fun getHighlightsAsList(): List<WebsiteHighlight>
-
-        @Query("SELECT * FROM highlights WHERE id = :websiteHighlightId")
-        fun getHighlight(websiteHighlightId: String): LiveData<WebsiteHighlight>
-
-        @Insert(onConflict = OnConflictStrategy.REPLACE)
-        fun insertAll(highlightList: List<WebsiteHighlight>)
-
-        /**
-         * Select all tasks from the tasks table.
-         *
-         * @return all tasks.
-         */
-        @Query("SELECT * FROM highlights")
-        fun listHighlights(): List<WebsiteHighlight>
+//        @Query("SELECT * FROM highlights")
+//        fun getHighlights(): LiveData<List<WebsiteHighlight>>
+//
+//        @Query("SELECT * FROM highlights")
+//        fun getHighlightsAsList(): List<WebsiteHighlight>
+//
+//        @Query("SELECT * FROM highlights WHERE id = :websiteHighlightId")
+//        fun getHighlight(websiteHighlightId: String): LiveData<WebsiteHighlight>
+//
+//        @Insert(onConflict = OnConflictStrategy.REPLACE)
+//        fun insertAll(highlightList: List<WebsiteHighlight>)
+//
+//        /**
+//         * Select all tasks from the tasks table.
+//         *
+//         * @return all tasks.
+//         */
+//        @Query("SELECT * FROM highlights")
+//        fun listHighlights(): List<WebsiteHighlight>
     }
 
 

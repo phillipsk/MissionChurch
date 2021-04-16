@@ -26,6 +26,7 @@ import com.missionchurchcooljc.mcc.feature_highlights.mvvm.HighlightsFragment;
 import com.missionchurchcooljc.mcc.listen.AudiosFragment;
 import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteRepository;
 import com.missionchurchcooljc.mcc.posts.PostsFragment;
+import com.missionchurchcooljc.mcc.users.login.LoginActivity;
 
 import javax.inject.Singleton;
 
@@ -58,6 +59,7 @@ public interface ApplicationComponent  {
 
     }
 
+
 //    @Component.Builder
 //    interface Builder {
 //
@@ -78,6 +80,8 @@ public interface ApplicationComponent  {
     void inject(FMCApi fmcApi);
 
     void inject(AudiosFragment audiosFragment);
+
+    void inject(LoginActivity loginActivity);
 
 //    void inject(MainActivity mainActivity);
 

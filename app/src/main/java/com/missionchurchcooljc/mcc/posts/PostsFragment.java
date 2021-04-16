@@ -115,6 +115,7 @@ public class PostsFragment extends BaseFragment implements PostMVP.View {
                     intent = new Intent(getContext(), PlayerActivity.class);
                     intent.putExtra("video_url", post.getVideo_url());
                 } else {
+                    // TODO: refactor to a Fragment, why switch from MainActivity > Navigation > PostsFragment > PostDetailActivity
                     intent = new Intent(getContext(), PostDetailActivity.class);
                     intent.putExtra("post", post);
 

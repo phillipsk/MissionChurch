@@ -21,8 +21,10 @@ import android.content.Context
 import com.missionchurchcooljc.mcc.feature_highlights.AboutUsModule
 import com.missionchurchcooljc.mcc.feature_highlights.mvvm.di.ViewModelModule
 import com.missionchurchcooljc.mcc.persistence.DataBaseModule
+import com.missionchurchcooljc.mcc.users.SessionManager
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 
 @Module(includes = [
     AppProviderModule::class, AboutUsModule::class,
@@ -44,4 +46,9 @@ object AppProviderModule {
 //    @Provides
 //    @Singleton
 //    fun providesApplicationContext(): Context = application
+
+    @Provides
+    fun provideSessionManager(context: Context): SessionManager {
+        return SessionManager(context)
+    }
 }
