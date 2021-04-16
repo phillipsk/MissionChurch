@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import com.missionchurchcooljc.mcc.buildsrc.AndroidSdk
 import com.missionchurchcooljc.mcc.buildsrc.Libs
 import com.missionchurchcooljc.mcc.buildsrc.legacy.LegacyJava
 
@@ -22,14 +21,14 @@ apply plugin: 'com.android.library'
 //apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.jakewharton.butterknife'
 
-def localProperties = new Properties()
-localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+//def localProperties = new Properties()
+//localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
-    compileSdkVersion AndroidSdk.compile
+    compileSdkVersion 30
 
     defaultConfig {
-        minSdkVersion AndroidSdk.min
+        minSdkVersion 21
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -55,15 +54,23 @@ android {
     buildTypes {
         debug {
 //            buildConfigField("String", "API_KEY", "\"" + "null" + "\"")
-            buildConfigField("String", "API_KEY", "\"" + localProperties['apiKey'] + "\"")
+//            buildConfigField("String", "API_KEY", "\"" + localProperties['apiKey'] + "\"")
+            buildConfigField("String", "API_KEY", getApiKey())
         }
         release {
+            buildConfigField("String", "API_KEY", getApiKey())
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     buildFeatures {
         dataBinding true
+    }
+}
+    String getApiKey() {
+        def localProperties = new Properties()
+        localProperties.load(new FileInputStream(rootProject.file("./local.properties")))
+        return localProperties['API_KEY']
     }
 
 //    testOptions {
@@ -76,7 +83,7 @@ android {
 //            }
 //        }
 //    }
-}
+//}
 //android {
 //    compileSdkVersion 29
 //    defaultConfig {
@@ -146,7 +153,7 @@ repositories {
     mavenCentral()
 //    google()
 //    jcenter()
-    maven { url 'https://dl.bintray.com/drummer-aidan/maven' }
+//    maven { url 'https://dl.bintray.com/drummer-aidan/maven' }
 }
 
 dependencies {
@@ -207,6 +214,7 @@ dependencies {
     implementation(LegacyJava.AndroidX.coordinatorlayout)
     implementation(LegacyJava.butterknife)
     implementation(LegacyJava.timeago)
+//    implementation files('easyvideoplayer-0.3.0-sources.jar')
     annotationProcessor(LegacyJava.butterknifeAP)
 
 
@@ -221,7 +229,8 @@ dependencies {
 //    implementation 'androidx.multidex:multidex:2.0.1'
 //    annotationProcessor(LegacyJava.multidex)
 
-    implementation(LegacyJava.easyvideoplayer)
+    //    implementation(LegacyJava.easyvideoplayer)
+//    implementation('com.afollestad:easyvideoplayer:0.3.0')
     implementation(LegacyJava.jcplayer)
     implementation(LegacyJava.greendao)
 

@@ -209,7 +209,7 @@ dependencies {
 //    implementation 'androidx.multidex:multidex:2.0.1'
 //    annotationProcessor(LegacyJava.multidex)
 
-    implementation(LegacyJava.easyvideoplayer)
+    //    implementation(LegacyJava.easyvideoplayer)
     implementation(LegacyJava.jcplayer)
     implementation(LegacyJava.greendao)
 

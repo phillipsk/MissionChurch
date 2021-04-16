@@ -17,7 +17,6 @@
 package io.fmc.ui.dashboard;
 
 
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -27,12 +26,11 @@ import androidx.fragment.app.FragmentTransaction;
 import io.fmc.R;
 import io.fmc.di.LegacyAppComponent;
 import io.fmc.ui.base.BaseActivity;
-import io.fmc.ui.connect.StayConnectedFragment;
 import io.fmc.ui.location.LocationFragment;
 
 //import io.fmc.ui.bible.BibleFragment;
 
-public class DashboardActivity extends BaseActivity implements StayConnectedFragment.OnFragmentInteractionListener {
+public class DashboardActivity extends BaseActivity {
 
 //    @BindView(R2.id.bottom_navigation) BottomNavigationView bottomNavigationView;
 //    @BindView(R2.id.toolbar) Toolbar toolBar;
@@ -130,10 +128,6 @@ public class DashboardActivity extends BaseActivity implements StayConnectedFrag
     }
 
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 
     public LegacyAppComponent getLegacyAppComponent() {
         return legacyAppComponent;
