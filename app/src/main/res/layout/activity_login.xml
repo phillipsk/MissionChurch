@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:padding="16dp"
+        tools:context="com.missionchurchcooljc.mcc.users.login.LoginActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="250dp"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_gravity="left"
+                android:src="@mipmap/ic_launcher_mcc_2020" />
+
+            <TextView
+                android:id="@+id/label_welcome_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="left"
+                android:text="Welcome to"
+                android:textColor="@color/black"
+                android:textSize="@dimen/largest_text_size" />
+
+            <TextView
+                android:id="@+id/label_welcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/mission_church"
+                android:textColor="@color/black"
+                android:textSize="@dimen/largest_text_size" />
+
+            <TextView
+                android:id="@+id/label_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="40dp"
+                android:gravity="left"
+                android:text="Login to continue"
+                android:textSize="@dimen/normal_text_size" />
+
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/email"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="@dimen/default_width_height"-->
+            <!--                android:layout_marginBottom="5dp"-->
+            <!--                android:padding="5dp"-->
+            <!--                android:hint="Email Address"-->
+            <!--                android:inputType="textEmailAddress" />-->
+
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/password"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="@dimen/default_width_height"-->
+            <!--                android:layout_marginBottom="20dp"-->
+            <!--                android:padding="5dp"-->
+            <!--                android:hint="Password"-->
+            <!--                android:inputType="textPassword" />-->
+
+
+            <!--            <Button-->
+            <!--                android:id="@+id/btn_sign_in"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="@dimen/default_width_height"-->
+            <!--                android:layout_marginBottom="20dp"-->
+            <!--                android:background="@color/colorPrimary"-->
+            <!--                android:elevation="3dp"-->
+            <!--                android:text="Sign In"-->
+            <!--                android:textAllCaps="false"-->
+            <!--                android:textColor="@color/white" />-->
+
+
+            <Button
+                android:id="@+id/btn_google"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/ic_search"
+                android:elevation="3dp"
+                android:text="@string/continue_with_google"
+                android:textAllCaps="false"
+                android:textSize="@dimen/normal_text_size" />
+
+            <Button
+                android:id="@+id/btn_facebook_sign"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/ic_if_facebook"
+                android:drawablePadding="10dp"
+                android:elevation="3dp"
+                android:text="@string/continue_with_facebook"
+                android:textAllCaps="false"
+                android:textSize="@dimen/normal_text_size" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/label_forget_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="forget password?"
+                    android:textSize="@dimen/normal_text_size"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/label_create_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="create account"
+                    android:textSize="@dimen/normal_text_size"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/skip_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="Skip and continue"
+                    android:textSize="@dimen/normal_text_size" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

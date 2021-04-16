@@ -16,9 +16,7 @@
 
 package com.missionchurchcooljc.mcc.ui
 
-import io.fmc.data.FMCApi
-import io.fmc.data.models.AnnouncementPost
-import io.fmc.ui.posts.PostModel
+import com.missionchurchcooljc.mcc.data.models.AnnouncementPost
 
 
 class PostModelKt : PostMVPkt.Model {

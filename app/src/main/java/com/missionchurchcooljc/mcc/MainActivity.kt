@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 //    Hide top app bar toolbar and bottom navigation bar upon RV scrolling
 
     private var currentNavController: LiveData<NavController>? = null
+//    private val applicationComponent get() = (application as AppController).component
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

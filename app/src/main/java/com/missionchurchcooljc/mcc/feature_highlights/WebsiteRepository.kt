@@ -17,6 +17,10 @@
 package com.missionchurchcooljc.mcc.feature_highlights
 
 import com.missionchurchcooljc.data_android.WebsiteHighlightDAO
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -25,10 +29,13 @@ class WebsiteRepository @Inject constructor(
     private val websiteHighlightDAO: WebsiteHighlightDAO
 ) {
 
-//    TODO: rename to LOCAL repository
+    //    TODO: rename to LOCAL repository
+    private val job: Job = Job()
+    private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
 
     fun getHighlights() = websiteHighlightDAO.getHighlights()
-
+//    fun purgeHighlights() =
+//        coroutineScope.launch(Dispatchers.IO) { websiteHighlightDAO.clearHighlights() }
 
     fun getHighlightsAsList() = websiteHighlightDAO.getHighlightsAsList()
     fun getHighlight(websiteHighlightId: String) =
