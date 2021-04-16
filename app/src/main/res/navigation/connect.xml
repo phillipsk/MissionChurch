@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,11 +21,7 @@
 
     <fragment
         android:id="@+id/connect_nav"
-        android:name="io.fmc.ui.posts.PostsFragment"
+        android:name="com.missionchurchcooljc.mcc.posts.PostsFragment"
         android:label="Connect" />
-
-    <!--    <activity-->
-    <!--        android:id="@+id/legacy_nav"-->
-    <!--        android:name="io.fmc.ui.dashboard.DashboardActivity"/>-->
 
 </navigation>

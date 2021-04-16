@@ -18,17 +18,37 @@ package com.missionchurchcooljc.mcc.di.modules
 
 import android.app.Application
 import android.content.Context
+import com.missionchurchcooljc.mcc.feature_highlights.AboutUsModule
+import com.missionchurchcooljc.mcc.feature_highlights.mvvm.di.ViewModelModule
+import com.missionchurchcooljc.mcc.persistence.DataBaseModule
+import com.missionchurchcooljc.mcc.users.SessionManager
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 
+@Module(includes = [
+    AppProviderModule::class, AboutUsModule::class,
+    NetworkModule::class, ViewModelModule::class,
+    DataBaseModule::class, CoroutineContextModule::class
+])
+abstract class AppModule {
+
+    @Binds
+    abstract fun bindContext(application: Application): Context
+
+}
 @Module
-class AppModule(private val application: Application) {
-    @Provides
-    @Singleton
-    fun providesApplication(): Application = application
+object AppProviderModule {
+//    @Provides
+//    @Singleton
+//    fun providesApplication(): Application = application
+//
+//    @Provides
+//    @Singleton
+//    fun providesApplicationContext(): Context = application
 
     @Provides
-    @Singleton
-    fun providesApplicationContext(): Context = application
+    fun provideSessionManager(context: Context): SessionManager {
+        return SessionManager(context)
+    }
 }

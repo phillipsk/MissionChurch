@@ -16,19 +16,17 @@
 
 package com.missionchurchcooljc.mcc.feature_highlights;
 
-import androidx.lifecycle.LiveData;
-
 import com.missionchurchcooljc.data_android.WebsiteHighlight;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class AboutUsPresenter implements AboutUsMVP.Presenter {
     AboutUsMVP.View view;
     AboutUsMVP.Model model;
 
-    //    @Inject
+    @Inject
     public AboutUsPresenter(AboutUsModel aboutUsModel) {
         this.model = aboutUsModel;
     }
@@ -46,36 +44,36 @@ public class AboutUsPresenter implements AboutUsMVP.Presenter {
         view.displayPosts(highlights);
 
 //        TODO: review DAO class with Dagger
-        model.fetchPosts(new AboutUsModel.OnPostsFetched() {
-            @NotNull
-            @Override
-            public List<WebsiteHighlight> listHighlights() {
-                return null;
-            }
-
-            @Override
-            public void insertAll(@NotNull List<WebsiteHighlight> highlightList) {
-
-            }
-
-            @NotNull
-            @Override
-            public LiveData<WebsiteHighlight> getHighlight(@NotNull String websiteHighlightId) {
-                return null;
-            }
-
-            @NotNull
-            @Override
-            public List<WebsiteHighlight> getHighlightsAsList() {
-                return null;
-            }
-
-            @NotNull
-            @Override
-            public LiveData<List<WebsiteHighlight>> getHighlights() {
-                return null;
-            }
-        });
+//        model.fetchPosts(new AboutUsModel.OnPostsFetched() {
+//            @NotNull
+//            @Override
+//            public List<WebsiteHighlight> listHighlights() {
+//                return null;
+//            }
+//
+//            @Override
+//            public void insertAll(@NotNull List<WebsiteHighlight> highlightList) {
+//
+//            }
+//
+//            @NotNull
+//            @Override
+//            public LiveData<WebsiteHighlight> getHighlight(@NotNull String websiteHighlightId) {
+//                return null;
+//            }
+//
+//            @NotNull
+//            @Override
+//            public List<WebsiteHighlight> getHighlightsAsList() {
+//                return null;
+//            }
+//
+//            @NotNull
+//            @Override
+//            public LiveData<List<WebsiteHighlight>> getHighlights() {
+//                return null;
+//            }
+//        });
 
     }
 }

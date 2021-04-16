@@ -27,12 +27,16 @@ import com.missionchurchcooljc.data_android.WebsiteHighlight
 import com.missionchurchcooljc.mcc.databinding.FragmentAboutUsBinding
 import com.missionchurchcooljc.mcc.di.AppController
 import com.missionchurchcooljc.mcc.feature_highlights.AboutUsAdapter
+import com.missionchurchcooljc.mcc.persistence.MccRoomDatabase
 import javax.inject.Inject
 
 class HighlightsFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    //public class AppController extends MultiDexApplication {
+    @Inject
+    lateinit var mccRoomDatabase: MccRoomDatabase
 //    private val viewModel: AboutUsViewModel by viewModels{ viewModelFactory }
 
     private lateinit var viewModel: AboutUsViewModel
@@ -46,6 +50,8 @@ class HighlightsFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onInitDependencyInjection()
+        Log.d("hashcode", mccRoomDatabase.hashCode().toString());
+
     }
 
     override fun onCreateView(
@@ -61,6 +67,8 @@ class HighlightsFragment : BaseFragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(AboutUsViewModel::class.java)
 
         binding.highlightsRv.adapter = adapter
+
+//        viewModel.purgeHighlights()
         subscribeUi(adapter)
 
 //        return super.onCreateView(inflater, container, savedInstanceState)
@@ -70,6 +78,7 @@ class HighlightsFragment : BaseFragment() {
 
     private fun subscribeUi(adapter: AboutUsAdapter) {
         viewModel.highlights.observe(viewLifecycleOwner) { wh: List<WebsiteHighlight> ->
+//        viewModel.fetchHighlights().observe(viewLifecycleOwner) { wh: List<WebsiteHighlight> ->
             adapter.submitList(wh)
             Log.d(TAG, "WebsiteHighlight List Count ${wh.size}")
 

@@ -16,15 +16,34 @@
 
 package io.fmc.di;
 
+import android.app.Application;
+import android.content.Context;
+
 import javax.inject.Singleton;
 
+import dagger.BindsInstance;
 import dagger.Component;
-import io.fmc.data.FMCApi;
-import io.fmc.ui.posts.PostsFragment;
+import dagger.Module;
 
 @Singleton
-@Component(modules = {UserModule.class, PostModule.class, AudiosModule.class})
+//@Component(modules = {UserModule.class, PostModule.class})
+@Component(modules = {LegacyAppModule.class})
 public interface LegacyAppComponent {
+
+    @Component.Builder
+    interface Builder {
+
+        LegacyAppComponent build();
+
+        @BindsInstance
+        Builder application(Application application);
+
+        @BindsInstance
+        Builder context(Context context);
+
+        @BindsInstance
+        Builder databaseInfo(DatabaseInfo databaseInfo);
+    }
 
 //    void inject(LoginActivity target);
 //
@@ -34,7 +53,19 @@ public interface LegacyAppComponent {
 //
 //    void inject(PasswordResetActivity target);
 
-    void inject(PostsFragment target);
+//    void inject(PostsFragment target);
+//
+//    void inject(FMCApi fmcApi);
+//
+//    void inject(AudiosFragment audiosFragment);
+}
 
-    void inject(FMCApi fmcApi);
+@Module
+abstract class LegacyAppModule {
+
+//    @Binds
+//    public Application bindContext(Application application){
+//        return application;
+//    };
+
 }

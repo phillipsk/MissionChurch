@@ -31,7 +31,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.missionchurchcooljc.mcc.MainActivity"
+            android:name="com.missionchurchcooljc.mcc.users.login.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,27 +39,41 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--        <activity-->
+        <!--            android:name="io.fmc.MainActivity"-->
+        <!--            android:screenOrientation="portrait" />-->
         <activity
-            android:name="io.fmc.MainActivity"
+            android:name="com.missionchurchcooljc.mcc.MainActivity"
             android:screenOrientation="portrait" />
+        <!--        <activity-->
+        <!--            android:name="io.fmc.ui.dashboard.DashboardActivity"-->
+        <!--            android:screenOrientation="portrait" />-->
+        <!--        <activity-->
+        <!--            android:name=".users.createaccount.CreateAccountActivity"-->
+        <!--            android:screenOrientation="portrait" />-->
+        <!--        <activity-->
+        <!--            android:name=".users.password.PasswordResetActivity"-->
+        <!--            android:screenOrientation="portrait" />-->
+        <!--        <activity-->
+        <!--            android:name="io.fmc.ui.videoplayer.PlayerActivity"-->
+        <!--            android:screenOrientation="portrait" />-->
         <activity
-            android:name="io.fmc.ui.users.login.LoginActivity"
+            android:name="com.missionchurchcooljc.mcc.postdetail.PostDetailActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="io.fmc.ui.dashboard.DashboardActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="io.fmc.ui.users.createaccount.CreateAccountActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="io.fmc.ui.users.password.PasswordResetActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="io.fmc.ui.videoplayer.PlayerActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="io.fmc.ui.posts.postdetail.PostDetailActivity"
-            android:screenOrientation="portrait" />
+
+        <!--        <provider android:authorities="com.facebook.app.FacebookContentProvider120085814675079"-->
+        <!--            android:name="com.facebook.FacebookContentProvider"-->
+        <!--            android:exported="true" />-->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_api_key_fmc" />
+        <!--        This library is needed for old Maps SDK with >28 target API -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>

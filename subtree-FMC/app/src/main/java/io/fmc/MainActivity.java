@@ -31,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        legacyAppComponent = DaggerLegacyAppComponent.builder()
-//                .postModule(new PostModule())
+//                DaggerLegacyAppComponent.builder()
+////                .postModule(new PostModule())
+//                .application(getApplication())
 //                .build();
 
         //SessionManager sessionManager = new SessionManager(this);

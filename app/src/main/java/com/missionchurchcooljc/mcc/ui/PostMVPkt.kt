@@ -16,7 +16,7 @@
 
 package com.missionchurchcooljc.mcc.ui
 
-import io.fmc.data.models.AnnouncementPost
+import com.missionchurchcooljc.mcc.data.models.AnnouncementPost
 
 interface PostMVPkt {
 

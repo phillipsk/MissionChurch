@@ -54,12 +54,16 @@ android {
 
     buildTypes {
         debug {
+//            buildConfigField("String", "API_KEY", "\"" + "null" + "\"")
             buildConfigField("String", "API_KEY", "\"" + localProperties['apiKey'] + "\"")
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        dataBinding true
     }
 
 //    testOptions {
