@@ -179,18 +179,24 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
     @Override
     public void onResume() {
         super.onResume();
-        getActivity().registerReceiver(broadcastReceiver, new IntentFilter(AppController.backendBroadCast));
+        try {
+            requireActivity().registerReceiver(broadcastReceiver, new IntentFilter(AppController.backendBroadCast));
+        } catch (Exception e) {
+            Log.e(this.getClass().getCanonicalName(), "Exception from onResume");
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getActivity().unregisterReceiver(broadcastReceiver);
 
         try {
+            requireActivity().unregisterReceiver(broadcastReceiver);
             jcPlayer.kill();
-        } catch (Exception s) {
-
+        } catch (Exception e) {
+            Log.e(this.getClass().getCanonicalName(), "Exception from onDestroy");
+            e.printStackTrace();
         }
     }
 
