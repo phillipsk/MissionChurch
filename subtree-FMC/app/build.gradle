@@ -58,6 +58,7 @@ android {
             buildConfigField("String", "API_KEY", getApiKey())
         }
         release {
+            buildConfigField("String", "API_KEY", getApiKey())
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
