@@ -55,7 +55,7 @@ android {
         debug {
 //            buildConfigField("String", "API_KEY", "\"" + "null" + "\"")
 //            buildConfigField("String", "API_KEY", "\"" + localProperties['apiKey'] + "\"")
-            buildConfigField("String", "API_KEY", "\"" + "skipForGitHubActions" + "\"")
+            buildConfigField("String", "API_KEY", getApiKey())
         }
         release {
             minifyEnabled false
@@ -64,6 +64,12 @@ android {
     }
     buildFeatures {
         dataBinding true
+    }
+}
+    String getApiKey() {
+        def localProperties = new Properties()
+        localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+        return localProperties['API_KEY']
     }
 
 //    testOptions {
@@ -76,7 +82,7 @@ android {
 //            }
 //        }
 //    }
-}
+//}
 //android {
 //    compileSdkVersion 29
 //    defaultConfig {
