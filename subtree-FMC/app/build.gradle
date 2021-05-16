@@ -152,7 +152,7 @@ repositories {
     mavenCentral()
 //    google()
 //    jcenter()
-    maven { url 'https://dl.bintray.com/drummer-aidan/maven' }
+//    maven { url 'https://dl.bintray.com/drummer-aidan/maven' }
 }
 
 dependencies {
@@ -213,6 +213,7 @@ dependencies {
     implementation(LegacyJava.AndroidX.coordinatorlayout)
     implementation(LegacyJava.butterknife)
     implementation(LegacyJava.timeago)
+//    implementation files('easyvideoplayer-0.3.0-sources.jar')
     annotationProcessor(LegacyJava.butterknifeAP)
 
 
@@ -227,7 +228,8 @@ dependencies {
 //    implementation 'androidx.multidex:multidex:2.0.1'
 //    annotationProcessor(LegacyJava.multidex)
 
-    implementation(LegacyJava.easyvideoplayer)
+    //    implementation(LegacyJava.easyvideoplayer)
+//    implementation('com.afollestad:easyvideoplayer:0.3.0')
     implementation(LegacyJava.jcplayer)
     implementation(LegacyJava.greendao)
 
