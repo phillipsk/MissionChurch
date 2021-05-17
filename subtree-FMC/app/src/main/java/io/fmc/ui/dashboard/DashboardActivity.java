@@ -17,7 +17,6 @@
 package io.fmc.ui.dashboard;
 
 
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -25,19 +24,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import io.fmc.R;
-import io.fmc.di.DaggerLegacyAppComponent;
 import io.fmc.di.LegacyAppComponent;
-import io.fmc.di.PostModule;
-import io.fmc.ui.aboutus.AboutUsFragmentLegacy;
 import io.fmc.ui.base.BaseActivity;
-import io.fmc.ui.connect.StayConnectedFragment;
-import io.fmc.ui.listen.AudiosFragment;
 import io.fmc.ui.location.LocationFragment;
-import io.fmc.ui.posts.PostsFragment;
 
 //import io.fmc.ui.bible.BibleFragment;
 
-public class DashboardActivity extends BaseActivity implements StayConnectedFragment.OnFragmentInteractionListener {
+public class DashboardActivity extends BaseActivity {
 
 //    @BindView(R2.id.bottom_navigation) BottomNavigationView bottomNavigationView;
 //    @BindView(R2.id.toolbar) Toolbar toolBar;
@@ -54,9 +47,9 @@ public class DashboardActivity extends BaseActivity implements StayConnectedFrag
 
 //        ButterKnife.bind(this);
 
-        legacyAppComponent = DaggerLegacyAppComponent.builder()
-                .postModule(new PostModule())
-                .build();
+//        legacyAppComponent = DaggerLegacyAppComponent.builder()
+////                .postModule(new PostModule())
+//                .build();
 
         fragmentManager = getSupportFragmentManager();
 
@@ -64,7 +57,7 @@ public class DashboardActivity extends BaseActivity implements StayConnectedFrag
 //        setupBaseActionbar(toolBar,getString(R.string.app_name_long),false);
 
 
-//        setTupBottomNavigation();
+        setTupBottomNavigation();
 
 //        bottomNavigationView.setSelectedItemId(R.id.bottom_nav_the_word);
     }
@@ -119,15 +112,15 @@ public class DashboardActivity extends BaseActivity implements StayConnectedFrag
         Fragment fragment = null;
 //        fragment = new BibleFragment();
         if (menu_id == R.id.bottom_nav_connected) {
-            fragment = new AboutUsFragmentLegacy();
+//            fragment = new AboutUsFragmentLegacy();
 //        }else if (menu_id == R.id.bottom_nav_connect){
 //            fragment = new StayConnectedFragment();
         }else if(menu_id == R.id.bottom_nav_the_word) {
-            fragment = new PostsFragment();  // to avoid Hilt dependency
+//            fragment = new PostsFragment();  // to avoid Hilt dependency
         }else if (menu_id == R.id.bottom_nav_listen) {
-            fragment = new AudiosFragment();
+//            fragment = new AudiosFragment();
         } else if (menu_id == R.id.bottom_nav_prayer) {
-            fragment = new AboutUsFragmentLegacy();
+//            fragment = new AboutUsFragmentLegacy();
         } else if (menu_id == R.id.bottom_nav_info) {
             fragment = new LocationFragment();
         }
@@ -135,10 +128,6 @@ public class DashboardActivity extends BaseActivity implements StayConnectedFrag
     }
 
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 
     public LegacyAppComponent getLegacyAppComponent() {
         return legacyAppComponent;
