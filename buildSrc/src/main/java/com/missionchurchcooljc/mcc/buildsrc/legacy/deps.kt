@@ -141,7 +141,7 @@ object LegacyJava {
 
     const val multidex = "androidx.multidex:multidex:2.0.1"
     const val timeago = "com.github.marlonlom:timeago:$timeAgoVersion"
-//    const val easyvideoplayer = "com.afollestad:easyvideoplayer:0.3.0"
+    const val easyvideoplayer = "com.afollestad:easyvideoplayer:0.3.0"
     const val jcplayer = "io.github.jeancsanchez.jcplayer:jcplayer:2.6.0-alpha"
     const val greendao = "org.greenrobot:greendao:3.2.0"
 

@@ -22,9 +22,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.videoplayer.PlayerActivity">
 
-</RelativeLayout>
 
-    <!--    <com.afollestad.easyvideoplayer.EasyVideoPlayer-->
-    <!--        android:id="@+id/player"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent" />-->
+    <com.afollestad.easyvideoplayer.EasyVideoPlayer
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

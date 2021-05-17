@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package com.missionchurchcooljc.mcc
+package com.missionchurchcooljc.common
 
-import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteService
+import com.missionchurchcooljc.common.network.api.ChurchWebsiteResponse
+import com.missionchurchcooljc.common.network.api.ChurchWebsiteService
 import okhttp3.OkHttpClient
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert.assertThat
@@ -46,14 +47,14 @@ class RetrofitTest {
         val churchWebsiteService: ChurchWebsiteService =
             retrofit.create<ChurchWebsiteService>(ChurchWebsiteService::class.java)
 
-//        val wh = churchWebsiteService.getHighlightsExternal().execute()
+        val wh = churchWebsiteService.getHighlightsExternal().execute()
         val whB = churchWebsiteService.getHighlightsExternalB().execute()
 
-//        assertThat(wh.isSuccessful, CoreMatchers.equalTo(true))
+        assertThat(wh.isSuccessful, CoreMatchers.equalTo(true))
         assertThat(whB.isSuccessful, CoreMatchers.equalTo(true))
 
-//        val resultList = ChurchWebsiteResponse(wh.body()?.items ?: emptyList())
-//        assertThat(resultList.items.size, CoreMatchers.equalTo(15))
+        val resultList = ChurchWebsiteResponse(wh.body()?.items ?: emptyList())
+        assertThat(resultList.items.size, CoreMatchers.equalTo(15))
 //        val resultListB = ChurchWebsiteResponse(whB.body())
 //        assertThat(resultListB.items.size, CoreMatchers.equalTo(14))
 

@@ -39,13 +39,11 @@ import com.google.firebase.database.Query;
 
 import io.fmc.R;
 import io.techministry.android.fellowshipmissionchurch.AnnouncementDetailActivity;
+import io.techministry.android.fellowshipmissionchurch.PlayerActivity;
 import io.techministry.android.fellowshipmissionchurch.holder.AnnouncementHolder;
 import io.techministry.android.fellowshipmissionchurch.models.Announcement;
 import io.techministry.android.fellowshipmissionchurch.utils.FirebaseUtilities;
 import io.techministry.android.fellowshipmissionchurch.utils.Utilities;
-
-//import com.firebase.ui.database.FirebaseRecyclerAdapter;
-//import io.techministry.android.fellowshipmissionchurch.R;
 
 public class AnnouncementListFragment extends Fragment {
 
@@ -148,15 +146,15 @@ public class AnnouncementListFragment extends Fragment {
                         public void onClick(View view) {
 
 
-//                            if(announcement.getContent_type().equals("video")) {
-//                                Intent intent = new Intent(context, PlayerActivity.class);
-//                                intent.putExtra("video_url", announcement.getVideo_url());
-//                                startActivity(intent);
-//                            }else {
-                            Intent intent = new Intent(context, AnnouncementDetailActivity.class);
-                            intent.putExtra("announcement", announcement);
-                            startActivity(intent);
-//                            }
+                            if (announcement.getContent_type().equals("video")) {
+                                Intent intent = new Intent(context, PlayerActivity.class);
+                                intent.putExtra("video_url", announcement.getVideo_url());
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(context, AnnouncementDetailActivity.class);
+                                intent.putExtra("announcement", announcement);
+                                startActivity(intent);
+                            }
 
 
                         }

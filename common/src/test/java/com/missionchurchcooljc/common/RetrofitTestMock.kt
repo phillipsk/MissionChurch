@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.missionchurchcooljc.mcc
+package com.missionchurchcooljc.common
 
 import android.util.Log
-import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteResponse
-import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteService
+import com.missionchurchcooljc.common.network.api.ChurchWebsiteResponse
+import com.missionchurchcooljc.common.network.api.ChurchWebsiteService
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockWebServer
 import org.hamcrest.CoreMatchers
@@ -84,10 +84,10 @@ class RetrofitTestMock {
 //        }
 //        val requestBody = mockWebServer.takeRequest().body.readUtf8()
 
-//        val wh = retrofit.getHighlightsExternal().execute()
+        val wh = retrofit.getHighlightsExternal().execute()
         val whB = retrofit.getHighlightsExternalB().execute()
 
-//        assertThat(wh.isSuccessful, CoreMatchers.equalTo(true))
+        assertThat(wh.isSuccessful, CoreMatchers.equalTo(true))
         assertThat(whB.isSuccessful, CoreMatchers.equalTo(true))
 //        val response = Response<ChurchWebsiteResponse>
 //        val resultList = ChurchWebsiteResponse(wh.body()?.items ?: emptyList())
