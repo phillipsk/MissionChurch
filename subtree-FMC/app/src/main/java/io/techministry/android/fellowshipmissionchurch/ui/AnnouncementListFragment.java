@@ -1,11 +1,11 @@
 /*
- * Copyright (C) 2015 The Android Open Source Project
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,18 +21,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 
-//import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -41,10 +40,9 @@ import com.google.firebase.database.Query;
 import io.fmc.R;
 import io.techministry.android.fellowshipmissionchurch.AnnouncementDetailActivity;
 import io.techministry.android.fellowshipmissionchurch.PlayerActivity;
-//import io.techministry.android.fellowshipmissionchurch.R;
-import io.techministry.android.fellowshipmissionchurch.utils.FirebaseUtilities;
 import io.techministry.android.fellowshipmissionchurch.holder.AnnouncementHolder;
 import io.techministry.android.fellowshipmissionchurch.models.Announcement;
+import io.techministry.android.fellowshipmissionchurch.utils.FirebaseUtilities;
 import io.techministry.android.fellowshipmissionchurch.utils.Utilities;
 
 public class AnnouncementListFragment extends Fragment {
@@ -148,11 +146,11 @@ public class AnnouncementListFragment extends Fragment {
                         public void onClick(View view) {
 
 
-                            if(announcement.getContent_type().equals("video")) {
+                            if (announcement.getContent_type().equals("video")) {
                                 Intent intent = new Intent(context, PlayerActivity.class);
                                 intent.putExtra("video_url", announcement.getVideo_url());
                                 startActivity(intent);
-                            }else {
+                            } else {
                                 Intent intent = new Intent(context, AnnouncementDetailActivity.class);
                                 intent.putExtra("announcement", announcement);
                                 startActivity(intent);

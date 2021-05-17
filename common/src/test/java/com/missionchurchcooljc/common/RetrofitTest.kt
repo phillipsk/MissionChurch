@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021  Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,6 @@ class RetrofitTest {
         assertThat(resultList.items.size, CoreMatchers.equalTo(15))
 //        val resultListB = ChurchWebsiteResponse(whB.body())
 //        assertThat(resultListB.items.size, CoreMatchers.equalTo(14))
-
 
 
 //        val response = Response<ChurchWebsiteResponse>

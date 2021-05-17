@@ -23,12 +23,12 @@ jobs:
           api-level: 29
           script: ./gradlew connectedAndroidTest
   build:
-#    needs: [ unit_tests, android_tests ]
+    #    needs: [ unit_tests, android_tests ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-#      - uses: actions/checkout@v2
+      #      - uses: actions/checkout@v2
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
       - name: set up JDK 1.8
