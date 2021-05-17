@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021  Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.missionchurchcooljc.common
+package com.missionchurchcooljc.mcc
 
 import android.util.Log
-import com.missionchurchcooljc.common.network.api.ChurchWebsiteResponse
-import com.missionchurchcooljc.common.network.api.ChurchWebsiteService
+import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteResponse
+import com.missionchurchcooljc.mcc.network.api.ChurchWebsiteService
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockWebServer
 import org.hamcrest.CoreMatchers
@@ -84,10 +84,10 @@ class RetrofitTestMock {
 //        }
 //        val requestBody = mockWebServer.takeRequest().body.readUtf8()
 
-        val wh = retrofit.getHighlightsExternal().execute()
+//        val wh = retrofit.getHighlightsExternal().execute()
         val whB = retrofit.getHighlightsExternalB().execute()
 
-        assertThat(wh.isSuccessful, CoreMatchers.equalTo(true))
+//        assertThat(wh.isSuccessful, CoreMatchers.equalTo(true))
         assertThat(whB.isSuccessful, CoreMatchers.equalTo(true))
 //        val response = Response<ChurchWebsiteResponse>
 //        val resultList = ChurchWebsiteResponse(wh.body()?.items ?: emptyList())
