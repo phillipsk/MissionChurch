@@ -31,7 +31,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.missionchurchcooljc.mcc.users.login.LoginActivity"
+            android:name="com.missionchurchcooljc.mcc.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,9 +42,6 @@
         <!--        <activity-->
         <!--            android:name="io.fmc.MainActivity"-->
         <!--            android:screenOrientation="portrait" />-->
-        <activity
-            android:name="com.missionchurchcooljc.mcc.MainActivity"
-            android:screenOrientation="portrait" />
         <!--        <activity-->
         <!--            android:name="io.fmc.ui.dashboard.DashboardActivity"-->
         <!--            android:screenOrientation="portrait" />-->
