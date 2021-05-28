@@ -33,7 +33,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 import kotlin.coroutines.CoroutineContext
 
-private const val BASE_URL_GW = "http://god.works"
+private const val BASE_URL_GW = "http://mccooljc.com"
 
 //@InstallIn(ApplicationComponent::class)
 @Module

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021  Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitTest {
     private val okHttpClient = OkHttpClient.Builder().build()
-    private val endpoint: String = "http://god.works/"
+    private val endpoint: String = "http://mccooljc.com/"
 
     @Before
     fun setUp() {

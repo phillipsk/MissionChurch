@@ -82,7 +82,7 @@ public class AppController extends Application {
 
 
     public static final String backendBroadCast = "FMC_BROADCAST_UPDATE";
-    public static final String DEFAULT_ADDRESS = "god.works";
+    public static final String DEFAULT_ADDRESS = "mccooljc.com";
     public static final String API_SERVICE = "mp3";
 
     //    private static FellowshipApplication sharedInstance;
