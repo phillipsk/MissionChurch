@@ -16,6 +16,7 @@
 
 package com.missionchurchcooljc.mcc.network.api
 
+import android.util.Log
 import com.missionchurchcooljc.data_android.WebsiteHighlight
 import com.missionchurchcooljc.data_android.WebsiteHighlightDAO
 import javax.inject.Inject
@@ -36,8 +37,13 @@ lateinit var whList: List<WebsiteHighlight>
         whList = websiteHighlightDAO.getHighlightsAsList()
 //            Log.d("KP041521", "count :: " + whList.size.toString())
 
-        val highlights = churchWebsiteService.getHighlightsExternal()
-        whList = highlights.items
+        try {
+            val highlights = churchWebsiteService.getHighlightsExternal()
+            whList = highlights.items
+
+        } catch (e: Throwable) {
+            Log.d("KP052821", e.toString())
+        }
 //            Log.d("KP041521", "count :: " + whList.size.toString())
 
         websiteHighlightDAO.clearHighlights();
