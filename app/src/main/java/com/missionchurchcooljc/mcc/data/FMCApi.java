@@ -17,7 +17,6 @@
 package com.missionchurchcooljc.mcc.data;
 
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -37,7 +36,6 @@ import com.missionchurchcooljc.mcc.users.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by  Kevin Phillips and Sunday Akinsete on 17/05/2018.
