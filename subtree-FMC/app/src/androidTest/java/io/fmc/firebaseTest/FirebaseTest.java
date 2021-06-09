@@ -1,9 +1,25 @@
+/*
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.fmc.firebaseTest;
 
 import android.os.Build;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,7 +35,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 import io.fmc.data.models.AnnouncementPost;
 
@@ -50,13 +65,13 @@ public class FirebaseTest {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.e("databaseError", String.valueOf(dataSnapshot));
+                //Log.e("databaseError", String.valueOf(dataSnapshot));
 //                String value = dataSnapshot.getValue(String.class);
-//                Log.d(TAG, "Value is: " + value);
+//                //Log.d(TAG, "Value is: " + value);
 
                 List<AnnouncementPost> announcementPosts = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Log.d("Firebase obj key ", Objects.requireNonNull(snapshot.getKey()));
+                    //Log.d("Firebase obj key ", Objects.requireNonNull(snapshot.getKey()));
                     announcementPosts.add(snapshot.getValue(AnnouncementPost.class));
                 }
                 System.out.println(announcementPosts);
@@ -64,7 +79,7 @@ public class FirebaseTest {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("databaseError", String.valueOf(databaseError));
+                //Log.e("databaseError", String.valueOf(databaseError));
             }
         });
 

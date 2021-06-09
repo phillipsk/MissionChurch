@@ -18,7 +18,6 @@ package com.missionchurchcooljc.mcc.feature_highlights
 
 //import dagger.hilt.android.AndroidEntryPoint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -91,11 +90,11 @@ class AboutUsFragment : BaseFragment(), AboutUsMVP.View {
 //        val referenceValue = Integer.toHexString(System.identityHashCode(presenter))
 //        val className = presenter.javaClass.canonicalName
 //        val result = "$className@$referenceValue"
-//        Log.d("reference",result)
+//        //Log.d("reference",result)
 
 //        viewModel.highlights.observe(viewLifecycleOwner) { wh: List<WebsiteHighlight> ->
 //            adapter.submitList(wh)
-//            Log.d(TAG, "WebsiteHighlight List Count ${wh.size}")
+//            //Log.d(TAG, "WebsiteHighlight List Count ${wh.size}")
 //        }
 
     }
@@ -113,7 +112,7 @@ class AboutUsFragment : BaseFragment(), AboutUsMVP.View {
     }
 
     init {
-        Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
+        //Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
     }
 
 

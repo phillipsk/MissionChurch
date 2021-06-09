@@ -23,7 +23,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,7 +96,7 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.e(this.getClass().getName(), "onCreate");
+        //Log.e(this.getClass().getName(), "onCreate");
         ((AppController) getActivity().getApplication()).getComponent().inject(this);
 
         context = getActivity();
@@ -124,7 +123,7 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
     }
 
     private void initBroadcastReceiver() {
-        Log.e(this.getClass().getName(), "initBroadcastReceiver");
+        //Log.e(this.getClass().getName(), "initBroadcastReceiver");
 
         broadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -137,7 +136,7 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
 
                 if (broadcast_type.equals(AppController.BROADCAST_PLAY_MEDIA_AT_POSITION)) {
                     int position = intent.getExtras().getInt("position");
-                    Log.e("position", position + "-");
+                    //Log.e("position", position + "-");
                     playAudioFileFromServer(position);
 
                 }
@@ -182,7 +181,7 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
         try {
             requireActivity().registerReceiver(broadcastReceiver, new IntentFilter(AppController.backendBroadCast));
         } catch (Exception e) {
-            Log.e(this.getClass().getCanonicalName(), "Exception from onResume");
+            //Log.e(this.getClass().getCanonicalName(), "Exception from onResume");
             e.printStackTrace();
         }
     }
@@ -195,7 +194,7 @@ public class AudiosFragment extends Fragment implements JcPlayerService.JcPlayer
             requireActivity().unregisterReceiver(broadcastReceiver);
             jcPlayer.kill();
         } catch (Exception e) {
-            Log.e(this.getClass().getCanonicalName(), "Exception from onDestroy");
+            //Log.e(this.getClass().getCanonicalName(), "Exception from onDestroy");
             e.printStackTrace();
         }
     }

@@ -1,14 +1,29 @@
+/*
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.techministry.android.fellowshipmissionchurch.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.util.Log;
 
 import org.greenrobot.greendao.AbstractDaoMaster;
-import org.greenrobot.greendao.database.StandardDatabase;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseOpenHelper;
+import org.greenrobot.greendao.database.StandardDatabase;
 import org.greenrobot.greendao.identityscope.IdentityScopeType;
 
 
@@ -70,7 +85,7 @@ public class DaoMaster extends AbstractDaoMaster {
 
         @Override
         public void onCreate(Database db) {
-            Log.i("greenDAO", "Creating tables for schema version " + SCHEMA_VERSION);
+            //Log.i("greenDAO", "Creating tables for schema version " + SCHEMA_VERSION);
             createAllTables(db, false);
         }
     }
@@ -87,7 +102,7 @@ public class DaoMaster extends AbstractDaoMaster {
 
         @Override
         public void onUpgrade(Database db, int oldVersion, int newVersion) {
-            Log.i("greenDAO", "Upgrading schema from version " + oldVersion + " to " + newVersion + " by dropping all tables");
+            //Log.i("greenDAO", "Upgrading schema from version " + oldVersion + " to " + newVersion + " by dropping all tables");
             dropAllTables(db, true);
             onCreate(db);
         }

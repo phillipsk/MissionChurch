@@ -18,7 +18,6 @@ package com.missionchurchcooljc.mcc.feature_highlights
 
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -85,7 +84,7 @@ internal class DiffCallback : DiffUtil.ItemCallback<WebsiteHighlight>() {
     }
 
     init {
-        Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
+        //Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
     }
 
 }

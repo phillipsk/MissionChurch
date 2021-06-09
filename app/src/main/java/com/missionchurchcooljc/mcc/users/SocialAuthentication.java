@@ -20,7 +20,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -234,7 +233,7 @@ public class SocialAuthentication {
 
         } else {
             socialAuthenticationListener.onAuthenticationError("Google login failed");
-            Log.e("googleSignInResult", googleSignInResult.getStatus().toString());
+            //Log.e("googleSignInResult", googleSignInResult.getStatus().toString());
         }
     }
 

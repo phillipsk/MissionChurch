@@ -1,6 +1,20 @@
-package io.fmc.utils;
+/*
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-import android.util.Log;
+package io.fmc.utils;
 
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
@@ -30,9 +44,9 @@ public class BottomNavigationViewHelper {
                 item.setChecked(item.getItemData().isChecked());
             }
         } catch (NoSuchFieldException e) {
-            Log.e("BNVHelper", "Unable to get shift mode field", e);
+            //Log.e("BNVHelper", "Unable to get shift mode field", e);
         } catch (IllegalAccessException e) {
-            Log.e("BNVHelper", "Unable to change value of shift mode", e);
+            //Log.e("BNVHelper", "Unable to change value of shift mode", e);
         }
     }
 }

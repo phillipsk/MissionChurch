@@ -16,7 +16,6 @@
 
 package com.missionchurchcooljc.mcc.utilities
 
-import android.util.Log
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -24,8 +23,8 @@ import kotlin.coroutines.CoroutineContext
  */
 
 fun logCoroutine(methodName: String, coroutineContext: CoroutineContext) {
-    Log.d(
-        "TestCoroutine", "Thread for $methodName is: ${Thread.currentThread().name}" +
-                "and the context is $coroutineContext"
-    )
+//    Log.d(
+//        "TestCoroutine", "Thread for $methodName is: ${Thread.currentThread().name}" +
+//                "and the context is $coroutineContext"
+//    )
 }

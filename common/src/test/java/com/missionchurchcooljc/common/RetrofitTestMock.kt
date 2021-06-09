@@ -16,7 +16,6 @@
 
 package com.missionchurchcooljc.common
 
-import android.util.Log
 import com.missionchurchcooljc.common.network.api.ChurchWebsiteResponse
 import com.missionchurchcooljc.common.network.api.ChurchWebsiteService
 import okhttp3.OkHttpClient
@@ -54,7 +53,7 @@ class RetrofitTestMock {
 
         val callback = object : Callback<ChurchWebsiteResponse> {
             override fun onFailure(call: Call<ChurchWebsiteResponse>?, t: Throwable?) {
-                Log.e("RetrofitTest", "Problem calling Github API ${t?.message}")
+                //Log.e("RetrofitTest", "Problem calling Github API ${t?.message}")
             }
 
             override fun onResponse(
@@ -64,7 +63,7 @@ class RetrofitTestMock {
 //                response?.isSuccessful.let {
 //                    val resultList = ChurchWebsiteResponse(response?.body()?.items ?: emptyList())
 ////                    repoList.adapter = RepoListAdapter(resultList)
-//                    Log.d("Test",
+//                    //Log.d("Test",
 //                        "WebsiteHighlight List Count ${resultList.items.size}")
 //
 //                }

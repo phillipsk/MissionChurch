@@ -20,7 +20,6 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -140,7 +139,7 @@ public class AppController extends Application {
 //        WebsiteHighlightDAO websiteHighlightDAO = mccRoomDatabase.websiteHighlightDao();
 //        websiteHighlightDAO.clearHighlights();
 
-//        Log.d("hashcode", String.valueOf(mccRoomDatabase.hashCode()));
+//        //Log.d("hashcode", String.valueOf(mccRoomDatabase.hashCode()));
 
         FirebaseApp.initializeApp(this);
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
@@ -165,7 +164,7 @@ public class AppController extends Application {
 //        JUL-20
         fetchAudioMessage();
 
-//        Log.d("hashcodeapp", String.valueOf(mccRoomDatabase.hashCode()));
+//        //Log.d("hashcodeapp", String.valueOf(mccRoomDatabase.hashCode()));
 
     }
 
@@ -233,7 +232,7 @@ public class AppController extends Application {
 
             @Override
             public void failure(@NotNull Request request, @NotNull Response response, @NotNull FuelError fuelError) {
-                Log.e("files_audio", fuelError.toString());
+                //Log.e("files_audio", fuelError.toString());
                 Gson gson = new Gson();
 
             }
@@ -244,7 +243,7 @@ public class AppController extends Application {
                 this.response = response;
                 this.data = data;
                 //do something when it is successful
-//                Log.e("files_audio", data);
+//                //Log.e("files_audio", data);
                 Gson gson = new Gson();
                 JSONObject jsonObject = convertStringToObject(data);
 

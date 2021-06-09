@@ -16,8 +16,6 @@
 
 package com.missionchurchcooljc.mcc.posts;
 
-import android.util.Log;
-
 import com.missionchurchcooljc.mcc.data.models.AnnouncementPost;
 
 import java.util.Collections;
@@ -61,7 +59,7 @@ public class PostFragmentPresenter implements PostMVP.Presenter {
 
             @Override
             public void onError(String message) {
-                Log.e("databaseError", String.valueOf(message));
+                //Log.e("databaseError", String.valueOf(message));
 
             }
         });

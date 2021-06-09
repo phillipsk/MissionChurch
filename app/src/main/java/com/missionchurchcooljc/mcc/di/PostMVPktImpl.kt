@@ -43,7 +43,7 @@ class PostMVPktImpl @Inject constructor(
 //
 //                override fun onPostItemFetched(post: AnnouncementPost) {}
 //                override fun onError(message: String) {
-//                    Log.e("databaseError", message)
+//                    //Log.e("databaseError", message)
 //                }
 //            })
 //

@@ -17,7 +17,6 @@
 package com.missionchurchcooljc.mcc.feature_highlights.mvvm
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +26,6 @@ import com.missionchurchcooljc.data_android.WebsiteHighlight
 import com.missionchurchcooljc.mcc.databinding.FragmentAboutUsBinding
 import com.missionchurchcooljc.mcc.di.AppController
 import com.missionchurchcooljc.mcc.feature_highlights.AboutUsAdapter
-import com.missionchurchcooljc.mcc.persistence.MccRoomDatabase
 import javax.inject.Inject
 
 class HighlightsFragment : BaseFragment() {
@@ -97,6 +95,6 @@ class HighlightsFragment : BaseFragment() {
     }
 
     init {
-        Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
+        //Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
     }
 }

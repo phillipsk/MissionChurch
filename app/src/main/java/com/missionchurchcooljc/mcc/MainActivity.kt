@@ -17,7 +17,6 @@
 package com.missionchurchcooljc.mcc
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -121,6 +120,6 @@ class MainActivity : AppCompatActivity() {
 //    }
 
     init {
-        Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
+        //Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
     }
 }

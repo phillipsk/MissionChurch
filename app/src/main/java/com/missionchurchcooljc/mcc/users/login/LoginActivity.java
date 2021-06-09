@@ -20,7 +20,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -254,8 +253,8 @@ public class LoginActivity extends BaseActivity implements LoginMVP.View, Social
                     @Override
                     public void onCompleted(GraphResponse response) {
                         // Insert your code here
-                        Log.d("GraphAPI FB debug", String.valueOf(response));
-                        Log.d("GraphAPI FB debug", response.toString());
+                        //Log.d("GraphAPI FB debug", String.valueOf(response));
+                        //Log.d("GraphAPI FB debug", response.toString());
                     }
                 });
 

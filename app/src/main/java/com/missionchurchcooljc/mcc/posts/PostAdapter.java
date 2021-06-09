@@ -17,7 +17,6 @@
 package com.missionchurchcooljc.mcc.posts;
 
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,7 +105,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             binding.favorite.setText(String.valueOf(i1));
             binding.view.setText(String.valueOf(i2));
 
-            Log.e("favorite", String.valueOf(post.getLiked()));
+            //Log.e("favorite", String.valueOf(post.getLiked()));
 
 
             if (postAdapterListener != null) {

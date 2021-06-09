@@ -1,8 +1,23 @@
+/*
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.techministry.android.fellowshipmissionchurch;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,7 +30,6 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
@@ -37,9 +51,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Objects;
 
 import io.fmc.R;
 import io.techministry.android.fellowshipmissionchurch.model.User;
@@ -89,7 +100,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(final LoginResult loginResult) {
-                Log.d(TAG, "facebook:onSuccess:" + loginResult);
+                //Log.d(TAG, "facebook:onSuccess:" + loginResult);
 
                 handleFacebookAccessToken(loginResult.getAccessToken());
 
@@ -102,13 +113,13 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
             @Override
             public void onCancel() {
-                Log.d(TAG, "facebook:onCancel");
+                //Log.d(TAG, "facebook:onCancel");
                 // ...
             }
 
             @Override
             public void onError(FacebookException error) {
-                Log.d(TAG, "facebook:onError", error);
+                //Log.d(TAG, "facebook:onError", error);
                 // ...
             }
         });
@@ -118,7 +129,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
 
     private void handleFacebookAccessToken(final AccessToken token) {
-        Log.d(TAG, "handleFacebookAccessToken:" + token);
+        //Log.d(TAG, "handleFacebookAccessToken:" + token);
 
         final AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
@@ -127,7 +138,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
+                            //Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
 
@@ -152,7 +163,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                                                 e.printStackTrace();
                                             }
 
-                                            Log.d(TAG, "facebook:jsonObject:" + jsonObject);
+                                            //Log.d(TAG, "facebook:jsonObject:" + jsonObject);
 
                                         }
                                     });
@@ -167,10 +178,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                                 gotoMainActivity();
                             }
                         } else {
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            //Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(SignInActivity.this, task.getException().getMessage(),
                                     Toast.LENGTH_LONG).show();
-                            Log.e("xxcd",task.getException().getMessage());
+                            //Log.e("xxcd",task.getException().getMessage());
 
                         }
 
@@ -243,13 +254,13 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }else{
-            Log.e("xxcd",data+"??");
+            //Log.e("xxcd",data+"??");
             mCallbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
-        Log.d(TAG, "handleSignInResult:" + result.isSuccess());
+        //Log.d(TAG, "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
@@ -263,7 +274,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
 
     private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+        //Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         final AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -272,7 +283,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
+                            //Log.d(TAG, "signInWithCredential:success");
                             User user = new User();
                             user.setFull_name(acct.getDisplayName());
                             user.setEmail(acct.getEmail());
@@ -288,10 +299,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){
                                 handleFirebaseException(credential);
                             }else{
-                                Log.w(TAG, "signInWithCredential:failure", task.getException());
+                                //Log.w(TAG, "signInWithCredential:failure", task.getException());
                                 Toast.makeText(SignInActivity.this, task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
-                                Log.e("xxcd",task.getException().getMessage());
+                                //Log.e("xxcd",task.getException().getMessage());
                             }
 
 

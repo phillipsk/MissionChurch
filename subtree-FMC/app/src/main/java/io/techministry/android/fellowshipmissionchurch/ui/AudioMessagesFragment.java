@@ -1,11 +1,11 @@
 /*
- * Copyright (C) 2015 The Android Open Source Project
+ * Copyright (c) 2021 Kevin Phillips, Mission Church of Our Lord Jesus Christ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,17 +21,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jean.jcplayer.JcAudio;
 import com.example.jean.jcplayer.JcPlayerService;
@@ -101,7 +100,7 @@ public class AudioMessagesFragment extends Fragment implements JcPlayerService.J
 
                 if (broadcast_type.equals(FellowshipApplication.BROADCAST_PLAY_MEDIA_AT_POSITION)) {
                     int position = intent.getExtras().getInt("position");
-                    Log.e("position",position+"-");
+                    //Log.e("position",position+"-");
                     playAudioFileFromServer(position);
 
                 }

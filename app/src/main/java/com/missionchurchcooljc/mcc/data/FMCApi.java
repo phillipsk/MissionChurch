@@ -96,13 +96,13 @@ public class FMCApi {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.e("databaseError", String.valueOf(dataSnapshot));
+                //Log.e("databaseError", String.valueOf(dataSnapshot));
 //                String value = dataSnapshot.getValue(String.class);
-//                Log.d(TAG, "Value is: " + value);
+//                //Log.d(TAG, "Value is: " + value);
 
                 List<AnnouncementPost> announcementPosts = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Log.d("Firebase obj key ", Objects.requireNonNull(snapshot.getKey()));
+                    //Log.d("Firebase obj key ", Objects.requireNonNull(snapshot.getKey()));
                     announcementPosts.add(snapshot.getValue(AnnouncementPost.class));
                 }
 //                2020-06-14 Reverse sort Announcement array list; or sort by created date
@@ -112,7 +112,7 @@ public class FMCApi {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("databaseError", String.valueOf(databaseError));
+                //Log.e("databaseError", String.valueOf(databaseError));
             }
         });
     }

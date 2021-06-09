@@ -17,7 +17,6 @@
 package com.missionchurchcooljc.mcc.persistence.workers
 
 import android.content.Context
-import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.google.gson.Gson
@@ -58,12 +57,12 @@ class SeedDatabaseWorker(
                     val mccRoomDatabase = MccRoomDatabase.getInstance(applicationContext)
 
                     mccRoomDatabase.websiteHighlightDao().insertAll(whList)
-                    Log.d("highlights","database seeded successfully")
+                    //Log.d("highlights","database seeded successfully")
                     Result.success()
                 }
             }
         } catch (ex: Exception) {
-            Log.e(TAG, "Error seeding database", ex)
+            //Log.e(TAG, "Error seeding database", ex)
             Result.failure()
         }
     }

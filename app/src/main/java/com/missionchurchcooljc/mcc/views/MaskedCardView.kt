@@ -22,7 +22,6 @@ import android.graphics.Canvas
 import android.graphics.Path
 import android.graphics.RectF
 import android.util.AttributeSet
-import android.util.Log
 import com.google.android.material.R
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.shape.ShapeAppearanceModel
@@ -63,6 +62,6 @@ class MaskedCardView @JvmOverloads constructor(
     }
 
     init {
-        Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
+        //Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
     }
 }

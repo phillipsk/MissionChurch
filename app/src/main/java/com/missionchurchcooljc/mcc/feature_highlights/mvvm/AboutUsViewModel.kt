@@ -17,7 +17,6 @@
 package com.missionchurchcooljc.mcc.feature_highlights.mvvm
 
 //import androidx.hilt.lifecycle.ViewModelInject
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.missionchurchcooljc.data_android.WebsiteHighlight
@@ -66,7 +65,7 @@ class AboutUsViewModel @Inject internal constructor(
 //            logCoroutine("retrieveHighlights", coroutineContext)
 
 //            launch(Dispatchers.Main) {
-////                Log.d("highlights", highlights.joinToString())
+////                //Log.d("highlights", highlights.joinToString())
 ////                recyclerView.adapter = PokeAdapter(response)
 //
 //            }
@@ -80,7 +79,7 @@ class AboutUsViewModel @Inject internal constructor(
 ////            delay(500)
 //            val result = runCatching { churchWebsiteRepository.fataretrieveHighlightsAwait() }
 //
-//            Log.d("TestCoroutine", "Still Alive!")
+//            //Log.d("TestCoroutine", "Still Alive!")
 ////            result.onSuccess { highlight ->
 ////                moviesView.showMovies(highlight)
 ////            }.onFailure { error ->
@@ -91,6 +90,6 @@ class AboutUsViewModel @Inject internal constructor(
 //
 
     init {
-        Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
+        //Log.d("LIFECYCLE", "{${this.javaClass.simpleName}} Class Created")
     }
 }
