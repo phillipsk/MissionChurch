@@ -72,7 +72,7 @@ class AboutUsFragment : BaseFragment(), AboutUsMVP.View {
 
         binding.highlightsRv.adapter = adapter
         subscribeUi(adapter)
-        binding.dummy.text = "@ActivityScope dummyDependency: ${dummyDependency.hashCode()}\n"
+//        binding.dummy.text = "@ActivityScope dummyDependency: ${dummyDependency.hashCode()}\n"
 
 //        findViewById<TextView>(R.id.dummy).text =
 //            "@ActivityScope dummyDependency: ${dummyDependency.hashCode()}\n" +

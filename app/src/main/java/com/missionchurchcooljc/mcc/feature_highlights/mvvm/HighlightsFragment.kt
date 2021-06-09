@@ -35,8 +35,8 @@ class HighlightsFragment : BaseFragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     //public class AppController extends MultiDexApplication {
-    @Inject
-    lateinit var mccRoomDatabase: MccRoomDatabase
+//    @Inject
+//    lateinit var mccRoomDatabase: MccRoomDatabase
 //    private val viewModel: AboutUsViewModel by viewModels{ viewModelFactory }
 
     private lateinit var viewModel: AboutUsViewModel
@@ -50,8 +50,7 @@ class HighlightsFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onInitDependencyInjection()
-        Log.d("hashcode", mccRoomDatabase.hashCode().toString());
-
+//        //Log.d("hashcode", mccRoomDatabase.hashCode().toString());
     }
 
     override fun onCreateView(
@@ -60,7 +59,6 @@ class HighlightsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentAboutUsBinding.inflate(inflater, container, false)
-//        return binding.root
         context ?: return binding.root
         val adapter = AboutUsAdapter()
 
@@ -68,30 +66,34 @@ class HighlightsFragment : BaseFragment() {
 
         binding.highlightsRv.adapter = adapter
 
-//        viewModel.purgeHighlights()
-        subscribeUi(adapter)
+        subscribeUi(adapter, binding)
 
-//        return super.onCreateView(inflater, container, savedInstanceState)
+        binding.swiperefresh.setOnRefreshListener {
+//            swipeRefresh.setRefreshing(false);
+            viewModel.retrieveHighlights()
+
+//            viewModel.delaySwipeRefresh(5000)
+//            viewModel.highlights.observe(viewLifecycleOwner) {}
+//            coroutineScope.launch(Dispatchers.IO) {
+//                delay(3500)
+//                binding.swiperefresh.isRefreshing = false
+//            }
+        }
         return binding.root
 
     }
 
-    private fun subscribeUi(adapter: AboutUsAdapter) {
+    private fun subscribeUi(adapter: AboutUsAdapter, binding: FragmentAboutUsBinding) {
         viewModel.highlights.observe(viewLifecycleOwner) { wh: List<WebsiteHighlight> ->
-//        viewModel.fetchHighlights().observe(viewLifecycleOwner) { wh: List<WebsiteHighlight> ->
             adapter.submitList(wh)
-            Log.d(TAG, "WebsiteHighlight List Count ${wh.size}")
-
+            binding.swiperefresh.isRefreshing = false
+            //Log.d(TAG, "WebsiteHighlight List Count ${wh.size}")
         }
         viewModel.retrieveHighlights()
-//        viewModel.highlights.observe(viewLifecycleOwner) { highlihgt ->
-//            adapter.submitList(highlihgt)
-//        }
     }
 
     companion object {
         private const val TAG = "WHdebug"
-
     }
 
     init {
