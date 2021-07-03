@@ -40,6 +40,14 @@ plugins {
 //apply plugin: "androidx.navigation.safeargs.kotlin"
 //apply plugin: 'androidx.navigation.safeargs'
 android {
+    signingConfigs {
+        releaseSignedConfig {
+        storeFile file('/Users/phillipsk12/StudioProjects/mcc_2021.6.24_signed_keystore')
+            storePassword 'Redsox*44'
+            keyAlias 'key0'
+            keyPassword 'Redsox*44'
+        }
+    }
     compileSdkVersion(AndroidSdk.compile)
     buildToolsVersion "30.0.2"
 
@@ -47,20 +55,23 @@ android {
         applicationId "io.techministry.android.missionchurch"
         minSdkVersion(AndroidSdk.min)
         targetSdkVersion(AndroidSdk.target)
-        versionCode 3
-        versionName "2021.6.9"
+        versionCode 6
+        versionName "2021.6.24"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [onesignal_app_id : "9cde7f32-fc6b-4849-baaa-a770e9725791",
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: "REMOTE"]
+        signingConfig signingConfigs.releaseSignedConfig
     }
 
     buildTypes {
         release {
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseSignedConfig
         }
     }
     buildFeatures {

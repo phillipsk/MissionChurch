@@ -14,8 +14,22 @@
 
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+-keepattributes SourceFile,LineNumberTable
 
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Preserve all entity (data) classes
+#-keep class org.greenrobot.greendao.** {*;}
+#-keep class **$Properties { *; }
+-keep class org.greenrobot.greendao.**{*;}
+-keep public interface org.greenrobot.greendao.**
+-keepclassmembers class * extends org.greenrobot.greendao.AbstractDao {
+public static java.lang.String TABLENAME;
+}
+-keep class **$Properties
+-keep class net.sqlcipher.database.**{*;}
+-keep public interface net.sqlcipher.database.**
+-dontwarn net.sqlcipher.database.**
+-dontwarn org.greenrobot.greendao.**
