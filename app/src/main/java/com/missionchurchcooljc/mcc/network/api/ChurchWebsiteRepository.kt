@@ -38,17 +38,21 @@ lateinit var whList: List<WebsiteHighlight>
 
         try {
             val highlights = churchWebsiteService.getHighlightsExternal()
-            whList = highlights.items
+//            whList = highlights.items
+            websiteHighlightDAO.clearHighlights()
+//            //Log.d("KP041521", "count :: " + whList.size.toString())
+//            //Log.d("KP041521", whList.joinToString())
+            websiteHighlightDAO.insertAll(highlights.items)
 
         } catch (e: Throwable) {
-            //Log.d("KP052821", e.toString())
+            /*
+            TODO: handle connection timeout
+            * failed to connect to mccooljc.com/45.56.106.240 (port 80) from /100.71.8.80 (port 36642) after 60000ms: isConnected failed: ETIMEDOUT (Connection timed out)
+            * */
+//            Log.e("KP052821", e.toString())
         }
 //            //Log.d("KP041521", "count :: " + whList.size.toString())
 
-        websiteHighlightDAO.clearHighlights();
-//            //Log.d("KP041521", "count :: " + whList.size.toString())
-//            //Log.d("KP041521", whList.joinToString())
-        websiteHighlightDAO.insertAll(whList)
     }
 
 //    suspend fun getHighlightsRemote(): ChurchWebsiteResponse {
