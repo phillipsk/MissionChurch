@@ -23,6 +23,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.missionchurchcooljc.mcc.databinding.ActivityMainBinding
 import com.missionchurchcooljc.mcc.di.AppController
 
 //import dagger.hilt.android.AndroidEntryPoint
@@ -36,11 +37,17 @@ class MainActivity : AppCompatActivity() {
 //    Hide top app bar toolbar and bottom navigation bar upon RV scrolling
 
     private var currentNavController: LiveData<NavController>? = null
-//    private val applicationComponent get() = (application as AppController).component
+
+    //    private val applicationComponent get() = (application as AppController).component
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+//        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
         }
